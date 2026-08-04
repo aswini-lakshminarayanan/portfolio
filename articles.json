@@ -1,25 +1,25 @@
 [
   {
-    "title": "Welcome — why I started writing here",
-    "slug": "welcome-why-i-started-writing-here",
+    "title": "Hello — and why I'm writing here",
+    "slug": "hello-and-why-i-m-writing-here",
     "date": "2026-08-04T00:00:00.000Z",
     "dateLabel": "Aug 4, 2026",
-    "excerpt": "A short note on why I built this space to share what I'm learning, and what you can expect from it.",
+    "excerpt": "After a decade of AEM projects and consulting, I'm starting to write down what I've learned. Here's what to expect.",
     "tags": [
-      "Meta",
-      "Writing"
+      "Intro",
+      "Career"
     ],
     "readingTime": 1
   },
   {
-    "title": "The one habit that changed how I ship",
-    "slug": "the-one-habit-that-changed-how-i-ship",
-    "date": "2026-07-20T00:00:00.000Z",
-    "dateLabel": "Jul 20, 2026",
-    "excerpt": "A simple practice that made my projects more predictable — and my weekends quieter.",
+    "title": "Technical design docs that win executive trust",
+    "slug": "technical-design-docs-that-win-executive-trust",
+    "date": "2026-07-28T00:00:00.000Z",
+    "dateLabel": "Jul 28, 2026",
+    "excerpt": "A technical design isn't just for engineers. Here's how I structure documents that get a nod from C-level stakeholders and a team that can build them.",
     "tags": [
-      "Product",
-      "Lessons"
+      "Solution Consulting",
+      "AEM"
     ],
     "readingTime": 1
   }

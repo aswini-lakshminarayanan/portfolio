@@ -75,6 +75,11 @@ function build() {
   }
   fs.mkdirSync(BLOG_DIR, { recursive: true });
 
+  // Clean previously generated pages so deleted/renamed articles don't linger.
+  for (const f of fs.readdirSync(BLOG_DIR)) {
+    if (f.endsWith(".html")) fs.rmSync(path.join(BLOG_DIR, f));
+  }
+
   const files = fs
     .readdirSync(ARTICLES_DIR)
     .filter((f) => f.endsWith(".md") && !f.startsWith("_"));
