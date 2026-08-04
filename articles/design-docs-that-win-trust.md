@@ -14,7 +14,7 @@ After a lot of these sessions, here's the structure I keep coming back to.
 
 ## 1. Open with the business outcome, not the stack
 
-Executives don't buy AEM — they buy faster time-to-market, lower content operations
+Executives don't buy AEM; they buy faster time-to-market, lower content operations
 cost, or a consistent brand across markets. Name that outcome in the first slide,
 then let the architecture follow as the *means*, not the headline.
 
@@ -26,7 +26,7 @@ actually build it.
 
 ## 3. Make the trade-offs explicit
 
-Every serious design has trade-offs — headless vs. traditional authoring, build vs.
+Every serious design has trade-offs: headless vs. traditional authoring, build vs.
 buy, phased vs. big-bang. Naming them yourself signals that you've done the thinking,
 and it turns the room from skeptics into collaborators.
 
@@ -41,5 +41,5 @@ trust than a perfect end-state they can't picture reaching.
 None of this replaces solid engineering. But the design that gets *funded and built*
 is usually the one that respected both the architecture and the audience.
 
-*What's worked for you in these rooms? I'd love to hear —
-[find me on LinkedIn](https://www.linkedin.com/in/aswini-lakshminarayanan/).*
+*What's worked for you in these rooms? I'd love to hear.
+[Find me on LinkedIn](https://www.linkedin.com/in/aswini-lakshminarayanan/).*
