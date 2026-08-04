@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writing — Your Name</title>
+  <meta name="description" content="Articles, essays, and notes by Your Name." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="../index.html" class="brand">Your<span>Name</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="index.html">Writing</a></li>
+        <li class="nav-cta"><a class="btn btn-primary" href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-hero container">
+      <p class="eyebrow">Insights</p>
+      <h1 style="font-size:clamp(2rem,1.4rem+2.4vw,2.8rem);font-weight:800;">Writing</h1>
+      <p class="muted" style="max-width:60ch;">Essays and notes on the work I do. New pieces also go out on LinkedIn.</p>
+    </section>
+    <section class="container" style="padding-top:24px;">
+      <div class="blog-list">
+        
+        <a class="blog-row" href="welcome-why-i-started-writing-here.html">
+          <span class="when">Aug 4, 2026 · 1 min read</span>
+          <h3>Welcome — why I started writing here</h3>
+          <p>A short note on why I built this space to share what I'm learning, and what you can expect from it.</p>
+        </a>
+
+        <a class="blog-row" href="the-one-habit-that-changed-how-i-ship.html">
+          <span class="when">Jul 20, 2026 · 1 min read</span>
+          <h3>The one habit that changed how I ship</h3>
+          <p>A simple practice that made my projects more predictable — and my weekends quieter.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container row">
+      <div>© <span id="year"></span> Your Name.</div>
+      <div class="social"><a href="../index.html">Home</a></div>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

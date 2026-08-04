@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Welcome — why I started writing here",
+    "slug": "welcome-why-i-started-writing-here",
+    "date": "2026-08-04T00:00:00.000Z",
+    "dateLabel": "Aug 4, 2026",
+    "excerpt": "A short note on why I built this space to share what I'm learning, and what you can expect from it.",
+    "tags": [
+      "Meta",
+      "Writing"
+    ],
+    "readingTime": 1
+  },
+  {
+    "title": "The one habit that changed how I ship",
+    "slug": "the-one-habit-that-changed-how-i-ship",
+    "date": "2026-07-20T00:00:00.000Z",
+    "dateLabel": "Jul 20, 2026",
+    "excerpt": "A simple practice that made my projects more predictable — and my weekends quieter.",
+    "tags": [
+      "Product",
+      "Lessons"
+    ],
+    "readingTime": 1
+  }
+]
