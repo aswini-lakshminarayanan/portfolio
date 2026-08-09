@@ -28,7 +28,7 @@ what is translated, what changed, and what still needs work.
 ## The translation workflow at a glance
 
 ```mermaid
-flowchart LR
+flowchart TD
   A[Source DITA<br/>topics and maps] --> B[Create translation project]
   B --> C{Choose method}
   C -->|Human| D[Send to translation vendor]
@@ -38,7 +38,6 @@ flowchart LR
   F --> G[Review and post-edit]
   G --> H[Localized language copies]
   H --> I[Publish per-language output]
-  A -. only changed topics .-> B
 ```
 
 The dotted line matters: because DITA is modular, a re-translation only sends the

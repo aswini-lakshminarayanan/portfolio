@@ -266,8 +266,6 @@ section { padding: 88px 0; }
   background: var(--bg-soft); border: 1px solid var(--border); border-radius: 12px;
   overflow-x: auto;
 }
-/* Render diagrams at natural size; the container scrolls if wider than the column. */
-.prose .mermaid svg { max-width: none !important; height: auto; }
 .prose table {
   width: 100%; border-collapse: collapse; margin: 1.7em 0;
   font-family: var(--font-sans); font-size: 0.98rem;

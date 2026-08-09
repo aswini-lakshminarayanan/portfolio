@@ -50,7 +50,7 @@ and number formats, units, images, examples, legal text, and tone.</li>
 versions of every topic and map, and it keeps them linked so you always know
 what is translated, what changed, and what still needs work.</p>
 <h2>The translation workflow at a glance</h2>
-<pre><code class="language-mermaid">flowchart LR
+<pre><code class="language-mermaid">flowchart TD
   A[Source DITA&lt;br/&gt;topics and maps] --&gt; B[Create translation project]
   B --&gt; C{Choose method}
   C --&gt;|Human| D[Send to translation vendor]
@@ -60,7 +60,6 @@ what is translated, what changed, and what still needs work.</p>
   F --&gt; G[Review and post-edit]
   G --&gt; H[Localized language copies]
   H --&gt; I[Publish per-language output]
-  A -. only changed topics .-&gt; B
 </code></pre>
 <p>The dotted line matters: because DITA is modular, a re-translation only sends the
 topics that changed since last time, not the whole book.</p>
