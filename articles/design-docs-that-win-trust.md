@@ -3,6 +3,7 @@ title: Technical design docs that win executive trust
 date: 2026-07-28
 excerpt: A technical design isn't just for engineers. Here's how I structure documents that get a nod from C-level stakeholders and a team that can build them.
 tags: [Solution Consulting, AEM]
+solution: Notes & Essays
 draft: false
 ---
 

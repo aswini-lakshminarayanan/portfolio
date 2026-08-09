@@ -16,8 +16,12 @@
  *   date: 2026-08-04
  *   excerpt: One-sentence summary shown in cards and search results.
  *   tags: [AEM, AI]
- *   draft: false        # optional — true hides it from the build
+ *   solution: AEM Guides   # optional — groups the article on the blog page
+ *   draft: false           # optional — true hides it from the build
  *   ---
+ *
+ * Articles can live directly in articles/ or in sub-folders such as
+ * articles/aem-guides/ — the build scans recursively.
  */
 
 import fs from "node:fs";
@@ -62,6 +66,18 @@ function readTemplate(name) {
   return fs.readFileSync(path.join(TEMPLATES_DIR, name), "utf8");
 }
 
+// Return every .md file under dir (recursively), skipping names starting with "_".
+function walkMarkdown(dir) {
+  const out = [];
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    if (entry.name.startsWith("_") || entry.name.startsWith(".")) continue;
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...walkMarkdown(full));
+    else if (entry.name.endsWith(".md")) out.push(full);
+  }
+  return out;
+}
+
 function fill(template, data) {
   return template.replace(/{{\s*(\w+)\s*}}/g, (_, key) =>
     key in data ? data[key] : ""
@@ -80,9 +96,7 @@ function build() {
     if (f.endsWith(".html")) fs.rmSync(path.join(BLOG_DIR, f));
   }
 
-  const files = fs
-    .readdirSync(ARTICLES_DIR)
-    .filter((f) => f.endsWith(".md") && !f.startsWith("_"));
+  const files = walkMarkdown(ARTICLES_DIR);
 
   const articleTpl = readTemplate("article.html");
   const indexTpl = readTemplate("blog-index.html");
@@ -90,11 +104,11 @@ function build() {
   const posts = [];
 
   for (const file of files) {
-    const raw = fs.readFileSync(path.join(ARTICLES_DIR, file), "utf8");
+    const raw = fs.readFileSync(file, "utf8");
     const { data, content } = matter(raw);
 
     if (data.draft === true) {
-      console.log(`  skip (draft): ${file}`);
+      console.log(`  skip (draft): ${path.relative(ARTICLES_DIR, file)}`);
       continue;
     }
 
@@ -102,6 +116,7 @@ function build() {
     const slug = data.slug || slugify(title);
     const date = data.date || new Date().toISOString().slice(0, 10);
     const tags = Array.isArray(data.tags) ? data.tags : [];
+    const solution = data.solution || "General";
     const words = content.trim().split(/\s+/).length;
     const readingTime = Math.max(1, Math.round(words / WORDS_PER_MIN));
     const bodyHTML = marked.parse(content);
@@ -135,6 +150,7 @@ function build() {
       dateLabel: formatDate(date),
       excerpt,
       tags,
+      solution,
       readingTime,
     });
   }
@@ -142,16 +158,32 @@ function build() {
   // newest first
   posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  // blog/index.html listing
-  const listHTML = posts.length
-    ? posts
-        .map(
-          (p) => `
+  // Group by solution for the blog listing.
+  const groups = new Map();
+  for (const p of posts) {
+    if (!groups.has(p.solution)) groups.set(p.solution, []);
+    groups.get(p.solution).push(p);
+  }
+  // Order groups by number of articles (biggest collection first), then A–Z.
+  const orderedGroups = [...groups.entries()].sort(
+    (a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0])
+  );
+
+  const rowHTML = (p) => `
         <a class="blog-row" href="${esc(p.slug)}.html">
           <span class="when">${esc(p.dateLabel)} · ${p.readingTime} min read</span>
           <h3>${esc(p.title)}</h3>
           <p>${esc(p.excerpt)}</p>
-        </a>`
+        </a>`;
+
+  const listHTML = posts.length
+    ? orderedGroups
+        .map(
+          ([solution, items]) => `
+      <section class="blog-group">
+        <h2 class="blog-group-title">${esc(solution)} <span class="blog-group-count">${items.length}</span></h2>
+        ${items.map(rowHTML).join("\n")}
+      </section>`
         )
         .join("\n")
     : '<p class="muted">No articles yet. Add a Markdown file to <code>articles/</code> and rebuild.</p>';
@@ -176,6 +208,6 @@ if (process.argv.includes("--watch")) {
       try { build(); } catch (e) { console.error(e.message); }
     }, 120);
   };
-  fs.watch(ARTICLES_DIR, rebuild);
+  fs.watch(ARTICLES_DIR, { recursive: true }, rebuild);
   fs.watch(TEMPLATES_DIR, rebuild);
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reusing content with content references (conref) | Aswini Lakshminarayanan</title>
+  <meta name="description" content="Write a paragraph once and pull it into many topics with conref." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Reusing content with content references (conref)" />
+  <meta property="og:description" content="Write a paragraph once and pull it into many topics with conref." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="../index.html" class="brand">Aswini <span>Lakshminarayanan</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="index.html">Writing</a></li>
+        <li class="nav-cta"><a class="btn btn-primary" href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="article container">
+    <div class="article-wrap">
+      <a class="back-link" href="index.html">← All articles</a>
+      <p class="article-meta">Jun 17, 2025 · 1 min read</p>
+      <h1>Reusing content with content references (conref)</h1>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reuse</span></div>
+      <article class="prose">
+        <p>A <strong>content reference (conref)</strong> pulls an element from one topic into another. Update the source, and every place that references it updates too.</p>
+<h2>Good candidates for conref</h2>
+<ul>
+<li>Warnings and safety notices.</li>
+<li>Product names and boilerplate.</li>
+<li>Shared steps or notes.</li>
+</ul>
+<h2>How it works</h2>
+<p>Give the source element an <strong>id</strong>, then reference it from other topics.</p>
+<h2>Takeaway</h2>
+<p>Conref eliminates copy-paste drift. Maintain one source of truth and reuse it everywhere.</p>
+
+      </article>
+      <div class="article-foot">
+        <a class="back-link" href="index.html">← All articles</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faswini-lakshminarayanan.github.io%2Fportfolio%2Fblog%2Freusing-content-with-content-references-conref.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container row">
+      <div>© <span id="year"></span> Aswini Lakshminarayanan.</div>
+      <div class="social"><a href="../index.html">Home</a><a href="index.html">Writing</a></div>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

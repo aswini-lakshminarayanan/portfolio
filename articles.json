@@ -9,6 +9,7 @@
       "Intro",
       "Career"
     ],
+    "solution": "Notes & Essays",
     "readingTime": 1
   },
   {
@@ -21,6 +22,657 @@
       "Solution Consulting",
       "AEM"
     ],
+    "solution": "Notes & Essays",
+    "readingTime": 1
+  },
+  {
+    "title": "Troubleshooting publishing failures",
+    "slug": "troubleshooting-publishing-failures",
+    "date": "2025-12-23T00:00:00.000Z",
+    "dateLabel": "Dec 23, 2025",
+    "excerpt": "A calm checklist for when an output job won't generate.",
+    "tags": [
+      "AEM Guides",
+      "Quality"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Native PDF publishing: a quick look",
+    "slug": "native-pdf-publishing-a-quick-look",
+    "date": "2025-12-16T00:00:00.000Z",
+    "dateLabel": "Dec 16, 2025",
+    "excerpt": "Adobe's native PDF engine and why teams choose it.",
+    "tags": [
+      "AEM Guides",
+      "Publishing"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Keyboard shortcuts that speed up authoring",
+    "slug": "keyboard-shortcuts-that-speed-up-authoring",
+    "date": "2025-12-09T00:00:00.000Z",
+    "dateLabel": "Dec 9, 2025",
+    "excerpt": "Small shortcuts that add up to big time savings in the Web Editor.",
+    "tags": [
+      "AEM Guides",
+      "Productivity"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Relationship tables (reltables) made simple",
+    "slug": "relationship-tables-reltables-made-simple",
+    "date": "2025-12-02T00:00:00.000Z",
+    "dateLabel": "Dec 2, 2025",
+    "excerpt": "Manage related links centrally instead of hand-coding them in topics.",
+    "tags": [
+      "AEM Guides",
+      "DITA"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Reports and analytics in AEM Guides",
+    "slug": "reports-and-analytics-in-aem-guides",
+    "date": "2025-11-25T00:00:00.000Z",
+    "dateLabel": "Nov 25, 2025",
+    "excerpt": "Use built-in reports to understand and improve your content.",
+    "tags": [
+      "AEM Guides",
+      "Governance"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Bulk and folder-level operations",
+    "slug": "bulk-and-folder-level-operations",
+    "date": "2025-11-18T00:00:00.000Z",
+    "dateLabel": "Nov 18, 2025",
+    "excerpt": "Act on many files at once to save hours of clicking.",
+    "tags": [
+      "AEM Guides",
+      "Productivity"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Creating snapshots for a release",
+    "slug": "creating-snapshots-for-a-release",
+    "date": "2025-11-04T00:00:00.000Z",
+    "dateLabel": "Nov 4, 2025",
+    "excerpt": "Capture a point-in-time copy of content for a specific release.",
+    "tags": [
+      "AEM Guides",
+      "Governance"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Content fragments vs DITA reuse: which when?",
+    "slug": "content-fragments-vs-dita-reuse-which-when",
+    "date": "2025-10-28T00:00:00.000Z",
+    "dateLabel": "Oct 28, 2025",
+    "excerpt": "A quick decision guide for two different reuse mechanisms in AEM.",
+    "tags": [
+      "AEM Guides",
+      "Strategy"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Chunking topics for reuse and publishing",
+    "slug": "chunking-topics-for-reuse-and-publishing",
+    "date": "2025-10-22T00:00:00.000Z",
+    "dateLabel": "Oct 22, 2025",
+    "excerpt": "Right-size your topics so they reuse and publish cleanly.",
+    "tags": [
+      "AEM Guides",
+      "Strategy"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Running a review in AEM Guides",
+    "slug": "running-a-review-in-aem-guides",
+    "date": "2025-10-15T00:00:00.000Z",
+    "dateLabel": "Oct 15, 2025",
+    "excerpt": "Send content for review and collect feedback without leaving the platform.",
+    "tags": [
+      "AEM Guides",
+      "Reviews"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Localization and translation workflows",
+    "slug": "localization-and-translation-workflows",
+    "date": "2025-10-09T00:00:00.000Z",
+    "dateLabel": "Oct 9, 2025",
+    "excerpt": "How AEM Guides moves content through translation at scale.",
+    "tags": [
+      "AEM Guides",
+      "Translation"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Role-based permissions for authors and reviewers",
+    "slug": "role-based-permissions-for-authors-and-reviewers",
+    "date": "2025-09-30T00:00:00.000Z",
+    "dateLabel": "Sep 30, 2025",
+    "excerpt": "Give people the right access without over-sharing.",
+    "tags": [
+      "AEM Guides",
+      "Governance"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Key definitions (keydef) in your maps",
+    "slug": "key-definitions-keydef-in-your-maps",
+    "date": "2025-09-23T00:00:00.000Z",
+    "dateLabel": "Sep 23, 2025",
+    "excerpt": "Centralize values and links with key definitions.",
+    "tags": [
+      "AEM Guides",
+      "Reuse"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "AEM Guides as a Cloud Service: what's different",
+    "slug": "aem-guides-as-a-cloud-service-what-s-different",
+    "date": "2025-09-15T00:00:00.000Z",
+    "dateLabel": "Sep 15, 2025",
+    "excerpt": "The key differences when running AEM Guides on AEM as a Cloud Service.",
+    "tags": [
+      "AEM Guides",
+      "Cloud"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Understanding output presets",
+    "slug": "understanding-output-presets",
+    "date": "2025-09-08T00:00:00.000Z",
+    "dateLabel": "Sep 8, 2025",
+    "excerpt": "Output presets bundle all your publishing settings into one reusable profile.",
+    "tags": [
+      "AEM Guides",
+      "Publishing"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Search and replace across the repository",
+    "slug": "search-and-replace-across-the-repository",
+    "date": "2025-08-29T00:00:00.000Z",
+    "dateLabel": "Aug 29, 2025",
+    "excerpt": "Find and update content at scale without opening every file.",
+    "tags": [
+      "AEM Guides",
+      "Productivity"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Using the Repository view effectively",
+    "slug": "using-the-repository-view-effectively",
+    "date": "2025-08-20T00:00:00.000Z",
+    "dateLabel": "Aug 20, 2025",
+    "excerpt": "Navigate, organize, and act on content from one place.",
+    "tags": [
+      "AEM Guides",
+      "Productivity"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Profiling attributes for audience-based content",
+    "slug": "profiling-attributes-for-audience-based-content",
+    "date": "2025-08-12T00:00:00.000Z",
+    "dateLabel": "Aug 12, 2025",
+    "excerpt": "Set up profiling so the right readers see the right content.",
+    "tags": [
+      "AEM Guides",
+      "Publishing"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Building a custom HTML5 layout",
+    "slug": "building-a-custom-html5-layout",
+    "date": "2025-08-06T00:00:00.000Z",
+    "dateLabel": "Aug 6, 2025",
+    "excerpt": "Tailor the online output to match your brand and navigation needs.",
+    "tags": [
+      "AEM Guides",
+      "Publishing"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Managing metadata in AEM Guides",
+    "slug": "managing-metadata-in-aem-guides",
+    "date": "2025-07-25T00:00:00.000Z",
+    "dateLabel": "Jul 25, 2025",
+    "excerpt": "Metadata turns a content repository into something you can search, filter, and govern.",
+    "tags": [
+      "AEM Guides",
+      "Governance"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Link validation and content quality",
+    "slug": "link-validation-and-content-quality",
+    "date": "2025-07-18T00:00:00.000Z",
+    "dateLabel": "Jul 18, 2025",
+    "excerpt": "Catch broken references before your readers do.",
+    "tags": [
+      "AEM Guides",
+      "Quality"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Collaborative comments and annotations",
+    "slug": "collaborative-comments-and-annotations",
+    "date": "2025-07-11T00:00:00.000Z",
+    "dateLabel": "Jul 11, 2025",
+    "excerpt": "Get the most out of review comments for faster sign-off.",
+    "tags": [
+      "AEM Guides",
+      "Reviews"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "AEM Guides and the DITA Open Toolkit",
+    "slug": "aem-guides-and-the-dita-open-toolkit",
+    "date": "2025-07-04T00:00:00.000Z",
+    "dateLabel": "Jul 4, 2025",
+    "excerpt": "How the DITA-OT fits into AEM Guides publishing.",
+    "tags": [
+      "AEM Guides",
+      "Publishing"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Baseline management for consistent releases",
+    "slug": "baseline-management-for-consistent-releases",
+    "date": "2025-06-30T00:00:00.000Z",
+    "dateLabel": "Jun 30, 2025",
+    "excerpt": "Baselines let you publish a fixed snapshot of content, even as authoring continues.",
+    "tags": [
+      "AEM Guides",
+      "Governance"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Sending content for translation",
+    "slug": "sending-content-for-translation",
+    "date": "2025-06-24T00:00:00.000Z",
+    "dateLabel": "Jun 24, 2025",
+    "excerpt": "A short guide to kicking off a translation project.",
+    "tags": [
+      "AEM Guides",
+      "Translation"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Reusing content with content references (conref)",
+    "slug": "reusing-content-with-content-references-conref",
+    "date": "2025-06-17T00:00:00.000Z",
+    "dateLabel": "Jun 17, 2025",
+    "excerpt": "Write a paragraph once and pull it into many topics with conref.",
+    "tags": [
+      "AEM Guides",
+      "Reuse"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Migrating FrameMaker content to AEM Guides",
+    "slug": "migrating-framemaker-content-to-aem-guides",
+    "date": "2025-06-11T00:00:00.000Z",
+    "dateLabel": "Jun 11, 2025",
+    "excerpt": "What to expect when moving unstructured or structured FrameMaker files into DITA.",
+    "tags": [
+      "AEM Guides",
+      "Migration"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Editing DITA tables in the Web Editor",
+    "slug": "editing-dita-tables-in-the-web-editor",
+    "date": "2025-06-06T00:00:00.000Z",
+    "dateLabel": "Jun 6, 2025",
+    "excerpt": "Create and manage structured tables in AEM Guides without touching raw XML.",
+    "tags": [
+      "AEM Guides",
+      "Authoring"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Creating your first DITA topic",
+    "slug": "creating-your-first-dita-topic",
+    "date": "2025-05-22T00:00:00.000Z",
+    "dateLabel": "May 22, 2025",
+    "excerpt": "How to author a clean, valid DITA topic in the AEM Guides Web Editor.",
+    "tags": [
+      "AEM Guides",
+      "Authoring"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Cross-references and links best practices",
+    "slug": "cross-references-and-links-best-practices",
+    "date": "2025-05-19T00:00:00.000Z",
+    "dateLabel": "May 19, 2025",
+    "excerpt": "Link the DITA way so nothing breaks when content moves.",
+    "tags": [
+      "AEM Guides",
+      "Authoring"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Integrating AEM Guides with AEM Sites",
+    "slug": "integrating-aem-guides-with-aem-sites",
+    "date": "2025-05-13T00:00:00.000Z",
+    "dateLabel": "May 13, 2025",
+    "excerpt": "Deliver structured documentation through your AEM website.",
+    "tags": [
+      "AEM Guides",
+      "Integration"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Publishing to PDF with AEM Guides",
+    "slug": "publishing-to-pdf-with-aem-guides",
+    "date": "2025-05-06T00:00:00.000Z",
+    "dateLabel": "May 6, 2025",
+    "excerpt": "Generate a polished PDF from a DITA map in a few clicks.",
+    "tags": [
+      "AEM Guides",
+      "Publishing"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Publishing responsive HTML5 output",
+    "slug": "publishing-responsive-html5-output",
+    "date": "2025-04-24T00:00:00.000Z",
+    "dateLabel": "Apr 24, 2025",
+    "excerpt": "Turn your documentation into a modern, searchable web experience.",
+    "tags": [
+      "AEM Guides",
+      "Publishing"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Managing translated versions",
+    "slug": "managing-translated-versions",
+    "date": "2025-04-17T00:00:00.000Z",
+    "dateLabel": "Apr 17, 2025",
+    "excerpt": "Keep source and localized content in sync as things change.",
+    "tags": [
+      "AEM Guides",
+      "Translation"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Getting productive with the Web Editor",
+    "slug": "getting-productive-with-the-web-editor",
+    "date": "2025-04-09T00:00:00.000Z",
+    "dateLabel": "Apr 9, 2025",
+    "excerpt": "The AEM Guides Web Editor essentials that speed up day-to-day authoring.",
+    "tags": [
+      "AEM Guides",
+      "Authoring"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Variables and reusable phrases",
+    "slug": "variables-and-reusable-phrases",
+    "date": "2025-04-02T00:00:00.000Z",
+    "dateLabel": "Apr 2, 2025",
+    "excerpt": "Handle product names and repeated phrases without copy-paste.",
+    "tags": [
+      "AEM Guides",
+      "Reuse"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Managing large documentation projects",
+    "slug": "managing-large-documentation-projects",
+    "date": "2025-03-31T00:00:00.000Z",
+    "dateLabel": "Mar 31, 2025",
+    "excerpt": "Keep quality high when the repository grows to thousands of topics.",
+    "tags": [
+      "AEM Guides",
+      "Strategy"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Working with labels and versions",
+    "slug": "working-with-labels-and-versions",
+    "date": "2025-03-27T00:00:00.000Z",
+    "dateLabel": "Mar 27, 2025",
+    "excerpt": "Labels make important versions easy to find and reuse.",
+    "tags": [
+      "AEM Guides",
+      "Governance"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Conditional content with DITAVAL filtering",
+    "slug": "conditional-content-with-ditaval-filtering",
+    "date": "2025-03-21T00:00:00.000Z",
+    "dateLabel": "Mar 21, 2025",
+    "excerpt": "Publish different versions of the same source using conditions and a DITAVAL file.",
+    "tags": [
+      "AEM Guides",
+      "Publishing"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Customizing PDF output with templates",
+    "slug": "customizing-pdf-output-with-templates",
+    "date": "2025-03-13T00:00:00.000Z",
+    "dateLabel": "Mar 13, 2025",
+    "excerpt": "Brand your PDFs with covers, headers, and styling.",
+    "tags": [
+      "AEM Guides",
+      "Publishing"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "DITA fundamentals for AEM Guides authors",
+    "slug": "dita-fundamentals-for-aem-guides-authors",
+    "date": "2025-03-05T00:00:00.000Z",
+    "dateLabel": "Mar 5, 2025",
+    "excerpt": "The handful of DITA concepts every AEM Guides author needs before they start writing.",
+    "tags": [
+      "AEM Guides",
+      "DITA"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Global profiles and shared settings",
+    "slug": "global-profiles-and-shared-settings",
+    "date": "2025-02-25T00:00:00.000Z",
+    "dateLabel": "Feb 25, 2025",
+    "excerpt": "Set defaults once so every author works consistently.",
+    "tags": [
+      "AEM Guides",
+      "Governance"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Create your first DITA map in AEM Guides",
+    "slug": "create-your-first-dita-map-in-aem-guides",
+    "date": "2025-02-19T00:00:00.000Z",
+    "dateLabel": "Feb 19, 2025",
+    "excerpt": "A short walkthrough for assembling your first deliverable using a DITA map.",
+    "tags": [
+      "AEM Guides",
+      "Authoring"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Managing images and media references",
+    "slug": "managing-images-and-media-references",
+    "date": "2025-02-14T00:00:00.000Z",
+    "dateLabel": "Feb 14, 2025",
+    "excerpt": "Best practices for referencing and reusing images in DITA.",
+    "tags": [
+      "AEM Guides",
+      "Authoring"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Best practices for DITA map structure",
+    "slug": "best-practices-for-dita-map-structure",
+    "date": "2025-02-08T00:00:00.000Z",
+    "dateLabel": "Feb 8, 2025",
+    "excerpt": "Design maps that stay manageable as your content grows.",
+    "tags": [
+      "AEM Guides",
+      "Strategy"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Key references (keyref) explained",
+    "slug": "key-references-keyref-explained",
+    "date": "2025-02-03T00:00:00.000Z",
+    "dateLabel": "Feb 3, 2025",
+    "excerpt": "Why keyref makes your reuse flexible and context-aware.",
+    "tags": [
+      "AEM Guides",
+      "Reuse"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Concept, task, reference: choosing a topic type",
+    "slug": "concept-task-reference-choosing-a-topic-type",
+    "date": "2025-01-28T00:00:00.000Z",
+    "dateLabel": "Jan 28, 2025",
+    "excerpt": "A quick guide to the three core DITA topic types and when to use each.",
+    "tags": [
+      "AEM Guides",
+      "DITA"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Migrating unstructured content to DITA",
+    "slug": "migrating-unstructured-content-to-dita",
+    "date": "2025-01-21T00:00:00.000Z",
+    "dateLabel": "Jan 21, 2025",
+    "excerpt": "A pragmatic path from Word or HTML into structured topics.",
+    "tags": [
+      "AEM Guides",
+      "Migration"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "What is Adobe AEM Guides? A quick overview",
+    "slug": "what-is-adobe-aem-guides-a-quick-overview",
+    "date": "2025-01-14T00:00:00.000Z",
+    "dateLabel": "Jan 14, 2025",
+    "excerpt": "A one-minute intro to Adobe's DITA-based component content management system and what it's for.",
+    "tags": [
+      "AEM Guides",
+      "Basics"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 1
+  },
+  {
+    "title": "Versioning topics and maps",
+    "slug": "versioning-topics-and-maps",
+    "date": "2025-01-07T00:00:00.000Z",
+    "dateLabel": "Jan 7, 2025",
+    "excerpt": "How AEM Guides tracks versions and how to use them.",
+    "tags": [
+      "AEM Guides",
+      "Governance"
+    ],
+    "solution": "AEM Guides",
     "readingTime": 1
   }
 ]

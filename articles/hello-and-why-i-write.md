@@ -3,6 +3,7 @@ title: Hello, and why I'm writing here
 date: 2026-08-04
 excerpt: After a decade of AEM projects and consulting, I'm starting to write down what I've learned. Here's what to expect.
 tags: [Intro, Career]
+solution: Notes & Essays
 draft: false
 ---
 
