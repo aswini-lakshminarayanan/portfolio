@@ -26,6 +26,20 @@
     "readingTime": 1
   },
   {
+    "title": "Every configuration in AEM Guides, explained",
+    "slug": "every-configuration-in-aem-guides-explained",
+    "date": "2025-12-30T00:00:00.000Z",
+    "dateLabel": "Dec 30, 2025",
+    "excerpt": "A category-by-category reference to the settings that shape authoring, publishing, translation, and governance in AEM Guides, and what each one actually controls.",
+    "tags": [
+      "AEM Guides",
+      "Configuration",
+      "Reference"
+    ],
+    "solution": "AEM Guides",
+    "readingTime": 4
+  },
+  {
     "title": "Troubleshooting publishing failures",
     "slug": "troubleshooting-publishing-failures",
     "date": "2025-12-23T00:00:00.000Z",
@@ -156,17 +170,18 @@
     "readingTime": 1
   },
   {
-    "title": "Localization and translation workflows",
-    "slug": "localization-and-translation-workflows",
+    "title": "Translating DITA content in AEM Guides: a complete guide",
+    "slug": "translating-dita-content-in-aem-guides-a-complete-guide",
     "date": "2025-10-09T00:00:00.000Z",
     "dateLabel": "Oct 9, 2025",
-    "excerpt": "How AEM Guides moves content through translation at scale.",
+    "excerpt": "What translation and localization mean in AEM Guides, the human vs machine paths, a visual of the workflow, and how to configure DITA translation end to end.",
     "tags": [
       "AEM Guides",
-      "Translation"
+      "Translation",
+      "Localization"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 4
   },
   {
     "title": "Role-based permissions for authors and reviewers",

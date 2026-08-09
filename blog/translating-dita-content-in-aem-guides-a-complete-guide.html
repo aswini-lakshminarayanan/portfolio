@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Translating DITA content in AEM Guides: a complete guide | Aswini Lakshminarayanan</title>
+  <meta name="description" content="What translation and localization mean in AEM Guides, the human vs machine paths, a visual of the workflow, and how to configure DITA translation end to end." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Translating DITA content in AEM Guides: a complete guide" />
+  <meta property="og:description" content="What translation and localization mean in AEM Guides, the human vs machine paths, a visual of the workflow, and how to configure DITA translation end to end." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="../index.html" class="brand">Aswini <span>Lakshminarayanan</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="index.html">Writing</a></li>
+        <li class="nav-cta"><a class="btn btn-primary" href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="article container">
+    <div class="article-wrap">
+      <a class="back-link" href="index.html">← All articles</a>
+      <p class="article-meta">Oct 9, 2025 · 4 min read</p>
+      <h1>Translating DITA content in AEM Guides: a complete guide</h1>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Translation</span><span class="chip">Localization</span></div>
+      <article class="prose">
+        <p>If your documentation serves more than one market, translation stops being a
+side task and becomes part of your publishing pipeline. AEM Guides has
+translation built in, and because content is structured DITA, you translate
+smart, small units instead of whole documents. This guide covers what
+translation is, the two ways to do it, and how to configure it for DITA.</p>
+<h2>Translation vs. localization</h2>
+<p>People use these words interchangeably, but they are not the same thing.</p>
+<ul>
+<li><strong>Translation</strong> converts text from a source language into a target language.</li>
+<li><strong>Localization</strong> goes further: it adapts content to a locale, including date
+and number formats, units, images, examples, legal text, and tone.</li>
+</ul>
+<p>AEM Guides handles the mechanics of both. It manages source and target language
+versions of every topic and map, and it keeps them linked so you always know
+what is translated, what changed, and what still needs work.</p>
+<h2>The translation workflow at a glance</h2>
+<pre><code class="language-mermaid">flowchart LR
+  A[Source DITA&lt;br/&gt;topics and maps] --&gt; B[Create translation project]
+  B --&gt; C{Choose method}
+  C --&gt;|Human| D[Send to translation vendor]
+  C --&gt;|Machine| E[Machine translation service]
+  D --&gt; F[Translation memory]
+  E --&gt; F
+  F --&gt; G[Review and post-edit]
+  G --&gt; H[Localized language copies]
+  H --&gt; I[Publish per-language output]
+  A -. only changed topics .-&gt; B
+</code></pre>
+<p>The dotted line matters: because DITA is modular, a re-translation only sends the
+topics that changed since last time, not the whole book.</p>
+<h2>Two ways to translate: human vs. machine</h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Human translation</th>
+<th>Machine translation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Quality</td>
+<td>Highest; nuance, tone, and context</td>
+<td>Good and improving; can miss nuance</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Days to weeks</td>
+<td>Seconds to minutes</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Higher, per word</td>
+<td>Low, near-instant</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Public docs, legal, marketing</td>
+<td>Drafts, internal docs, high-volume, low-risk</td>
+</tr>
+<tr>
+<td>Typical setup</td>
+<td>Vendor connector + translation memory</td>
+<td>Cloud MT service (e.g., Microsoft, Google)</td>
+</tr>
+</tbody></table>
+<p>Most mature teams use <strong>both</strong>: machine translation for a fast first pass, then
+human post-editing where quality matters. AEM Guides supports this mix per
+language and per project.</p>
+<h2>Steps: human translation</h2>
+<ol>
+<li><strong>Select the source</strong> map or topics in the Repository view.</li>
+<li><strong>Create a translation project</strong>, choosing &quot;Human Translation&quot;.</li>
+<li><strong>Pick target languages</strong> from your configured language list.</li>
+<li>AEM Guides creates language copies and sends the content to your configured
+<strong>translation vendor</strong> through the connector.</li>
+<li>The vendor translates, aided by <strong>translation memory</strong> so repeated phrases
+stay consistent and cheaper over time.</li>
+<li>Translated content returns automatically into the matching <strong>language copies</strong>.</li>
+<li><strong>Review and approve</strong>, then publish the localized output.</li>
+</ol>
+<h2>Steps: machine translation</h2>
+<ol>
+<li><strong>Select the source</strong> content and <strong>create a translation project</strong>, choosing
+&quot;Machine Translation&quot;.</li>
+<li><strong>Pick target languages</strong>.</li>
+<li>AEM Guides sends the content to the configured <strong>machine translation cloud
+service</strong> and returns results in seconds.</li>
+<li><strong>Post-edit</strong> the output where accuracy is critical (a human quality pass).</li>
+<li><strong>Publish</strong> the localized output.</li>
+</ol>
+<h2>Configuring DITA translation</h2>
+<p>Translation runs on Adobe&#39;s <strong>AEM Translation Framework</strong>, plus a few
+Guides-specific choices. A typical setup:</p>
+<ol>
+<li><strong>Enable languages.</strong> Define your source language and the target languages
+your team supports, usually on the <strong>folder profile</strong> so a content area shares
+one language policy.</li>
+<li><strong>Configure a translation provider.</strong> In <strong>Cloud Services → Translation Cloud
+Services</strong>, add either a <em>human</em> connector (your vendor) or a <em>machine</em>
+service (such as Microsoft or Google), with the required credentials.</li>
+<li><strong>Create a translation integration configuration</strong> that maps your provider,
+translation memory, and options (translate vs. do-not-translate rules).</li>
+<li><strong>Set DITA translation preferences</strong> in AEM Guides:<ul>
+<li>How to handle <strong>conref and keyref</strong>: translate the resolved value, or keep
+the reference so shared content is translated once at the source.</li>
+<li>Which <strong>metadata and attributes</strong> to send or protect.</li>
+<li>Whether to translate <strong>filenames and titles</strong>.</li>
+</ul>
+</li>
+<li><strong>Run a test project</strong> on a small map, verify the language copies resolve, and
+publish one target language before scaling up.</li>
+</ol>
+<blockquote>
+<p>Configure translation on the folder profile, not per file. One language policy
+for a content area keeps every author and project consistent.</p>
+</blockquote>
+<h2>Best practices</h2>
+<ul>
+<li><strong>Write translation-friendly source.</strong> Short sentences, one idea per topic, and
+consistent terminology all lower cost and raise quality.</li>
+<li><strong>Reuse before you translate.</strong> A phrase reused via conref is translated once,
+not everywhere it appears.</li>
+<li><strong>Translate only what changed.</strong> Let the modular workflow re-send just the
+updated topics.</li>
+<li><strong>Keep a glossary and translation memory.</strong> Consistency across releases is what
+makes localized docs feel native.</li>
+</ul>
+<h2>Takeaway</h2>
+<p>In AEM Guides, translation is a managed, repeatable pipeline rather than a
+fire-and-forget export. Decide human vs. machine per audience, configure it once
+on the folder profile, and let the structured, modular nature of DITA keep every
+re-translation small and every language version in sync.</p>
+
+      </article>
+      <div class="article-foot">
+        <a class="back-link" href="index.html">← All articles</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faswini-lakshminarayanan.github.io%2Fportfolio%2Fblog%2Ftranslating-dita-content-in-aem-guides-a-complete-guide.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container row">
+      <div>© <span id="year"></span> Aswini Lakshminarayanan.</div>
+      <div class="social"><a href="../index.html">Home</a><a href="index.html">Writing</a></div>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+  <!-- Render ```mermaid code blocks as diagrams -->
+  <script type="module">
+    const blocks = document.querySelectorAll("code.language-mermaid");
+    if (blocks.length) {
+      const mermaid = (await import("https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs")).default;
+      const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: dark ? "dark" : "default",
+        themeVariables: { fontFamily: "Inter, sans-serif" },
+      });
+      blocks.forEach((code) => {
+        const div = document.createElement("div");
+        div.className = "mermaid";
+        div.textContent = code.textContent;
+        code.closest("pre").replaceWith(div);
+      });
+      await mermaid.run({ querySelector: ".mermaid" });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Every configuration in AEM Guides, explained | Aswini Lakshminarayanan</title>
+  <meta name="description" content="A category-by-category reference to the settings that shape authoring, publishing, translation, and governance in AEM Guides, and what each one actually controls." />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Every configuration in AEM Guides, explained" />
+  <meta property="og:description" content="A category-by-category reference to the settings that shape authoring, publishing, translation, and governance in AEM Guides, and what each one actually controls." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="../index.html" class="brand">Aswini <span>Lakshminarayanan</span></a>
+      <ul class="nav-links">
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="index.html">Writing</a></li>
+        <li class="nav-cta"><a class="btn btn-primary" href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="article container">
+    <div class="article-wrap">
+      <a class="back-link" href="index.html">← All articles</a>
+      <p class="article-meta">Dec 30, 2025 · 4 min read</p>
+      <h1>Every configuration in AEM Guides, explained</h1>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Configuration</span><span class="chip">Reference</span></div>
+      <article class="prose">
+        <p>AEM Guides is highly configurable, which is a blessing once you know where each
+setting lives and a maze until you do. This is a practical map of the main
+configuration areas, grouped by what they affect, with a one-line explanation of
+each. Exact labels shift slightly between releases, so treat this as a mental
+model rather than a click-by-click script.</p>
+<h2>Where configuration lives</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[AEM Guides configuration] --&gt; B[Global settings]
+  A --&gt; C[Folder profiles]
+  A --&gt; D[Output presets]
+  A --&gt; E[OSGi / system configs]
+  B --&gt; B1[Editor, metadata, conditions, baselines]
+  C --&gt; C1[Per-area overrides: languages, templates, presets]
+  D --&gt; D1[PDF, HTML5, and other formats]
+  E --&gt; E1[Integrations, DITA-OT, advanced tuning]
+</code></pre>
+<p>Two ideas explain most of it: <strong>global settings</strong> define defaults for the whole
+instance, and <strong>folder profiles</strong> override those defaults for a specific content
+area. Publishing and system-level behavior sit alongside as presets and OSGi
+configurations.</p>
+<h2>1. Profiles and scope</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Global profile</td>
+<td>Instance-wide defaults for editing, metadata, conditions, and more</td>
+</tr>
+<tr>
+<td>Folder profile</td>
+<td>Overrides applied to a specific folder or content area</td>
+</tr>
+<tr>
+<td>Editor profile</td>
+<td>Which elements, templates, and options authors see in the Web Editor</td>
+</tr>
+</tbody></table>
+<h2>2. Authoring and the Web Editor</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Editor display settings</td>
+<td>Elements shown/hidden, inline vs. tag view, formatting toolbar</td>
+</tr>
+<tr>
+<td>Templates (topic/map)</td>
+<td>Starter files new topics and maps are created from</td>
+</tr>
+<tr>
+<td>Validation rules</td>
+<td>DITA and Schematron checks applied while authoring</td>
+</tr>
+<tr>
+<td>Special characters and snippets</td>
+<td>Reusable insertions available to authors</td>
+</tr>
+</tbody></table>
+<h2>3. Metadata and taxonomy</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Custom metadata</td>
+<td>Extra properties authors can set on topics and maps</td>
+</tr>
+<tr>
+<td>Taxonomy / tags</td>
+<td>Controlled vocabularies used for classification and search</td>
+</tr>
+<tr>
+<td>Property display</td>
+<td>Which metadata appears in the Repository and properties views</td>
+</tr>
+</tbody></table>
+<h2>4. Conditional content and profiling</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Conditional attributes</td>
+<td>The profiling attributes (audience, product, platform, etc.) available to tag content</td>
+</tr>
+<tr>
+<td>Conditional presets</td>
+<td>Named combinations of conditions for reuse across outputs</td>
+</tr>
+<tr>
+<td>DITAVAL</td>
+<td>Include, exclude, or flag rules applied at publish time</td>
+</tr>
+</tbody></table>
+<h2>5. Output and publishing</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Output presets</td>
+<td>Format, template, conditions, and destination for a publish job</td>
+</tr>
+<tr>
+<td>PDF templates (native PDF)</td>
+<td>Cover, page layout, headers/footers, and styling for PDF</td>
+</tr>
+<tr>
+<td>HTML5 layout</td>
+<td>Branding, navigation, and search for online output</td>
+</tr>
+<tr>
+<td>DITA-OT (built-in / custom)</td>
+<td>The toolkit and plugins used to transform content</td>
+</tr>
+<tr>
+<td>Publish destinations</td>
+<td>Where generated output is stored or delivered</td>
+</tr>
+</tbody></table>
+<h2>6. Versioning, baselines, and reviews</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Versioning settings</td>
+<td>How and when versions are created and retained</td>
+</tr>
+<tr>
+<td>Labels</td>
+<td>Human-friendly names attached to specific versions</td>
+</tr>
+<tr>
+<td>Baselines</td>
+<td>Fixed snapshots of topic versions used for reproducible publishing</td>
+</tr>
+<tr>
+<td>Review settings</td>
+<td>Reviewer roles, notifications, and review workflow behavior</td>
+</tr>
+</tbody></table>
+<h2>7. Translation and localization</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Language settings</td>
+<td>Source and target languages for a content area (usually on the folder profile)</td>
+</tr>
+<tr>
+<td>Translation cloud service</td>
+<td>The human vendor connector or machine translation service</td>
+</tr>
+<tr>
+<td>Translation integration</td>
+<td>Provider mapping, translation memory, and translate/do-not-translate rules</td>
+</tr>
+<tr>
+<td>DITA translation preferences</td>
+<td>Handling of conref/keyref, metadata, titles, and filenames during translation</td>
+</tr>
+</tbody></table>
+<h2>8. Search, reports, and governance</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Search configuration</td>
+<td>Indexing and search behavior across the repository</td>
+</tr>
+<tr>
+<td>Reports</td>
+<td>Availability of reuse, link, and status reports</td>
+</tr>
+<tr>
+<td>Permissions and roles</td>
+<td>Who can author, review, publish, or administer</td>
+</tr>
+</tbody></table>
+<h2>9. System and integration (OSGi)</h2>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>OSGi configs</td>
+<td>Advanced, system-level tuning exposed through the Configuration Manager</td>
+</tr>
+<tr>
+<td>Integrations / webhooks</td>
+<td>Connections to external systems and automation triggers</td>
+</tr>
+<tr>
+<td>Cloud Service settings</td>
+<td>Environment behavior specific to AEM as a Cloud Service</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>Change settings on the <strong>folder profile</strong> wherever you can. Global changes ripple
+across every project, while folder-scoped changes stay contained and reversible.</p>
+</blockquote>
+<h2>How to approach configuration</h2>
+<ol>
+<li><strong>Start global, refine local.</strong> Set sensible instance defaults, then override
+per folder only where a content area genuinely differs.</li>
+<li><strong>Standardize presets early.</strong> Output presets and templates are what make
+publishing a one-click, consistent task for everyone.</li>
+<li><strong>Document your choices.</strong> Keep a short internal note of why each non-default
+setting exists. Future you will thank present you.</li>
+</ol>
+<h2>Takeaway</h2>
+<p>Almost everything in AEM Guides comes back to two levers: <strong>global settings</strong> for
+defaults and <strong>folder profiles</strong> for local overrides, with <strong>output presets</strong> and
+<strong>OSGi configs</strong> handling publishing and system behavior. Learn those four
+buckets and any specific setting is easy to place.</p>
+
+      </article>
+      <div class="article-foot">
+        <a class="back-link" href="index.html">← All articles</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Faswini-lakshminarayanan.github.io%2Fportfolio%2Fblog%2Fevery-configuration-in-aem-guides-explained.html" target="_blank" rel="noopener">Share on LinkedIn</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container row">
+      <div>© <span id="year"></span> Aswini Lakshminarayanan.</div>
+      <div class="social"><a href="../index.html">Home</a><a href="index.html">Writing</a></div>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
+  <!-- Render ```mermaid code blocks as diagrams -->
+  <script type="module">
+    const blocks = document.querySelectorAll("code.language-mermaid");
+    if (blocks.length) {
+      const mermaid = (await import("https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs")).default;
+      const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({
+        startOnLoad: false,
+        theme: dark ? "dark" : "default",
+        themeVariables: { fontFamily: "Inter, sans-serif" },
+      });
+      blocks.forEach((code) => {
+        const div = document.createElement("div");
+        div.className = "mermaid";
+        div.textContent = code.textContent;
+        code.closest("pre").replaceWith(div);
+      });
+      await mermaid.run({ querySelector: ".mermaid" });
+    }
+  </script>
+</body>
+</html>
