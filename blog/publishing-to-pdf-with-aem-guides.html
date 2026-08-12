@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Publishing to PDF with AEM Guides | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Generate a polished PDF from a DITA map in a few clicks." />
+  <meta name="description" content="Generate print-grade PDF from a DITA map in AEM Guides: the two PDF engines, output presets, templates, conditions and baselines, and how to fix common PDF failures." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Publishing to PDF with AEM Guides" />
-  <meta property="og:description" content="Generate a polished PDF from a DITA map in a few clicks." />
+  <meta property="og:description" content="Generate print-grade PDF from a DITA map in AEM Guides: the two PDF engines, output presets, templates, conditions and baselines, and how to fix common PDF failures." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,96 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">May 6, 2025 · 1 min read</p>
+      <p class="article-meta">May 6, 2025 · 2 min read</p>
       <h1>Publishing to PDF with AEM Guides</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>AEM Guides can publish a map straight to <strong>PDF</strong> using an output preset.</p>
-<h2>Steps</h2>
+        <p>PDF is still the format executives, auditors, and field teams ask for, and AEM
+Guides produces it straight from your DITA map. This guide covers the full path:
+choosing an engine, configuring a preset, applying templates and conditions, and
+troubleshooting the failures that trip people up.</p>
+<h2>Two ways to make PDF</h2>
+<pre><code class="language-mermaid">flowchart TD
+  M[DITA Map] --&gt; P{PDF engine}
+  P --&gt;|Native PDF| N[Adobe native engine&lt;br/&gt;CSS-style templates]
+  P --&gt;|DITA-OT PDF| O[DITA-OT + PDF2/plugin]
+  N --&gt; R[PDF]
+  O --&gt; R[PDF]
+</code></pre>
+<ul>
+<li><strong>Native PDF</strong> uses Adobe&#39;s own engine with modern, template-driven styling.</li>
+<li><strong>DITA-OT PDF</strong> uses the open toolkit&#39;s PDF transform, familiar to DITA veterans.</li>
+</ul>
+<p>Both are valid; native PDF gives designers far more control and faster iteration.</p>
+<h2>Steps to publish</h2>
 <ol>
-<li>Open the map and choose <strong>Generate Output</strong>.</li>
-<li>Select a <strong>PDF</strong> preset.</li>
-<li>Pick a template and any conditions (DITAVAL).</li>
-<li>Run it and download the result.</li>
+<li>Open the <strong>map</strong> you want to publish.</li>
+<li>Choose <strong>Generate Output</strong> (or open the output presets panel).</li>
+<li>Select a <strong>PDF preset</strong> (native or DITA-OT).</li>
+<li>Choose a <strong>template</strong>, and a <strong>DITAVAL / condition preset</strong> if you publish
+filtered variants.</li>
+<li>Optionally publish from a <strong>baseline</strong> for a reproducible snapshot.</li>
+<li>Run the job and <strong>download</strong> the PDF, or collect it from the configured
+destination.</li>
 </ol>
+<div class="shot">The Generate Output dialog with a PDF preset, template, and condition selected.</div>
+
+<h2>What a PDF preset controls</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Engine</td>
+<td>Native PDF vs DITA-OT</td>
+</tr>
+<tr>
+<td>Template</td>
+<td>Cover, page layout, headers/footers, typography</td>
+</tr>
+<tr>
+<td>Conditions (DITAVAL)</td>
+<td>Which tagged content is included</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td>Title, author, and document properties</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>Where the output is stored or delivered</td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Tip:</strong> Configure the preset once and the whole team gets one-click, consistent PDFs. Presets are the difference between repeatable publishing and one-off exports.</div>
+
+<h2>Conditions and baselines</h2>
+<ul>
+<li>Apply a <strong>DITAVAL</strong> to include or exclude audience/product content, so one map
+yields several PDFs.</li>
+<li>Publish from a <strong>baseline</strong> when &quot;what we shipped&quot; must stay fixed even as
+authoring continues.</li>
+</ul>
+<h2>Troubleshooting PDF failures</h2>
+<ul>
+<li><strong>Job fails immediately.</strong> Usually a broken reference (xref, conref, keyref) or
+invalid DITA. Read the log top-down and fix the first real error.</li>
+<li><strong>Images missing or low-res.</strong> Check the referenced media exists and is high
+enough resolution for print.</li>
+<li><strong>Blank or misordered TOC.</strong> The map order or <code>toc</code> attributes are off; verify
+the map hierarchy.</li>
+<li><strong>Fonts look wrong.</strong> The template&#39;s fonts aren&#39;t available; embed or configure
+the correct fonts.</li>
+<li><strong>Condition didn&#39;t apply.</strong> Confirm the right DITAVAL/condition preset is
+selected in the job.</li>
+</ul>
 <h2>Takeaway</h2>
-<p>Once a PDF preset is configured, publishing becomes a repeatable, one-click task for the whole team.</p>
+<p>Pick native PDF for design control or DITA-OT for classic DITA workflows, wrap
+your choices in a reusable preset, and use conditions and baselines for variants
+and reproducibility. Once the preset exists, print-grade PDF is a single click for
+everyone on the team.</p>
 
       </article>
       <div class="article-foot">

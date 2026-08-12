@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Publishing responsive HTML5 output | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Turn your documentation into a modern, searchable web experience." />
+  <meta name="description" content="Turn a DITA map into a modern, searchable HTML5 site with AEM Guides: the publishing steps, what you get out of the box, chunking and search, and customization hooks." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Publishing responsive HTML5 output" />
-  <meta property="og:description" content="Turn your documentation into a modern, searchable web experience." />
+  <meta property="og:description" content="Turn a DITA map into a modern, searchable HTML5 site with AEM Guides: the publishing steps, what you get out of the box, chunking and search, and customization hooks." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,94 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Apr 24, 2025 · 1 min read</p>
+      <p class="article-meta">Apr 24, 2025 · 2 min read</p>
       <h1>Publishing responsive HTML5 output</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p><strong>HTML5</strong> output produces a responsive, searchable site from your DITA map. Ideal for online help and knowledge bases.</p>
-<h2>What you get</h2>
+        <p>For online help, knowledge bases, and self-service documentation, <strong>responsive
+HTML5</strong> is the format that meets readers where they are. AEM Guides generates a
+complete, searchable site from your DITA map. This guide covers how to publish it
+and how to shape the result.</p>
+<h2>What HTML5 output gives you</h2>
+<pre><code class="language-mermaid">flowchart TD
+  M[DITA Map] --&gt; H[HTML5 output]
+  H --&gt; N[Responsive navigation / TOC]
+  H --&gt; S[Built-in search]
+  H --&gt; P[Per-topic pages + deep links]
+  H --&gt; B[Branding and layout]
+</code></pre>
+<p>Out of the box you get a responsive layout, a navigable table of contents,
+client-side search, and per-topic pages you can deep-link to.</p>
+<h2>Steps to publish</h2>
+<ol>
+<li>Open the <strong>map</strong>.</li>
+<li>Choose <strong>Generate Output</strong> and select an <strong>HTML5 preset</strong>.</li>
+<li>Pick the <strong>layout/template</strong> and any <strong>conditions</strong> for filtered variants.</li>
+<li>Generate, then open or deploy the output to your host.</li>
+</ol>
+<div class="shot">A generated HTML5 site: left-hand TOC, search box, and a topic rendered in the content pane.</div>
+
+<h2>Pagination is controlled by chunking</h2>
+<p>How topics become pages is set by the <code>chunk</code> attribute in your map:</p>
+<pre><code class="language-xml">&lt;topicref href=&quot;reference.dita&quot; chunk=&quot;by-topic&quot;&gt;
+  &lt;topicref href=&quot;param-a.dita&quot;/&gt;
+  &lt;topicref href=&quot;param-b.dita&quot;/&gt;
+&lt;/topicref&gt;
+</code></pre>
 <ul>
-<li>Responsive layout across devices.</li>
-<li>Built-in search and navigation.</li>
-<li>Customizable branding and layout.</li>
+<li><code>by-topic</code> gives each topic its own page and URL.</li>
+<li><code>to-content</code> merges a branch into a single page.</li>
+</ul>
+<div class="note"><strong>Tip:</strong> Decide chunking with the reader in mind. Reference items usually deserve their own page (good for search and deep links); short sequences read better combined.</div>
+
+<h2>Search and metadata</h2>
+<ul>
+<li>Client-side <strong>search</strong> indexes your content automatically; good titles and short
+descriptions improve result quality.</li>
+<li><strong>Metadata</strong> (audience, product) can drive filtered outputs and better
+findability.</li>
+</ul>
+<h2>Customization hooks</h2>
+<table>
+<thead>
+<tr>
+<th>Want to change</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Logo, colors, fonts</td>
+<td>HTML5 layout/template settings</td>
+</tr>
+<tr>
+<td>Header, footer, menu</td>
+<td>Layout configuration</td>
+</tr>
+<tr>
+<td>Search behavior</td>
+<td>Output/search settings</td>
+</tr>
+<tr>
+<td>Which content ships</td>
+<td>DITAVAL / condition preset</td>
+</tr>
+</tbody></table>
+<p>Deeper branding is covered in a dedicated custom-layout guide.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Search returns nothing.</strong> The index didn&#39;t build; regenerate and confirm the
+search feature is enabled in the preset.</li>
+<li><strong>Broken images or links online.</strong> Relative paths or moved assets; verify media
+references and prefer keyref for links.</li>
+<li><strong>Pages too long/short.</strong> Adjust <code>chunk</code> on the relevant topicrefs.</li>
+<li><strong>Styles not applied.</strong> The layout/template didn&#39;t load; check the preset&#39;s
+template selection and deployment paths.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>HTML5 output is the fastest way to give readers a modern, self-service documentation site.</p>
+<p>HTML5 output is the fastest route to a modern, searchable documentation site.
+Publish from a preset, control pagination with chunking, lean on search-friendly
+titles and metadata, and use the layout settings to brand it. The result feels
+like part of your product, not a generic help portal.</p>
 
       </article>
       <div class="article-foot">

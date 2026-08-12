@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profiling attributes for audience-based content | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Set up profiling so the right readers see the right content." />
+  <meta name="description" content="Plan and govern profiling in AEM Guides: which attributes to use, defining allowed values centrally, tagging strategy, subject scheme maps, and avoiding condition sprawl." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Profiling attributes for audience-based content" />
-  <meta property="og:description" content="Set up profiling so the right readers see the right content." />
+  <meta property="og:description" content="Plan and govern profiling in AEM Guides: which attributes to use, defining allowed values centrally, tagging strategy, subject scheme maps, and avoiding condition sprawl." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,110 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Aug 12, 2025 · 1 min read</p>
+      <p class="article-meta">Aug 12, 2025 · 2 min read</p>
       <h1>Profiling attributes for audience-based content</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Profiling attributes (like <code>audience</code>, <code>platform</code>, <code>product</code>) mark content for specific readers. Combined with filtering, they drive tailored outputs.</p>
-<h2>Setup tips</h2>
+        <p>Conditional publishing is only as good as the <strong>profiling</strong> behind it. Profiling
+attributes (like <code>audience</code>, <code>product</code>, <code>platform</code>) are what you tag content with
+so DITAVAL filtering can produce tailored outputs. This guide is about doing
+profiling deliberately, so it stays maintainable as content grows.</p>
+<h2>The standard profiling attributes</h2>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>audience</code></td>
+<td>Reader role: admin, user, developer</td>
+</tr>
+<tr>
+<td><code>product</code></td>
+<td>Edition or product line: lite, pro</td>
+</tr>
+<tr>
+<td><code>platform</code></td>
+<td>OS or environment: windows, mac, cloud</td>
+</tr>
+<tr>
+<td><code>props</code> / custom</td>
+<td>Anything else you define</td>
+</tr>
+</tbody></table>
+<h2>Define allowed values centrally</h2>
+<p>The biggest profiling mistake is letting every author invent values (<code>admin</code>,
+<code>Admin</code>, <code>administrator</code>). Instead, define a controlled set so authors <strong>choose
+from a list</strong>. In DITA this is done with a <strong>subject scheme map</strong>:</p>
+<pre><code class="language-xml">&lt;subjectScheme&gt;
+  &lt;enumerationdef&gt;
+    &lt;attributedef name=&quot;audience&quot;/&gt;
+    &lt;subjectdef keys=&quot;admin&quot;/&gt;
+    &lt;subjectdef keys=&quot;user&quot;/&gt;
+    &lt;subjectdef keys=&quot;developer&quot;/&gt;
+  &lt;/enumerationdef&gt;
+&lt;/subjectScheme&gt;
+</code></pre>
+<p>Now the editor offers only <code>admin</code>, <code>user</code>, <code>developer</code> for <code>audience</code>.</p>
+<pre><code class="language-mermaid">flowchart TD
+  S[Subject scheme map] --&gt; E[Editor shows allowed values]
+  E --&gt; T[Consistent tagging]
+  T --&gt; V[Reliable DITAVAL filtering]
+</code></pre>
+<div class="note"><strong>Why it matters:</strong> Controlled values are what make filtering trustworthy. A single stray value can silently break a variant.</div>
+
+<h2>Tagging strategy</h2>
 <ul>
-<li>Define your profiling values centrally so authors pick from a list.</li>
-<li>Apply attributes at the smallest sensible level (element, not whole topic).</li>
-<li>Test each profile before release.</li>
+<li>Tag at the <strong>smallest sensible level</strong>: a phrase, a paragraph, a step, not a
+whole topic when only a sentence differs.</li>
+<li>Prefer <strong>fewer, well-understood attributes</strong> over many overlapping ones.</li>
+<li>Document what each value means so the team tags consistently.</li>
+</ul>
+<div class="shot">The Web Editor properties panel showing a controlled list of audience values from a subject scheme.</div>
+
+<h2>Avoiding condition sprawl</h2>
+<p>Too many attributes and values create a combinatorial mess that&#39;s impossible to
+test. Keep it lean:</p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Dozens of one-off values</td>
+<td>Consolidate into a controlled scheme</td>
+</tr>
+<tr>
+<td>Overlapping attributes</td>
+<td>Merge into one clear attribute</td>
+</tr>
+<tr>
+<td>Untestable variant count</td>
+<td>Reduce dimensions; not every combination needs to ship</td>
+</tr>
+</tbody></table>
+<h2>Profiling and reuse together</h2>
+<p>Combine profiling with reuse carefully: a conref&#39;d element carries its own tags.
+Decide whether the reused source or the referencing context should own the
+condition, and be consistent.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Filtering misses some content.</strong> Untagged or inconsistently tagged elements;
+audit with a report or search.</li>
+<li><strong>Editor doesn&#39;t restrict values.</strong> The subject scheme isn&#39;t applied to the
+profile; wire it into the folder/global profile.</li>
+<li><strong>A variant is missing content it should have.</strong> An exclude rule plus a broad
+tag; narrow the tag or the DITAVAL.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Well-planned profiling keeps a single source serving many audiences without forks.</p>
+<p>Plan profiling like a small data model: a few clear attributes with controlled
+values from a subject scheme, tagged at a fine grain and documented for the team.
+Do that and conditional publishing stays reliable and testable no matter how large
+the content set becomes.</p>
 
       </article>
       <div class="article-foot">

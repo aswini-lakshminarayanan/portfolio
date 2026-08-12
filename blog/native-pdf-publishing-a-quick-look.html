@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Native PDF publishing: a quick look | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Adobe's native PDF engine and why teams choose it." />
+  <meta name="description" content="Adobe's native PDF engine in AEM Guides: how it differs from DITA-OT PDF, the CSS-style template model, when to choose it, and how to migrate an existing PDF workflow." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Native PDF publishing: a quick look" />
-  <meta property="og:description" content="Adobe's native PDF engine and why teams choose it." />
+  <meta property="og:description" content="Adobe's native PDF engine in AEM Guides: how it differs from DITA-OT PDF, the CSS-style template model, when to choose it, and how to migrate an existing PDF workflow." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,94 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Dec 16, 2025 · 1 min read</p>
+      <p class="article-meta">Dec 16, 2025 · 2 min read</p>
       <h1>Native PDF publishing: a quick look</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p><strong>Native PDF</strong> publishing in AEM Guides uses Adobe&#39;s own engine, offering a modern, template-driven PDF workflow.</p>
-<h2>Highlights</h2>
+        <p>For years, customizing DITA PDFs meant wrestling with XSL/FO. Adobe&#39;s <strong>native
+PDF</strong> engine in AEM Guides changes that, offering a modern, template-driven
+workflow with CSS-like styling. This guide explains what makes it different and
+when to choose it.</p>
+<h2>Native PDF vs DITA-OT PDF</h2>
+<pre><code class="language-mermaid">flowchart TD
+  M[DITA Map] --&gt; C{PDF engine}
+  C --&gt;|Native PDF| N[Adobe engine&lt;br/&gt;CSS-style templates]
+  C --&gt;|DITA-OT| O[PDF plugin&lt;br/&gt;XSL/FO customization]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>Native PDF</th>
+<th>DITA-OT PDF</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Styling model</td>
+<td>CSS-like, visual template editor</td>
+<td>XSL/FO customization</td>
+</tr>
+<tr>
+<td>Iteration speed</td>
+<td>Fast</td>
+<td>Slower, more technical</td>
+</tr>
+<tr>
+<td>Design control</td>
+<td>High, layout-focused</td>
+<td>High, but harder to reach</td>
+</tr>
+<tr>
+<td>Learning curve</td>
+<td>Gentle for designers</td>
+<td>Steep (FO expertise)</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Brand-heavy, modern PDFs</td>
+<td>Established FO-based pipelines</td>
+</tr>
+</tbody></table>
+<h2>What you get</h2>
 <ul>
-<li>Rich, CSS-like styling control.</li>
-<li>Faster iteration on design.</li>
-<li>Strong fidelity for complex layouts.</li>
+<li>A <strong>template editor</strong> for covers, headers/footers, page layout, and typography.</li>
+<li><strong>CSS-style control</strong> that designers can actually work with.</li>
+<li>Faster <strong>design iteration</strong>, so brand changes don&#39;t require an FO specialist.</li>
+<li>Strong <strong>fidelity</strong> for complex layouts.</li>
+</ul>
+<div class="shot">The native PDF template editor with a live-style preview of cover and page layout.</div>
+
+<h2>When to choose native PDF</h2>
+<ul>
+<li>You&#39;re starting a new PDF workflow and want modern tooling.</li>
+<li>Your brand demands precise, frequently-updated design.</li>
+<li>Your team has design skills but not XSL/FO expertise.</li>
+</ul>
+<div class="note"><strong>Note:</strong> Native PDF is specifically about PDF. Other outputs (like HTML5) still flow through the standard pipeline; native PDF is the modern option for the print-grade format.</div>
+
+<h2>Migrating an existing PDF workflow</h2>
+<ol>
+<li>Recreate your brand as a <strong>native PDF template</strong> (cover, running heads,
+typography).</li>
+<li>Move dynamic values (product, version) behind <strong>keys</strong> so covers/headers stay
+correct across products.</li>
+<li>Point your PDF <strong>output preset</strong> at the native engine and template.</li>
+<li>Publish a test document and compare against the old output.</li>
+<li>Roll out preset by preset, keeping the DITA-OT path available until you&#39;re
+confident.</li>
+</ol>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Layout differs from the old FO output.</strong> Expected: the engines differ. Tune the
+native template rather than trying to match FO pixel-for-pixel.</li>
+<li><strong>Fonts not embedding.</strong> Configure brand fonts in the template.</li>
+<li><strong>Slow generation on huge books.</strong> Publish from a baseline and consider splitting
+very large deliverables via submaps.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>If PDF design matters to you, evaluate native PDF. It gives designers far more control.</p>
+<p>Native PDF brings a modern, designer-friendly, template-driven workflow to DITA
+PDF, replacing XSL/FO pain with CSS-like control. Choose it for new or brand-heavy
+PDF work, drive dynamic values with keys, and migrate one preset at a time.</p>
 
       </article>
       <div class="article-foot">

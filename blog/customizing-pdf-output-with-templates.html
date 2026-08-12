@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customizing PDF output with templates | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Brand your PDFs with covers, headers, and styling." />
+  <meta name="description" content="Brand your PDFs in AEM Guides: what a PDF template controls, native PDF vs DITA-OT customization, cover pages, headers/footers, page layout, and fonts." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Customizing PDF output with templates" />
-  <meta property="og:description" content="Brand your PDFs with covers, headers, and styling." />
+  <meta property="og:description" content="Brand your PDFs in AEM Guides: what a PDF template controls, native PDF vs DITA-OT customization, cover pages, headers/footers, page layout, and fonts." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,93 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Mar 13, 2025 · 1 min read</p>
+      <p class="article-meta">Mar 13, 2025 · 2 min read</p>
       <h1>Customizing PDF output with templates</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>PDF templates control the look of your published documents. Covers, page layout, headers, footers, and typography.</p>
-<h2>What you can customize</h2>
+        <p>A PDF that looks generic undermines otherwise excellent content. <strong>PDF templates</strong>
+in AEM Guides let you control the entire look of a published document, from the
+cover to the page footer. This guide explains what a template governs and how to
+approach customization for both PDF engines.</p>
+<h2>What a PDF template controls</h2>
+<pre><code class="language-mermaid">flowchart TD
+  T[PDF template] --&gt; C[Cover page &amp; branding]
+  T --&gt; H[Headers &amp; footers]
+  T --&gt; L[Page size, margins, columns]
+  T --&gt; Y[Typography: fonts, sizes, colors]
+  T --&gt; N[TOC, numbering, page breaks]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Area</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cover</td>
+<td>Logo, title, edition, date, background</td>
+</tr>
+<tr>
+<td>Running heads</td>
+<td>Chapter title, page numbers, confidentiality notice</td>
+</tr>
+<tr>
+<td>Layout</td>
+<td>Page size, margins, single vs multi-column</td>
+</tr>
+<tr>
+<td>Typography</td>
+<td>Font families, heading styles, colors</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>Table of contents, chapter breaks, numbering</td>
+</tr>
+</tbody></table>
+<h2>Native PDF vs DITA-OT templates</h2>
 <ul>
-<li>Cover pages and branding.</li>
-<li>Page headers/footers and numbering.</li>
-<li>Fonts, colors, and spacing.</li>
+<li><strong>Native PDF</strong> uses a modern, CSS-like template model. Designers can iterate on
+layout and styling quickly, which is why it&#39;s the preferred route for
+design-heavy PDFs.</li>
+<li><strong>DITA-OT PDF</strong> is customized through the PDF plugin (page layouts and XSL/FO
+style customizations), familiar to long-time DITA teams.</li>
+</ul>
+<div class="note"><strong>Recommendation:</strong> For new, brand-heavy PDF work, start with native PDF. Its template model is far friendlier for visual iteration than XSL/FO customization.</div>
+
+<h2>Steps to apply and tune a template</h2>
+<ol>
+<li>Choose or create a <strong>PDF template</strong> for your brand.</li>
+<li>Set the <strong>cover</strong> (logo, title fields driven by metadata/keys).</li>
+<li>Configure <strong>headers/footers</strong> (chapter, page numbers, legal text).</li>
+<li>Define <strong>page layout</strong> (size, margins, columns).</li>
+<li>Set <strong>typography</strong> to match brand fonts and heading styles.</li>
+<li>Attach the template to your <strong>PDF output preset</strong> and generate a test document.</li>
+</ol>
+<div class="shot">A native PDF template editor showing cover, header/footer, and typography settings.</div>
+
+<h2>Drive dynamic values with keys and metadata</h2>
+<p>Put the product name, version, and edition behind <strong>keys</strong> so the same template
+produces correct covers and running heads for every product, without editing the
+template.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Fonts render as fallback.</strong> The brand fonts aren&#39;t embedded/available; add
+them to the template configuration.</li>
+<li><strong>Logo misplaced or stretched.</strong> Check the cover&#39;s image dimensions and
+placement settings.</li>
+<li><strong>Headers show the wrong title.</strong> The running head is pulling the wrong field;
+verify the metadata/key it references.</li>
+<li><strong>Unexpected page breaks.</strong> Chapter-break and keep-with settings in the template
+need adjustment.</li>
+<li><strong>Template change not visible.</strong> The preset points at an older template version;
+update the preset.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Invest once in a strong PDF template and every future publish looks on-brand automatically.</p>
+<p>A strong PDF template is a one-time investment that makes every future publish look
+on-brand automatically. Prefer native PDF for its modern template model, drive
+dynamic cover and header values with keys and metadata, and attach the template to
+a reusable preset so consistency is the default.</p>
 
       </article>
       <div class="article-foot">

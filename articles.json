@@ -57,13 +57,14 @@
     "slug": "native-pdf-publishing-a-quick-look",
     "date": "2025-12-16T00:00:00.000Z",
     "dateLabel": "Dec 16, 2025",
-    "excerpt": "Adobe's native PDF engine and why teams choose it.",
+    "excerpt": "Adobe's native PDF engine in AEM Guides: how it differs from DITA-OT PDF, the CSS-style template model, when to choose it, and how to migrate an existing PDF workflow.",
     "tags": [
       "AEM Guides",
-      "Publishing"
+      "Publishing",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Keyboard shortcuts that speed up authoring",
@@ -231,13 +232,14 @@
     "slug": "understanding-output-presets",
     "date": "2025-09-08T00:00:00.000Z",
     "dateLabel": "Sep 8, 2025",
-    "excerpt": "Output presets bundle all your publishing settings into one reusable profile.",
+    "excerpt": "Output presets are the heart of repeatable publishing in AEM Guides. What they bundle, global vs map-level presets, per-variant presets, and how to design a clean set.",
     "tags": [
       "AEM Guides",
-      "Publishing"
+      "Publishing",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Search and replace across the repository",
@@ -270,26 +272,28 @@
     "slug": "profiling-attributes-for-audience-based-content",
     "date": "2025-08-12T00:00:00.000Z",
     "dateLabel": "Aug 12, 2025",
-    "excerpt": "Set up profiling so the right readers see the right content.",
+    "excerpt": "Plan and govern profiling in AEM Guides: which attributes to use, defining allowed values centrally, tagging strategy, subject scheme maps, and avoiding condition sprawl.",
     "tags": [
       "AEM Guides",
-      "Publishing"
+      "Publishing",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Building a custom HTML5 layout",
     "slug": "building-a-custom-html5-layout",
     "date": "2025-08-06T00:00:00.000Z",
     "dateLabel": "Aug 6, 2025",
-    "excerpt": "Tailor the online output to match your brand and navigation needs.",
+    "excerpt": "Tailor AEM Guides HTML5 output to your brand: layout templates, header/footer/menu customization, theming, search tuning, and integrating output into your site.",
     "tags": [
       "AEM Guides",
-      "Publishing"
+      "Publishing",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Managing metadata in AEM Guides",
@@ -335,13 +339,14 @@
     "slug": "aem-guides-and-the-dita-open-toolkit",
     "date": "2025-07-04T00:00:00.000Z",
     "dateLabel": "Jul 4, 2025",
-    "excerpt": "How the DITA-OT fits into AEM Guides publishing.",
+    "excerpt": "How the DITA-OT fits into AEM Guides publishing: what the toolkit does, built-in vs custom DITA-OT, plugins, native PDF as an alternative, and when to customize.",
     "tags": [
       "AEM Guides",
-      "Publishing"
+      "Publishing",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Baseline management for consistent releases",
@@ -456,26 +461,28 @@
     "slug": "publishing-to-pdf-with-aem-guides",
     "date": "2025-05-06T00:00:00.000Z",
     "dateLabel": "May 6, 2025",
-    "excerpt": "Generate a polished PDF from a DITA map in a few clicks.",
+    "excerpt": "Generate print-grade PDF from a DITA map in AEM Guides: the two PDF engines, output presets, templates, conditions and baselines, and how to fix common PDF failures.",
     "tags": [
       "AEM Guides",
-      "Publishing"
+      "Publishing",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Publishing responsive HTML5 output",
     "slug": "publishing-responsive-html5-output",
     "date": "2025-04-24T00:00:00.000Z",
     "dateLabel": "Apr 24, 2025",
-    "excerpt": "Turn your documentation into a modern, searchable web experience.",
+    "excerpt": "Turn a DITA map into a modern, searchable HTML5 site with AEM Guides: the publishing steps, what you get out of the box, chunking and search, and customization hooks.",
     "tags": [
       "AEM Guides",
-      "Publishing"
+      "Publishing",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Managing translated versions",
@@ -549,26 +556,28 @@
     "slug": "conditional-content-with-ditaval-filtering",
     "date": "2025-03-21T00:00:00.000Z",
     "dateLabel": "Mar 21, 2025",
-    "excerpt": "Publish different versions of the same source using conditions and a DITAVAL file.",
+    "excerpt": "Publish many variants from one DITA source in AEM Guides: how DITAVAL include/exclude/flag rules work, tagging content, a worked example, and testing each profile.",
     "tags": [
       "AEM Guides",
-      "Publishing"
+      "Publishing",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Customizing PDF output with templates",
     "slug": "customizing-pdf-output-with-templates",
     "date": "2025-03-13T00:00:00.000Z",
     "dateLabel": "Mar 13, 2025",
-    "excerpt": "Brand your PDFs with covers, headers, and styling.",
+    "excerpt": "Brand your PDFs in AEM Guides: what a PDF template controls, native PDF vs DITA-OT customization, cover pages, headers/footers, page layout, and fonts.",
     "tags": [
       "AEM Guides",
-      "Publishing"
+      "Publishing",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "DITA fundamentals for AEM Guides authors",

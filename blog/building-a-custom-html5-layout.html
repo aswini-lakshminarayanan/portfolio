@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Building a custom HTML5 layout | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Tailor the online output to match your brand and navigation needs." />
+  <meta name="description" content="Tailor AEM Guides HTML5 output to your brand: layout templates, header/footer/menu customization, theming, search tuning, and integrating output into your site." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Building a custom HTML5 layout" />
-  <meta property="og:description" content="Tailor the online output to match your brand and navigation needs." />
+  <meta property="og:description" content="Tailor AEM Guides HTML5 output to your brand: layout templates, header/footer/menu customization, theming, search tuning, and integrating output into your site." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,95 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Aug 6, 2025 · 1 min read</p>
+      <p class="article-meta">Aug 6, 2025 · 2 min read</p>
       <h1>Building a custom HTML5 layout</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>HTML5 output is customizable. From branding to navigation structure.</p>
-<h2>Common customizations</h2>
+        <p>The default HTML5 output is clean, but readers should feel they&#39;re inside <em>your</em>
+product, not a generic help portal. AEM Guides lets you customize the HTML5
+<strong>layout</strong> so branding, navigation, and behavior match your experience. This guide
+covers what you can change and how to approach it.</p>
+<h2>The anatomy of an HTML5 layout</h2>
+<pre><code class="language-mermaid">flowchart TD
+  L[HTML5 layout] --&gt; H[Header: logo, nav, search]
+  L --&gt; T[TOC / sidebar]
+  L --&gt; C[Content area]
+  L --&gt; F[Footer: legal, links]
+  L --&gt; S[Theme: colors, fonts]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Region</th>
+<th>What you customize</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Header</td>
+<td>Logo, top navigation, search box placement</td>
+</tr>
+<tr>
+<td>Sidebar / TOC</td>
+<td>Structure, collapse behavior, width</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Typography, code styling, callouts</td>
+</tr>
+<tr>
+<td>Footer</td>
+<td>Copyright, links, contact</td>
+</tr>
+<tr>
+<td>Theme</td>
+<td>Colors, fonts, spacing, light/dark</td>
+</tr>
+</tbody></table>
+<h2>Steps to customize</h2>
+<ol>
+<li>Start from a <strong>layout/template</strong> provided with AEM Guides.</li>
+<li>Apply your <strong>branding</strong>: logo, color palette, and fonts.</li>
+<li>Adjust <strong>header, footer, and menu</strong> structure to match your site.</li>
+<li>Tune <strong>search</strong> placement and behavior.</li>
+<li>Attach the layout to your <strong>HTML5 output preset</strong> and generate a test build.</li>
+</ol>
+<div class="shot">A customized HTML5 site with brand logo, colors, and navigation matching the product site.</div>
+
+<h2>Theming tips</h2>
 <ul>
-<li>Logo, colors, and fonts.</li>
-<li>Header, footer, and menu layout.</li>
-<li>Search behavior and metadata.</li>
+<li>Define brand colors and fonts in one place so the whole output stays consistent.</li>
+<li>Respect <strong>accessibility</strong>: sufficient contrast, focus states, and readable font
+sizes.</li>
+<li>Consider a <strong>light/dark</strong> option if your product has one.</li>
+</ul>
+<div class="note"><strong>Tip:</strong> Keep customization in the layout/template, not in per-topic hacks. Topic-level styling doesn't survive regeneration and breaks single-sourcing.</div>
+
+<h2>Integrating output into your site</h2>
+<p>You can host the generated HTML5 independently or <strong>integrate it into AEM Sites</strong>
+so documentation shares your site&#39;s shell, navigation, and search. Integration
+gives the most seamless experience but requires coordination with the web team.</p>
+<h2>Search and findability</h2>
+<ul>
+<li>Ensure the <strong>search index</strong> builds and is enabled in the preset.</li>
+<li>Good <strong>titles and short descriptions</strong> dramatically improve search results.</li>
+<li>Metadata can power <strong>faceted filtering</strong> in richer layouts.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Branding not applied.</strong> The preset points at the default layout; select your
+custom layout.</li>
+<li><strong>Menu structure wrong.</strong> Navigation follows the map; fix hierarchy in the map,
+not the layout.</li>
+<li><strong>Search missing or empty.</strong> Regenerate; confirm search is enabled and the index
+built.</li>
+<li><strong>Broken assets after deploy.</strong> Path/base-URL mismatch on the host; check
+relative paths and deployment location.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>A tuned HTML5 layout makes your docs feel like part of your product, not a generic help site.</p>
+<p>A custom HTML5 layout makes documentation feel native to your product. Brand it in
+the layout template, keep customization out of individual topics, tune search and
+accessibility, and consider integrating into AEM Sites for a seamless experience.
+Attach it to a preset so every build is on-brand automatically.</p>
 
       </article>
       <div class="article-foot">

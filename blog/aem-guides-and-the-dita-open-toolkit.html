@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AEM Guides and the DITA Open Toolkit | Aswini Lakshminarayanan</title>
-  <meta name="description" content="How the DITA-OT fits into AEM Guides publishing." />
+  <meta name="description" content="How the DITA-OT fits into AEM Guides publishing: what the toolkit does, built-in vs custom DITA-OT, plugins, native PDF as an alternative, and when to customize." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="AEM Guides and the DITA Open Toolkit" />
-  <meta property="og:description" content="How the DITA-OT fits into AEM Guides publishing." />
+  <meta property="og:description" content="How the DITA-OT fits into AEM Guides publishing: what the toolkit does, built-in vs custom DITA-OT, plugins, native PDF as an alternative, and when to customize." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,78 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jul 4, 2025 · 1 min read</p>
+      <p class="article-meta">Jul 4, 2025 · 2 min read</p>
       <h1>AEM Guides and the DITA Open Toolkit</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Under the hood, AEM Guides uses the <strong>DITA Open Toolkit (DITA-OT)</strong> for many outputs, extended with Adobe&#39;s publishing engine.</p>
-<h2>Why it matters</h2>
+        <p>Behind many AEM Guides outputs sits the <strong>DITA Open Toolkit (DITA-OT)</strong>, the
+open-source engine that transforms DITA into finished formats. Understanding its
+role helps you know what&#39;s customizable, what plugins buy you, and when to reach
+for Adobe&#39;s native PDF engine instead. This guide demystifies it.</p>
+<h2>What the DITA-OT does</h2>
+<p>The DITA-OT takes your resolved DITA (topics assembled by a map, references
+resolved, conditions applied) and transforms it into an output like HTML5 or PDF.</p>
+<pre><code class="language-mermaid">flowchart TD
+  M[DITA map + topics] --&gt; R[Resolve refs &amp; conditions]
+  R --&gt; OT[DITA-OT transforms]
+  OT --&gt; H[HTML5]
+  OT --&gt; P[PDF via PDF plugin]
+  OT --&gt; X[Other formats via plugins]
+</code></pre>
+<h2>Built-in vs custom DITA-OT</h2>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Built-in DITA-OT</td>
+<td>Standard outputs; least maintenance</td>
+</tr>
+<tr>
+<td>Custom DITA-OT</td>
+<td>You need specific plugins, versions, or heavy customization</td>
+</tr>
+</tbody></table>
+<p>AEM Guides ships with a DITA-OT and lets you register a <strong>custom DITA-OT</strong> when you
+need particular plugins or transforms.</p>
+<h2>Plugins extend the toolkit</h2>
+<p>DITA-OT is plugin-based. Plugins can add output formats, tweak transforms, or apply
+custom styling. Because AEM Guides supports the standard toolkit, much of the
+DITA-OT plugin ecosystem is available to you.</p>
+<div class="note"><strong>Trade-off:</strong> Standard DITA-OT gives you portability and community plugins; native PDF gives you modern, template-driven design control. Many teams use native PDF for print and DITA-OT for other formats.</div>
+
+<h2>Native PDF as an alternative</h2>
+<p>For PDF specifically, Adobe&#39;s <strong>native PDF</strong> engine is a template-driven
+alternative to the DITA-OT PDF plugin, offering richer, CSS-like styling and
+faster design iteration. It does not replace the DITA-OT for other outputs, but
+it&#39;s often the better choice for print-grade PDF.</p>
+<div class="shot">The settings area where a custom DITA-OT can be registered for publishing.</div>
+
+<h2>When to customize the toolkit</h2>
 <ul>
-<li>Standard DITA-OT plugins can be leveraged.</li>
-<li>Native PDF publishing offers a modern alternative for PDF.</li>
-<li>Customization is possible without leaving standards.</li>
+<li>You need an output format the defaults don&#39;t provide.</li>
+<li>You must match a strict corporate style the standard transforms can&#39;t produce.</li>
+<li>You depend on a specific DITA-OT version or community plugin.</li>
+</ul>
+<p>If your needs are met by native PDF and the default HTML5, you may never need to
+touch the toolkit, which is the low-maintenance happy path.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>A DITA-OT build fails.</strong> Read the toolkit log top-down; the first real error
+(often a bad reference or invalid DITA) is usually the cause.</li>
+<li><strong>Custom plugin not picked up.</strong> Confirm the custom DITA-OT is registered and the
+plugin is installed/integrated correctly.</li>
+<li><strong>Output differs from expected styling.</strong> You may be using the DITA-OT PDF
+transform where you intended native PDF; check the preset&#39;s engine.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>You get open-standard publishing plus Adobe&#39;s enhancements. Flexibility without lock-in.</p>
+<p>The DITA-OT is the open-standard engine powering many AEM Guides outputs, extended
+with Adobe&#39;s enhancements. Use the built-in toolkit for standard needs, register a
+custom DITA-OT with plugins when you must, and prefer native PDF for print-grade
+documents. You get open-standard flexibility without lock-in.</p>
 
       </article>
       <div class="article-foot">

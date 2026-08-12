@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Understanding output presets | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Output presets bundle all your publishing settings into one reusable profile." />
+  <meta name="description" content="Output presets are the heart of repeatable publishing in AEM Guides. What they bundle, global vs map-level presets, per-variant presets, and how to design a clean set." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Understanding output presets" />
-  <meta property="og:description" content="Output presets bundle all your publishing settings into one reusable profile." />
+  <meta property="og:description" content="Output presets are the heart of repeatable publishing in AEM Guides. What they bundle, global vs map-level presets, per-variant presets, and how to design a clean set." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,115 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Sep 8, 2025 · 1 min read</p>
+      <p class="article-meta">Sep 8, 2025 · 2 min read</p>
       <h1>Understanding output presets</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>An <strong>output preset</strong> stores the format, template, conditions, and destination for a publish job so anyone can reproduce it.</p>
-<h2>What a preset holds</h2>
+        <p>Publishing consistency doesn&#39;t come from discipline alone; it comes from
+<strong>output presets</strong>. A preset bundles every decision a publish job needs into one
+reusable profile, so anyone can reproduce a deliverable with a click. This guide
+explains what presets hold, where they live, and how to design a set that scales.</p>
+<h2>What a preset bundles</h2>
+<pre><code class="language-mermaid">flowchart TD
+  P[Output preset] --&gt; F[Format: PDF / HTML5 / ...]
+  P --&gt; T[Template / layout]
+  P --&gt; C[Conditions: DITAVAL]
+  P --&gt; M[Metadata]
+  P --&gt; D[Destination]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>What it decides</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Format</td>
+<td>The output type (native PDF, DITA-OT PDF, HTML5, and more)</td>
+</tr>
+<tr>
+<td>Template/layout</td>
+<td>Look and feel of the output</td>
+</tr>
+<tr>
+<td>Conditions</td>
+<td>Which tagged content is included (audience/product)</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td>Document properties applied to the output</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>Where generated output is stored or delivered</td>
+</tr>
+</tbody></table>
+<h2>Global vs map-level presets</h2>
 <ul>
-<li>Output type (PDF, HTML5, and more).</li>
-<li>Template and layout choices.</li>
-<li>DITAVAL conditions.</li>
-<li>Publishing destination.</li>
+<li><strong>Global presets</strong> are defined centrally and available across content.</li>
+<li><strong>Map-level presets</strong> are attached to a specific map for deliverables with
+particular needs.</li>
+</ul>
+<p>Define shared defaults globally, then override at the map level only where a
+deliverable genuinely differs.</p>
+<div class="shot">The output presets panel listing PDF and HTML5 presets with their templates and conditions.</div>
+
+<h2>Design a preset set that scales</h2>
+<p>A practical pattern for a product with editions and audiences:</p>
+<table>
+<thead>
+<tr>
+<th>Preset</th>
+<th>Format</th>
+<th>Condition</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Admin Guide (PDF)</td>
+<td>Native PDF</td>
+<td>audience = admin</td>
+</tr>
+<tr>
+<td>User Guide (PDF)</td>
+<td>Native PDF</td>
+<td>audience = user</td>
+</tr>
+<tr>
+<td>Online Help</td>
+<td>HTML5</td>
+<td>all</td>
+</tr>
+<tr>
+<td>Pro Edition (PDF)</td>
+<td>Native PDF</td>
+<td>product = pro</td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Principle:</strong> One preset per real deliverable. If you find yourself hand-tweaking settings at publish time, that variation belongs in a preset.</div>
+
+<h2>Presets, conditions, and baselines together</h2>
+<ul>
+<li><strong>Conditions</strong> in a preset produce audience/product variants from one source.</li>
+<li>Publishing a preset <strong>from a baseline</strong> locks the exact content versions,
+making a release reproducible months later.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Two people get different output.</strong> They used different presets or ad-hoc
+settings. Standardize on named presets.</li>
+<li><strong>Wrong content included.</strong> The preset&#39;s condition (DITAVAL) is off; check the
+selected condition preset.</li>
+<li><strong>Output lands in the wrong place.</strong> The destination in the preset is
+misconfigured.</li>
+<li><strong>Template changes not reflected.</strong> The preset points at an older template
+version; update the preset.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Configure presets once. After that, consistent publishing is a single click for everyone.</p>
+<p>Presets turn publishing from a fiddly, error-prone task into a one-click,
+repeatable action. Bundle format, template, conditions, metadata, and destination
+into one preset per deliverable, keep shared defaults global, and pair presets
+with baselines for reproducible releases.</p>
 
       </article>
       <div class="article-foot">

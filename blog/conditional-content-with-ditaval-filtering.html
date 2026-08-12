@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conditional content with DITAVAL filtering | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Publish different versions of the same source using conditions and a DITAVAL file." />
+  <meta name="description" content="Publish many variants from one DITA source in AEM Guides: how DITAVAL include/exclude/flag rules work, tagging content, a worked example, and testing each profile." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Conditional content with DITAVAL filtering" />
-  <meta property="og:description" content="Publish different versions of the same source using conditions and a DITAVAL file." />
+  <meta property="og:description" content="Publish many variants from one DITA source in AEM Guides: how DITAVAL include/exclude/flag rules work, tagging content, a worked example, and testing each profile." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,89 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Mar 21, 2025 · 1 min read</p>
+      <p class="article-meta">Mar 21, 2025 · 2 min read</p>
       <h1>Conditional content with DITAVAL filtering</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Publishing</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Conditional publishing lets one source produce many outputs. A <strong>DITAVAL</strong> file decides what to include or exclude at publish time.</p>
-<h2>How it works</h2>
-<ol>
-<li>Tag content with attributes such as <code>audience</code> or <code>product</code>.</li>
-<li>Create a DITAVAL that sets each value to include, exclude, or flag.</li>
-<li>Apply it in your output preset.</li>
-</ol>
+        <p>The promise of single-sourcing is &quot;write once, publish many.&quot; <strong>Conditional
+content</strong> is the engine that delivers it. You tag content with attributes, and a
+<strong>DITAVAL</strong> file decides, at publish time, what to include, exclude, or flag. This
+guide shows the full mechanism with a worked example.</p>
+<h2>The two halves: tags and rules</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Tag content with attributes&lt;br/&gt;audience, product, platform] --&gt; B[DITAVAL rules]
+  B --&gt;|include| C[Appears in output]
+  B --&gt;|exclude| D[Removed from output]
+  B --&gt;|flag| E[Marked / styled in output]
+</code></pre>
+<p>Tagging lives in the content; the decision lives in the DITAVAL applied by the
+output preset.</p>
+<h2>Step 1: tag content</h2>
+<pre><code class="language-xml">&lt;p audience=&quot;admin&quot;&gt;Run the migration as an administrator.&lt;/p&gt;
+&lt;p audience=&quot;user&quot;&gt;Ask your administrator to run the migration.&lt;/p&gt;
+&lt;section product=&quot;pro&quot;&gt;Advanced analytics is available in Pro.&lt;/section&gt;
+</code></pre>
+<h2>Step 2: write a DITAVAL</h2>
+<pre><code class="language-xml">&lt;val&gt;
+  &lt;prop att=&quot;audience&quot; val=&quot;admin&quot; action=&quot;include&quot;/&gt;
+  &lt;prop att=&quot;audience&quot; val=&quot;user&quot; action=&quot;exclude&quot;/&gt;
+  &lt;prop att=&quot;product&quot; val=&quot;pro&quot; action=&quot;flag&quot; style=&quot;background-color:yellow&quot;/&gt;
+&lt;/val&gt;
+</code></pre>
+<p>This DITAVAL produces the <strong>admin</strong> edition: admin content in, user content out,
+Pro content flagged for reviewers.</p>
+<h2>Step 3: apply it in a preset</h2>
+<p>Attach the DITAVAL (or a named <strong>condition preset</strong>) to your output preset, then
+generate. Swap the DITAVAL to produce the user edition from the same source.</p>
+<div class="shot">The condition/DITAVAL selection in an output preset, choosing the admin profile.</div>
+
+<h2>Include vs exclude vs flag</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Result</th>
+<th>Use for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>include</td>
+<td>Content appears</td>
+<td>The default audience/product</td>
+</tr>
+<tr>
+<td>exclude</td>
+<td>Content removed</td>
+<td>Variants that must not see it</td>
+</tr>
+<tr>
+<td>flag</td>
+<td>Content kept but marked</td>
+<td>Review, &quot;new in Pro&quot; badges</td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Best practice:</strong> Tag at the smallest sensible level (a phrase or paragraph), and define your attribute values centrally so authors choose from a known list instead of inventing values.</div>
+
+<h2>Testing your profiles</h2>
+<p>Always generate and check <strong>each</strong> profile before release. A mistagged element can
+silently leak admin-only content into a user PDF. A quick per-profile review is the
+cheapest safeguard.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Content leaked into the wrong output.</strong> An element is untagged or mistagged;
+find it and correct the attribute.</li>
+<li><strong>DITAVAL had no effect.</strong> The preset isn&#39;t using it, or attribute values don&#39;t
+match exactly (case-sensitive).</li>
+<li><strong>Too much excluded.</strong> An exclude rule is broader than intended; narrow the
+attribute/value.</li>
+<li><strong>Flag not visible.</strong> The output format may not render your flag style; verify
+the style and format support.</li>
+</ul>
 <h2>Takeaway</h2>
-<p>Write once, filter at publish time. DITAVAL is the engine behind audience- and product-specific docs.</p>
+<p>Conditional publishing is two halves: tag content with attributes, then let a
+DITAVAL include, exclude, or flag it per output. Tag finely, manage values
+centrally, apply DITAVALs through presets, and test every profile. One source then
+serves every audience and product without forks.</p>
 
       </article>
       <div class="article-foot">
