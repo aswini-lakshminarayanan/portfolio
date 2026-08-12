@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Managing images and media references | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Best practices for referencing and reusing images in DITA." />
+  <meta name="description" content="Best practices for referencing, reusing, and governing images and media in AEM Guides: how DITA references media, organizing assets, alt text, formats, and reuse." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Managing images and media references" />
-  <meta property="og:description" content="Best practices for referencing and reusing images in DITA." />
+  <meta property="og:description" content="Best practices for referencing, reusing, and governing images and media in AEM Guides: how DITA references media, organizing assets, alt text, formats, and reuse." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,109 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Feb 14, 2025 · 1 min read</p>
+      <p class="article-meta">Feb 14, 2025 · 2 min read</p>
       <h1>Managing images and media references</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Images in DITA are referenced, not embedded. AEM Guides stores them as assets you point to from topics.</p>
-<h2>Good habits</h2>
+        <p>In DITA, images and media are <strong>referenced, not embedded</strong>. That one fact shapes
+how you organize, reuse, and maintain visuals in AEM Guides. Handled well, media
+stays consistent and accessible across every topic and output; handled poorly, you
+get broken images and duplicated files. This guide covers the good habits.</p>
+<h2>How DITA references media</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[(Media assets&lt;br/&gt;in the repository)] --&gt; B[Topic A: image ref]
+  A --&gt; C[Topic B: image ref]
+  A --&gt; D[Topic C: image ref]
+  A -.update the asset once.-&gt; A
+</code></pre>
+<p>A topic points at an asset with an <code>&lt;image&gt;</code> element:</p>
+<pre><code class="language-xml">&lt;image href=&quot;images/login-screen.png&quot;&gt;
+  &lt;alt&gt;The login screen with username and password fields.&lt;/alt&gt;
+&lt;/image&gt;
+</code></pre>
+<p>Update the source asset and every topic that references it reflects the change.</p>
+<h2>Organize assets deliberately</h2>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Central <code>media/</code> per product</td>
+<td>Predictable, easy to reference</td>
+</tr>
+<tr>
+<td>Images scattered next to topics</td>
+<td>Hard to reuse, easy to duplicate</td>
+</tr>
+<tr>
+<td>Shared <code>/shared/media</code> for common visuals</td>
+<td>One logo, referenced everywhere</td>
+</tr>
+</tbody></table>
+<div class="shot">A media folder in the Repository view with referenced images and their usage listed.</div>
+
+<h2>Always add alt text</h2>
+<p>Alt text is not optional. It&#39;s essential for <strong>accessibility</strong> and improves SEO for
+HTML output. Write it to describe the image&#39;s meaning, not just its appearance.</p>
+<div class="note"><strong>Accessibility rule:</strong> Every meaningful image needs alt text. Decorative-only images should be marked so assistive tech can skip them.</div>
+
+<h2>Choose the right format</h2>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SVG</td>
+<td>Diagrams, icons; scales crisply, small</td>
+</tr>
+<tr>
+<td>PNG</td>
+<td>Screenshots with sharp edges/text</td>
+</tr>
+<tr>
+<td>JPG</td>
+<td>Photos and rich images</td>
+</tr>
+<tr>
+<td>PDF/EPS</td>
+<td>Print-oriented vector art (engine dependent)</td>
+</tr>
+</tbody></table>
+<p>Prefer <strong>SVG</strong> for diagrams where supported: it scales without blurring and stays
+small.</p>
+<h2>Reuse media like content</h2>
 <ul>
-<li>Store media in a predictable folder structure.</li>
-<li>Add meaningful <strong>alt text</strong> for accessibility.</li>
-<li>Reuse a single image across topics with one reference.</li>
+<li>Reference one <strong>shared logo</strong> rather than copying it into every product.</li>
+<li>Use <strong>keys</strong> for media that varies by product/edition (<code>img-logo</code>), so the same
+topic shows the right image per deliverable.</li>
+<li>Keep a <strong>media library</strong> alongside your content library.</li>
+</ul>
+<pre><code class="language-xml">&lt;keydef keys=&quot;product-logo&quot; href=&quot;shared/media/logo-pro.svg&quot; format=&quot;svg&quot;/&gt;
+&lt;image keyref=&quot;product-logo&quot;&gt;&lt;alt&gt;Product logo&lt;/alt&gt;&lt;/image&gt;
+</code></pre>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Image missing in output.</strong> The referenced asset moved or the path is wrong;
+prefer keyref for media that may move, and run link validation.</li>
+<li><strong>Blurry image in PDF.</strong> Resolution too low for print; use higher-res or SVG for
+diagrams.</li>
+<li><strong>Same image duplicated everywhere.</strong> Consolidate into a shared asset and
+reference it.</li>
+<li><strong>Wrong logo in a product&#39;s output.</strong> Use a media key redefined per deliverable
+rather than a hard-coded path.</li>
+<li><strong>Screen reader skips important image.</strong> Missing alt text; add meaningful alt.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Reference images centrally so updates propagate everywhere and accessibility stays consistent.</p>
+<p>Treat media the way DITA intends: referenced, organized, and reused. Keep assets in
+predictable folders, always write alt text, choose SVG for diagrams, and use keys
+for media that varies by product. Do that and your visuals stay consistent,
+accessible, and maintainable across the whole documentation set.</p>
 
       </article>
       <div class="article-foot">

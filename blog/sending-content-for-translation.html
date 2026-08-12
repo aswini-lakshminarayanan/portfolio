@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sending content for translation | Aswini Lakshminarayanan</title>
-  <meta name="description" content="A short guide to kicking off a translation project." />
+  <meta name="description" content="A practical guide to kicking off a translation project in AEM Guides: selecting content, choosing human or machine, target languages, and what happens to references." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Sending content for translation" />
-  <meta property="og:description" content="A short guide to kicking off a translation project." />
+  <meta property="og:description" content="A practical guide to kicking off a translation project in AEM Guides: selecting content, choosing human or machine, target languages, and what happens to references." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,87 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jun 24, 2025 · 1 min read</p>
+      <p class="article-meta">Jun 24, 2025 · 2 min read</p>
       <h1>Sending content for translation</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Translation</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Translation</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Starting a translation project in AEM Guides means selecting the source, the targets, and the workflow.</p>
-<h2>Options</h2>
+        <p>Once translation is configured, the day-to-day act is <strong>starting a translation
+project</strong>: choosing what to translate, into which languages, by which method. This
+guide focuses on that operation and the choices that affect cost and quality. For
+the full picture see the complete translation guide.</p>
+<h2>What a translation project does</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Select source content] --&gt; B[Create translation project]
+  B --&gt; C[Pick target languages]
+  C --&gt; D{Method}
+  D --&gt;|Human| E[Vendor connector]
+  D --&gt;|Machine| F[MT cloud service]
+  E --&gt; G[Language copies created &amp; filled]
+  F --&gt; G
+</code></pre>
+<p>A project creates <strong>language copies</strong> of your selected content and routes the
+source to the chosen provider, returning translations into those copies.</p>
+<h2>Steps</h2>
+<ol>
+<li>In the Repository view, <strong>select the map or topics</strong> to translate.</li>
+<li><strong>Create a translation project</strong> and name it clearly (include the release).</li>
+<li>Choose the <strong>method</strong>: human, machine, or a mix per language.</li>
+<li>Select <strong>target languages</strong> from your configured list.</li>
+<li>Submit. AEM Guides creates language copies and sends content to the provider.</li>
+<li>Track progress in the project until translations return.</li>
+</ol>
+<div class="shot">The Create Translation Project dialog with target languages and method selected.</div>
+
+<h2>Human, machine, or both</h2>
+<table>
+<thead>
+<tr>
+<th>Choose</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Human</td>
+<td>Public, legal, or brand-critical content</td>
+</tr>
+<tr>
+<td>Machine</td>
+<td>Drafts, internal, high-volume, low-risk</td>
+</tr>
+<tr>
+<td>Both</td>
+<td>MT first pass, human post-edit where it matters</td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Tip:</strong> Decide method per language and content type. High-traffic customer docs may warrant human translation; internal runbooks may be fine with machine.</div>
+
+<h2>References and reuse during a project</h2>
+<p>Because content is modular, a project only needs the topics you selected. Shared
+elements reused via conref/keyref are translated <strong>once at the source</strong>, so you&#39;re
+not paying to translate the same warning ten times. Confirm your translation
+preferences handle references the way you expect before a big run.</p>
+<h2>Steps to keep cost down</h2>
+<ol>
+<li><strong>Reuse before translating</strong>, so shared text is translated once.</li>
+<li><strong>Send only changed topics</strong> on re-translation.</li>
+<li>Use a <strong>translation memory</strong> so repeated phrases aren&#39;t re-charged.</li>
+<li><strong>Batch</strong> related content into one project rather than many tiny ones.</li>
+</ol>
+<h2>Troubleshooting</h2>
 <ul>
-<li><strong>Human translation</strong> via connected vendors.</li>
-<li><strong>Machine translation</strong> for speed or drafts.</li>
-<li>Mixed approaches per language.</li>
+<li><strong>Project stuck / not returning.</strong> Check the provider connection and credentials
+in the translation cloud service config.</li>
+<li><strong>A language copy is empty.</strong> The source wasn&#39;t included, or the target language
+wasn&#39;t selected; recreate with the correct scope.</li>
+<li><strong>Too much sent for translation.</strong> You selected a whole map when only a few
+topics changed; select the changed topics.</li>
+<li><strong>References translated unexpectedly.</strong> Review your DITA translation preferences
+for conref/keyref handling.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Decide human vs machine per audience and content type. High-stakes content deserves human review.</p>
+<p>Starting a translation project is: select content, name it, pick method and
+languages, submit. Reuse first, send only what changed, and choose human vs machine
+per content type. That keeps translation fast, consistent, and affordable.</p>
 
       </article>
       <div class="article-foot">

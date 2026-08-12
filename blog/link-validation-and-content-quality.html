@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Link validation and content quality | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Catch broken references before your readers do." />
+  <meta name="description" content="Catch broken references before readers do. Using link validation and quality reports in AEM Guides, what breaks links, and building quality gates into your process." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Link validation and content quality" />
-  <meta property="og:description" content="Catch broken references before your readers do." />
+  <meta property="og:description" content="Catch broken references before readers do. Using link validation and quality reports in AEM Guides, what breaks links, and building quality gates into your process." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,111 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jul 18, 2025 · 1 min read</p>
+      <p class="article-meta">Jul 18, 2025 · 2 min read</p>
       <h1>Link validation and content quality</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Quality</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Quality</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Broken links erode trust. AEM Guides can validate references across the repository.</p>
-<h2>Check for</h2>
+        <p>Broken links quietly erode trust and generate support tickets. In a large,
+reuse-heavy DITA repository, a single moved file can break references in many
+places. AEM Guides can <strong>validate links and references</strong> across the repository so
+you find breakage before your readers do. This guide covers how and when.</p>
+<h2>What can break</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Reference types] --&gt; X[xref: internal links]
+  A --&gt; C[conref: reused elements]
+  A --&gt; K[keyref: keyed values/links]
+  A --&gt; I[image/media references]
+  X --&gt; B[Break if target moves]
+  C --&gt; B
+  K --&gt; D[Break if key undefined]
+  I --&gt; B
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Reference</th>
+<th>Breaks when</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>xref (direct)</td>
+<td>Target file moves or is renamed</td>
+</tr>
+<tr>
+<td>conref</td>
+<td>Source element id changes or is deleted</td>
+</tr>
+<tr>
+<td>keyref</td>
+<td>Key isn&#39;t defined in the map in scope</td>
+</tr>
+<tr>
+<td>image/media</td>
+<td>Asset is moved or missing</td>
+</tr>
+</tbody></table>
+<h2>Running validation</h2>
+<ol>
+<li>Select the <strong>map or folder</strong> to check.</li>
+<li>Run <strong>link/reference validation</strong>.</li>
+<li>Review the report: broken xrefs, unresolved conref/keyref, missing media.</li>
+<li>Fix at the source (correct the path, define the key, restore the asset).</li>
+<li>Re-run until clean.</li>
+</ol>
+<div class="shot">A link validation report listing broken references with their source topics.</div>
+
+<div class="note"><strong>Cheapest quality win:</strong> Run link validation before every release. Most publishing failures are simply an unresolved reference you could have caught here.</div>
+
+<h2>Beyond links: content quality checks</h2>
 <ul>
-<li>Broken xrefs and conrefs.</li>
-<li>Missing keys.</li>
-<li>Unresolved image references.</li>
+<li><strong>DITA validity:</strong> the editor enforces it, but validate imported/bulk-edited
+content.</li>
+<li><strong>Metadata completeness:</strong> missing status or audience weakens filtering and
+reports.</li>
+<li><strong>Reuse health:</strong> a reuse report shows whether shared sources are intact.</li>
+<li><strong>Terminology consistency:</strong> keys and a glossary keep terms uniform.</li>
+</ul>
+<h2>Build quality gates into your process</h2>
+<table>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Gate</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Before review</td>
+<td>DITA valid, metadata set</td>
+</tr>
+<tr>
+<td>Before baseline</td>
+<td>Link validation clean</td>
+</tr>
+<tr>
+<td>Before publish</td>
+<td>Re-check links on the baseline</td>
+</tr>
+<tr>
+<td>Post-publish</td>
+<td>Spot-check outputs and search</td>
+</tr>
+</tbody></table>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Report shows many external &quot;broken&quot; links.</strong> They may be temporarily
+unreachable; separate external from internal issues and re-check.</li>
+<li><strong>Fixed a link but it still reports broken.</strong> You edited the reference, not the
+target; correct the actual target or key definition.</li>
+<li><strong>keyref reported unresolved.</strong> The deliverable map doesn&#39;t reference the key
+map, or the key is undefined; wire it up.</li>
+<li><strong>conref broken after a move.</strong> Prefer conkeyref for portability; update or
+redefine the source.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Run link validation before every release. It&#39;s the cheapest quality win available.</p>
+<p>Link and reference validation is your first line of defense against broken content.
+Understand what breaks each reference type, run validation as a standard pre-release
+gate, and widen the net to metadata and reuse health. Catching issues before
+publish turns quality from luck into process.</p>
 
       </article>
       <div class="article-foot">

@@ -18,6 +18,16 @@ The single most useful rule in structured authoring: a topic should cover **one
 idea** and stand on its own. A reader who lands on it out of context should still
 understand it. That discipline is what makes topics reusable and translatable.
 
+```mermaid
+flowchart TD
+  A[Choose topic type] --> B[Write precise title]
+  B --> C[Add short description]
+  C --> D[Write body content]
+  D --> E[Add ids for reuse]
+  E --> F[Set metadata]
+  F --> G[Save = version recorded]
+```
+
 ## Steps
 
 1. **Create the topic.** In your folder, choose *Create → DITA Topic* and select a

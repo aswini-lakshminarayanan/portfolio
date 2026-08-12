@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Integrating AEM Guides with AEM Sites | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Deliver structured documentation through your AEM website." />
+  <meta name="description" content="Deliver structured documentation through your AEM website. Why integrate Guides with Sites, integration approaches, shared branding and search, and practical considerations." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Integrating AEM Guides with AEM Sites" />
-  <meta property="og:description" content="Deliver structured documentation through your AEM website." />
+  <meta property="og:description" content="Deliver structured documentation through your AEM website. Why integrate Guides with Sites, integration approaches, shared branding and search, and practical considerations." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,93 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">May 13, 2025 · 1 min read</p>
+      <p class="article-meta">May 13, 2025 · 2 min read</p>
       <h1>Integrating AEM Guides with AEM Sites</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Integration</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Integration</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>AEM Guides content can flow into <strong>AEM Sites</strong>, letting you serve documentation alongside your web experience.</p>
-<h2>Why combine them</h2>
+        <p>Documentation is part of the customer experience, so it makes sense for it to live
+inside your web experience rather than a separate silo. Because AEM Guides is built
+on AEM, it can <strong>integrate with AEM Sites</strong> to deliver structured content through
+your website. This guide explains why and how.</p>
+<h2>Why integrate</h2>
+<pre><code class="language-mermaid">flowchart TD
+  G[AEM Guides&lt;br/&gt;structured DITA] --&gt; P[Publish / deliver]
+  P --&gt; S[AEM Sites]
+  S --&gt; U[Unified web experience]
+  U --&gt; B[Shared branding]
+  U --&gt; N[Shared navigation]
+  U --&gt; Se[Shared search]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Benefit</th>
+<th>Because</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Unified brand</td>
+<td>Docs use the same site shell and styling</td>
+</tr>
+<tr>
+<td>One navigation</td>
+<td>Users move between product and docs seamlessly</td>
+</tr>
+<tr>
+<td>Shared search</td>
+<td>Documentation is findable from the site</td>
+</tr>
+<tr>
+<td>Single platform</td>
+<td>One AEM stack for marketing and docs</td>
+</tr>
+</tbody></table>
+<h2>Integration approaches</h2>
 <ul>
-<li>Unified branding and navigation.</li>
-<li>Reuse structured content on the web.</li>
-<li>One platform for docs and marketing.</li>
+<li><strong>Publish DITA output into Sites</strong> so generated documentation is served through
+the AEM website with consistent chrome.</li>
+<li><strong>Surface content via delivery</strong> so documentation content can appear within Sites
+pages and experiences.</li>
+</ul>
+<p>The right approach depends on how tightly you want docs woven into the site versus
+served as a distinct, well-branded section.</p>
+<div class="shot">A product website with an in-site documentation section sharing the same header and search.</div>
+
+<h2>What to align</h2>
+<ol>
+<li><strong>Branding:</strong> ensure the HTML5 layout or delivered content matches the site
+theme.</li>
+<li><strong>Navigation:</strong> decide how users move between site and docs.</li>
+<li><strong>Search:</strong> unify or clearly connect site search and docs search.</li>
+<li><strong>URLs:</strong> plan a clean, stable URL structure for documentation.</li>
+</ol>
+<div class="note"><strong>Coordinate early:</strong> Integration touches both the docs team and the web team. Agree on branding, navigation, and URLs up front to avoid rework.</div>
+
+<h2>Practical considerations</h2>
+<ul>
+<li><strong>Ownership:</strong> clarify who owns the docs section within the site.</li>
+<li><strong>Publishing cadence:</strong> align doc releases with site deployment processes.</li>
+<li><strong>Performance:</strong> large documentation sets need sensible loading and search
+behavior.</li>
+<li><strong>Access:</strong> decide whether any docs are gated vs public.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Docs look off-brand in the site.</strong> The layout/theme isn&#39;t aligned; match the
+HTML5 layout to the site.</li>
+<li><strong>Broken links after integration.</strong> Base URLs/paths differ once served through
+Sites; verify and prefer keyref-based links.</li>
+<li><strong>Search feels disjointed.</strong> Users expect one search; connect or unify the two
+indexes.</li>
+<li><strong>Publishing and deployment clash.</strong> Align the docs release cadence with the
+site&#39;s deployment pipeline.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Pairing Guides with Sites lets technical content live natively inside your digital experience.</p>
+<p>Integrating AEM Guides with AEM Sites lets technical content live natively inside
+your digital experience, sharing branding, navigation, and search. Choose an
+integration approach that matches how tightly you want docs woven in, align
+branding and URLs early with the web team, and your documentation becomes a
+seamless part of the product experience.</p>
 
       </article>
       <div class="article-foot">

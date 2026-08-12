@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Managing translated versions | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Keep source and localized content in sync as things change." />
+  <meta name="description" content="Keep source and localized content in sync in AEM Guides: how language copies track the source, handling source changes, re-translating only deltas, and validating each language." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Managing translated versions" />
-  <meta property="og:description" content="Keep source and localized content in sync as things change." />
+  <meta property="og:description" content="Keep source and localized content in sync in AEM Guides: how language copies track the source, handling source changes, re-translating only deltas, and validating each language." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,91 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Apr 17, 2025 · 1 min read</p>
+      <p class="article-meta">Apr 17, 2025 · 2 min read</p>
       <h1>Managing translated versions</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Translation</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Translation</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Once translated, content must stay aligned with the source as it evolves.</p>
-<h2>Keys to success</h2>
+        <p>Translating content once is easy; keeping many languages <strong>in sync as the source
+evolves</strong> is the real discipline. AEM Guides links each language copy to its
+source so you always know what&#39;s current, what&#39;s stale, and what needs another
+pass. This guide covers ongoing localization management.</p>
+<h2>Source and language copies</h2>
+<pre><code class="language-mermaid">flowchart TD
+  S[Source topic v3] --&gt; L1[German copy]
+  S --&gt; L2[French copy]
+  S --&gt; L3[Japanese copy]
+  S -. source edited to v4 .-&gt; M{Copies now stale}
+  M --&gt; R[Re-translate only changed topics]
+</code></pre>
+<p>Each language copy knows which <strong>source version</strong> it was translated from. When the
+source moves ahead, AEM Guides can tell you which copies are out of date.</p>
+<h2>The sync workflow</h2>
+<ol>
+<li><strong>Author edits</strong> the source (a new version).</li>
+<li>AEM Guides flags affected <strong>language copies</strong> as out of date.</li>
+<li>You start a <strong>re-translation</strong> for just those changed topics.</li>
+<li>Translations return into the language copies.</li>
+<li><strong>Validate</strong> each language and publish per-language output.</li>
+</ol>
+<div class="note"><strong>The modular payoff:</strong> Only changed topics re-translate. Editing one topic doesn't trigger re-translating the entire book, which is the core cost saver of a DITA CCMS.</div>
+
+<h2>Handling structural changes</h2>
+<table>
+<thead>
+<tr>
+<th>Source change</th>
+<th>Effect on translations</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Text edited in a topic</td>
+<td>That topic re-translates</td>
+</tr>
+<tr>
+<td>Topic added to the map</td>
+<td>New topic needs translation</td>
+</tr>
+<tr>
+<td>Topic removed</td>
+<td>Language copy should drop it too</td>
+</tr>
+<tr>
+<td>Topic reordered</td>
+<td>Usually no re-translation; map order updates</td>
+</tr>
+</tbody></table>
+<div class="shot">A translation status view showing which language copies are current vs out of date.</div>
+
+<h2>Validate before publishing</h2>
+<p>For each target language, confirm:</p>
 <ul>
-<li>Track which topics changed since last translation.</li>
-<li>Re-translate only what&#39;s needed.</li>
-<li>Validate that maps resolve in every language.</li>
+<li>The <strong>map resolves</strong> fully (no missing translated topics).</li>
+<li><strong>References and keys</strong> resolve in that language.</li>
+<li>Locale specifics (dates, units) look right if you localize, not just translate.</li>
+</ul>
+<h2>Steps to a healthy localization cadence</h2>
+<ol>
+<li>Establish a <strong>source freeze</strong> window before each localized release.</li>
+<li>Run <strong>re-translation on deltas</strong> after the freeze.</li>
+<li><strong>Validate</strong> each language&#39;s map and links.</li>
+<li><strong>Publish</strong> all languages from the same baseline for consistency.</li>
+</ol>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Language copy out of sync and won&#39;t update.</strong> Start a new translation project
+scoped to the changed topics.</li>
+<li><strong>Missing topic in a language map.</strong> A topic was added after translation; include
+it in the next project.</li>
+<li><strong>Broken link only in one language.</strong> A keyref or href resolves differently;
+check that language&#39;s key definitions and references.</li>
+<li><strong>Publish uses mixed versions.</strong> Publish every language from one baseline to keep
+them aligned.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Sync, don&#39;t restart. Modular translation means small, targeted updates instead of full re-dos.</p>
+<p>Managing translations is about keeping language copies in step with an evolving
+source. Lean on the source-to-copy linkage, re-translate only deltas, validate each
+language&#39;s map and links, and publish all languages from one baseline. Modular DITA
+makes staying in sync affordable and reliable.</p>
 
       </article>
       <div class="article-foot">

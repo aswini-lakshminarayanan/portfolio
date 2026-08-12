@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Managing large documentation projects | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Keep quality high when the repository grows to thousands of topics." />
+  <meta name="description" content="Keep quality high when the repository grows to thousands of topics: taxonomy and standards, modular maps, reuse strategy, governance cadence, and team scaling." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Managing large documentation projects" />
-  <meta property="og:description" content="Keep quality high when the repository grows to thousands of topics." />
+  <meta property="og:description" content="Keep quality high when the repository grows to thousands of topics: taxonomy and standards, modular maps, reuse strategy, governance cadence, and team scaling." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,105 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Mar 31, 2025 · 1 min read</p>
+      <p class="article-meta">Mar 31, 2025 · 2 min read</p>
       <h1>Managing large documentation projects</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Strategy</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Strategy</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Scale changes everything. Large projects need structure, standards, and automation.</p>
-<h2>What helps</h2>
+        <p>Scale changes everything. Practices that work for one guide fall apart across
+thousands of topics, multiple products, several languages, and a growing team.
+Managing a large documentation project in AEM Guides is about <strong>standards and
+structure</strong> more than heroics. This guide is the playbook.</p>
+<h2>The pillars of scale</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Large doc project] --&gt; B[Taxonomy &amp; naming]
+  A --&gt; C[Modular maps]
+  A --&gt; D[Reuse strategy]
+  A --&gt; E[Governance cadence]
+  A --&gt; F[Team roles]
+</code></pre>
+<h2>1. Taxonomy and standards</h2>
 <ul>
-<li>A clear folder and naming taxonomy.</li>
-<li>Shared metadata and profiling standards.</li>
-<li>Reusable submaps and presets.</li>
-<li>Regular reports and link checks.</li>
+<li>A clear <strong>folder taxonomy</strong> (per product: topics, maps, media, shared).</li>
+<li><strong>Naming conventions</strong> for topics, maps, and keys.</li>
+<li><strong>Controlled metadata</strong> and profiling values via profiles and subject schemes.</li>
+</ul>
+<p>Standards are what let many people produce content that still feels like one voice.</p>
+<h2>2. Modular maps</h2>
+<p>Break big deliverables into <strong>submaps</strong>, keep hierarchy shallow, and separate
+reusable library maps from deliverable maps. This lets teams own sections
+independently and reduces merge-style conflicts.</p>
+<table>
+<thead>
+<tr>
+<th>Anti-pattern</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>One giant map</td>
+<td>Parent map + section submaps</td>
+</tr>
+<tr>
+<td>Deep nesting</td>
+<td>Flatten; split into submaps</td>
+</tr>
+<tr>
+<td>Copy-paste across guides</td>
+<td>Shared reusable submaps</td>
+</tr>
+</tbody></table>
+<h2>3. Reuse strategy</h2>
+<p>Decide, deliberately, what is reused and how: a <strong>library</strong> of shared topics,
+warnings, and boilerplate; <strong>keys</strong> for names/versions/links; <strong>conref/conkeyref</strong>
+for blocks. A reuse strategy on paper prevents accidental duplication at scale.</p>
+<div class="note"><strong>Reuse is a strategy, not an accident.</strong> Name owners for the shared library and key maps, or reuse quietly rots into duplication.</div>
+
+<h2>4. Governance cadence</h2>
+<table>
+<thead>
+<tr>
+<th>Frequency</th>
+<th>Activity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Continuous</td>
+<td>Reviews, versioning, metadata upkeep</td>
+</tr>
+<tr>
+<td>Weekly</td>
+<td>Status reports toward release</td>
+</tr>
+<tr>
+<td>Per release</td>
+<td>Link validation, baseline, publish</td>
+</tr>
+<tr>
+<td>Quarterly</td>
+<td>Reuse and consolidation analysis</td>
+</tr>
+</tbody></table>
+<h2>5. Team roles and permissions</h2>
+<p>Model <strong>groups by function</strong> (authors, reviewers, publishers, admins) with
+folder-scoped permissions, and onboard by cloning known-good profiles. Clear roles
+prevent both bottlenecks and accidents.</p>
+<div class="shot">A dashboard-style view of a large project: multiple product folders, status, and reuse metrics.</div>
+
+<h2>Troubleshooting scale problems</h2>
+<ul>
+<li><strong>Inconsistent content across teams.</strong> Tighten profiles, metadata schemes, and
+naming standards.</li>
+<li><strong>Reorg is terrifying.</strong> Monolithic maps; refactor into submaps and use keyref.</li>
+<li><strong>Duplication creeping in.</strong> Reuse isn&#39;t owned; assign owners and run reuse
+reports.</li>
+<li><strong>Releases are chaotic.</strong> Adopt the label to baseline to publish cadence and
+make link validation a gate.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>At scale, conventions beat heroics. Invest in standards early and they pay off every day.</p>
+<p>Large documentation projects succeed on structure, not effort: a clear taxonomy,
+modular maps, an owned reuse strategy, a governance cadence, and role-based teams.
+Invest in these standards early and the project scales from one guide to an entire
+product line without a rewrite.</p>
 
       </article>
       <div class="article-foot">

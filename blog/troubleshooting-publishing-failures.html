@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Troubleshooting publishing failures | Aswini Lakshminarayanan</title>
-  <meta name="description" content="A calm checklist for when an output job won't generate." />
+  <meta name="description" content="A calm, systematic checklist for when an AEM Guides output job won't generate: reading the log, the usual culprits, engine-specific issues, and how to isolate the cause." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Troubleshooting publishing failures" />
-  <meta property="og:description" content="A calm checklist for when an output job won't generate." />
+  <meta property="og:description" content="A calm, systematic checklist for when an AEM Guides output job won't generate: reading the log, the usual culprits, engine-specific issues, and how to isolate the cause." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,106 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Dec 23, 2025 · 1 min read</p>
+      <p class="article-meta">Dec 23, 2025 · 2 min read</p>
       <h1>Troubleshooting publishing failures</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Quality</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Quality</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Publishing failures usually trace back to a few common causes.</p>
-<h2>Check</h2>
+        <p>A failed publish job on release day is stressful, but the causes are usually a
+short, familiar list. This guide gives you a calm, systematic way to diagnose and
+fix AEM Guides publishing failures instead of guessing.</p>
+<h2>The diagnostic flow</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Job fails] --&gt; B[Open the log]
+  B --&gt; C[Find the FIRST real error]
+  C --&gt; D{What kind?}
+  D --&gt;|Reference| E[Fix xref/conref/keyref]
+  D --&gt;|Invalid DITA| F[Fix the topic structure]
+  D --&gt;|Condition| G[Check DITAVAL/preset]
+  D --&gt;|Template/engine| H[Check template &amp; engine]
+  E --&gt; I[Re-run]
+  F --&gt; I
+  G --&gt; I
+  H --&gt; I
+</code></pre>
+<h2>Rule one: read the log top-down</h2>
+<p>Publishing logs can be long and scary, but the <strong>first real error</strong> is almost
+always the cause. Later errors are often cascades from it. Find that first error
+before changing anything.</p>
+<h2>The usual culprits</h2>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fails instantly</td>
+<td>Broken reference or invalid DITA</td>
+<td>Validate links; fix the topic</td>
+</tr>
+<tr>
+<td>Missing/low-res images</td>
+<td>Asset missing or too small</td>
+<td>Restore/replace media</td>
+</tr>
+<tr>
+<td>Empty or wrong TOC</td>
+<td>Map order / <code>toc</code> attributes</td>
+<td>Fix the map hierarchy</td>
+</tr>
+<tr>
+<td>Wrong content included</td>
+<td>DITAVAL/condition mismatch</td>
+<td>Check the preset&#39;s condition</td>
+</tr>
+<tr>
+<td>Fonts wrong in PDF</td>
+<td>Template fonts unavailable</td>
+<td>Embed/configure fonts</td>
+</tr>
+<tr>
+<td>Times out on huge book</td>
+<td>Sheer size</td>
+<td>Publish from baseline; split via submaps</td>
+</tr>
+</tbody></table>
+<div class="shot">A publishing log with the first error highlighted near the top of the output.</div>
+
+<h2>Engine-specific checks</h2>
 <ul>
-<li><strong>Broken references</strong> (xref, conref, keyref).</li>
-<li><strong>Invalid DITA</strong> in a topic.</li>
-<li><strong>Missing conditions</strong> or DITAVAL issues.</li>
-<li>Preset or template misconfiguration.</li>
+<li><strong>Native PDF:</strong> verify the template and its fonts; confirm the preset uses the
+native engine.</li>
+<li><strong>DITA-OT:</strong> a custom DITA-OT or plugin may be misregistered; check the toolkit
+setup and its own log.</li>
+<li><strong>HTML5:</strong> confirm the layout/template loads and the search index builds.</li>
+</ul>
+<div class="note"><strong>Isolate the cause:</strong> If a full map won't publish, try publishing a single known-good topic, then a small submap. The point where it breaks tells you where the problem lives.</div>
+
+<h2>A repeatable recovery process</h2>
+<ol>
+<li><strong>Reproduce</strong> with the same preset and (if used) baseline.</li>
+<li><strong>Read</strong> the log for the first error.</li>
+<li><strong>Isolate</strong>: publish a small subset to narrow it down.</li>
+<li><strong>Fix</strong> at the source (reference, DITA, condition, template).</li>
+<li><strong>Re-run</strong> and confirm; then re-run the full job.</li>
+</ol>
+<h2>Troubleshooting the troubleshooting</h2>
+<ul>
+<li><strong>Log is unclear.</strong> Increase verbosity if available, or isolate by publishing
+smaller pieces.</li>
+<li><strong>Works for one output, fails for another.</strong> The issue is engine/template
+specific, not the content.</li>
+<li><strong>Intermittent failures.</strong> Often resource/timeout on large jobs; baseline and
+split.</li>
+<li><strong>Passed validation but still fails.</strong> A condition or template issue, not a
+reference; check the preset.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Read the log top-down, fix the first real error, and re-run. Most failures are one bad reference away from success.</p>
+<p>Publishing failures are rarely mysterious. Read the log top-down for the first real
+error, match it to the usual culprits, isolate by publishing smaller pieces, fix at
+the source, and re-run. A calm, systematic pass beats frantic guessing every time.</p>
 
       </article>
       <div class="article-foot">

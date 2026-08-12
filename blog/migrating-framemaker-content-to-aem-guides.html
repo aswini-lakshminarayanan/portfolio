@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Migrating FrameMaker content to AEM Guides | Aswini Lakshminarayanan</title>
-  <meta name="description" content="What to expect when moving unstructured or structured FrameMaker files into DITA." />
+  <meta name="description" content="A realistic plan for moving FrameMaker content into AEM Guides: structured vs unstructured FM, mapping to DITA, cleanup, topic-ization, and validating the result." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Migrating FrameMaker content to AEM Guides" />
-  <meta property="og:description" content="What to expect when moving unstructured or structured FrameMaker files into DITA." />
+  <meta property="og:description" content="A realistic plan for moving FrameMaker content into AEM Guides: structured vs unstructured FM, mapping to DITA, cleanup, topic-ization, and validating the result." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,97 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jun 11, 2025 · 1 min read</p>
+      <p class="article-meta">Jun 11, 2025 · 2 min read</p>
       <h1>Migrating FrameMaker content to AEM Guides</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Migration</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Migration</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>AEM Guides supports importing FrameMaker content, converting it toward clean DITA.</p>
-<h2>Plan for</h2>
+        <p>FrameMaker has decades of documentation locked inside it, and moving that into AEM
+Guides is as much a content strategy exercise as a technical import. This guide
+lays out a realistic migration plan and the decisions that make the difference
+between a clean DITA repository and a messy one.</p>
+<h2>Two starting points</h2>
+<pre><code class="language-mermaid">flowchart TD
+  Q{Your FrameMaker content} --&gt;|Structured FM&lt;br/&gt;EDD/DITA-like| A[Closer to DITA:&lt;br/&gt;mostly element mapping]
+  Q --&gt;|Unstructured FM&lt;br/&gt;paragraph/character styles| B[More work:&lt;br/&gt;style-to-structure mapping]
+  A --&gt; C[Import &amp; refine]
+  B --&gt; C
+</code></pre>
 <ul>
-<li><strong>Mapping</strong> styles to DITA elements.</li>
-<li><strong>Cleanup</strong> of legacy formatting.</li>
-<li><strong>Restructuring</strong> long documents into topics.</li>
+<li><strong>Structured FrameMaker</strong> (EDD-based, especially DITA-flavored) maps to DITA more
+directly.</li>
+<li><strong>Unstructured FrameMaker</strong> relies on paragraph/character styles that must be
+mapped to DITA structure.</li>
+</ul>
+<h2>The migration plan</h2>
+<ol>
+<li><strong>Inventory and triage.</strong> Catalog documents; decide what to migrate, archive, or
+retire. Do not migrate content you should retire.</li>
+<li><strong>Design target DITA.</strong> Decide topic types, map structure, and reuse strategy
+before importing.</li>
+<li><strong>Map styles to elements.</strong> Create a mapping from FM styles to DITA elements
+(Heading 1 -&gt; topic title, Note style -&gt; <code>&lt;note&gt;</code>, etc.).</li>
+<li><strong>Import.</strong> Bring content in, converting toward DITA.</li>
+<li><strong>Topic-ize.</strong> Split long documents into standalone topics (this is where real
+value is created).</li>
+<li><strong>Clean up.</strong> Remove legacy formatting, fix invalid structures, add ids for
+reuse.</li>
+<li><strong>Validate and publish.</strong> Confirm DITA validity and test outputs.</li>
+</ol>
+<div class="shot">A mapping table aligning FrameMaker paragraph styles to DITA elements before import.</div>
+
+<h2>Mapping example</h2>
+<table>
+<thead>
+<tr>
+<th>FrameMaker style</th>
+<th>DITA target</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Heading1</td>
+<td><code>&lt;title&gt;</code> of a new topic</td>
+</tr>
+<tr>
+<td>Body</td>
+<td><code>&lt;p&gt;</code></td>
+</tr>
+<tr>
+<td>Note</td>
+<td><code>&lt;note&gt;</code></td>
+</tr>
+<tr>
+<td>Step</td>
+<td><code>&lt;step&gt;&lt;cmd&gt;</code> in a task</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>CALS <code>&lt;table&gt;</code></td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Do not lift-and-shift.</strong> The biggest mistake is importing giant documents as giant topics. Restructure into small, typed topics; that is where reuse, translation, and multi-channel publishing pay off.</div>
+
+<h2>Cleanup that matters</h2>
+<ul>
+<li>Convert manual formatting into <strong>semantic elements</strong>.</li>
+<li>Replace copy-paste repetition with <strong>conref</strong>.</li>
+<li>Move product names and versions behind <strong>keys</strong>.</li>
+<li>Add <strong>metadata</strong> for search and conditions.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Content imports but won&#39;t validate.</strong> Style mapping produced invalid nesting;
+refine the mapping and re-import a sample.</li>
+<li><strong>Everything is one huge topic.</strong> Topic-ize by heading; each Heading 1 (and often
+Heading 2) becomes its own topic.</li>
+<li><strong>Images lost or mislinked.</strong> Ensure media is migrated and referenced, with alt
+text added.</li>
+<li><strong>Cross-references broke.</strong> Rebuild as keyref-based links during cleanup.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Migration is as much content strategy as tooling. Budget time to topic-ize and clean up, not just import.</p>
+<p>Migrating FrameMaker is a content transformation, not a file copy. Triage first,
+design your target DITA, map styles to elements, and above all topic-ize and clean
+up. Structured FM is a shorter road than unstructured, but both should arrive as
+small, reusable, valid DITA, not as digitized paper.</p>
 
       </article>
       <div class="article-foot">

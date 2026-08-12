@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AEM Guides as a Cloud Service: what's different | Aswini Lakshminarayanan</title>
-  <meta name="description" content="The key differences when running AEM Guides on AEM as a Cloud Service." />
+  <meta name="description" content="How AEM Guides changes on AEM as a Cloud Service: managed infrastructure, continuous updates, cloud-native publishing, config differences, and what it means for your workflows." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="AEM Guides as a Cloud Service: what's different" />
-  <meta property="og:description" content="The key differences when running AEM Guides on AEM as a Cloud Service." />
+  <meta property="og:description" content="How AEM Guides changes on AEM as a Cloud Service: managed infrastructure, continuous updates, cloud-native publishing, config differences, and what it means for your workflows." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,91 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Sep 15, 2025 · 1 min read</p>
+      <p class="article-meta">Sep 15, 2025 · 2 min read</p>
       <h1>AEM Guides as a Cloud Service: what's different</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Cloud</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Cloud</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>AEM Guides is available on <strong>AEM as a Cloud Service</strong>, which changes how you deploy, scale, and update.</p>
-<h2>What to know</h2>
+        <p>AEM Guides runs on AEM as a Cloud Service, and &quot;the cloud version&quot; is not just the
+same product on someone else&#39;s servers. The operating model changes in ways that
+affect how you configure, update, and scale. This guide covers what&#39;s different and
+how to plan for it.</p>
+<h2>The operating-model shift</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[On-prem / AMS] --&gt; A1[You manage infra &amp; upgrades]
+  B[AEM as a Cloud Service] --&gt; B1[Adobe manages infra]
+  B --&gt; B2[Continuous updates]
+  B --&gt; B3[Cloud-native scaling]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Traditional AEM</th>
+<th>AEM as a Cloud Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Infrastructure</td>
+<td>You run and patch it</td>
+<td>Adobe manages it</td>
+</tr>
+<tr>
+<td>Upgrades</td>
+<td>Periodic, planned projects</td>
+<td>Continuous, incremental</td>
+</tr>
+<tr>
+<td>Scaling</td>
+<td>Provision manually</td>
+<td>Elastic, cloud-native</td>
+</tr>
+<tr>
+<td>Config delivery</td>
+<td>Some runtime changes</td>
+<td>Config-as-code via pipelines</td>
+</tr>
+</tbody></table>
+<h2>Continuous updates change your rhythm</h2>
+<p>Instead of large, occasional upgrades, Cloud Service delivers <strong>frequent
+incremental updates</strong>. Benefits: you&#39;re always current, with less big-bang upgrade
+risk. Implication: design workflows and customizations to tolerate ongoing change
+rather than freezing on a version.</p>
+<div class="note"><strong>Plan for evergreen:</strong> Favor supported extension points and configuration over deep, brittle customizations that continuous updates could disturb.</div>
+
+<h2>Configuration differences</h2>
 <ul>
-<li>Adobe manages infrastructure and updates.</li>
-<li>Continuous delivery instead of big upgrades.</li>
-<li>Cloud-native scaling for publishing.</li>
+<li>Many settings move toward <strong>config-as-code</strong> deployed through Cloud Manager
+pipelines rather than ad-hoc runtime changes.</li>
+<li>OSGi and environment configuration follow Cloud Service conventions (for example,
+environment-specific values and secrets).</li>
+<li>Some traditional on-prem tuning knobs are replaced by managed equivalents.</li>
+</ul>
+<div class="shot">A Cloud Manager pipeline deploying configuration to an AEM Guides Cloud Service environment.</div>
+
+<h2>Publishing and scale</h2>
+<p>Cloud-native infrastructure means publishing and processing can <strong>scale
+elastically</strong>, which helps large output jobs and busy teams. You spend less time on
+capacity and more on content.</p>
+<h2>What stays the same</h2>
+<p>The core authoring experience, DITA, the Web Editor, reuse, reviews, translation,
+and output presets are the same skills. Your authoring knowledge transfers
+directly; what changes is the operations and configuration model around it.</p>
+<h2>Troubleshooting and adaptation</h2>
+<ul>
+<li><strong>A customization broke after an update.</strong> It likely relied on an unsupported
+internal; move to a supported extension point.</li>
+<li><strong>Config change didn&#39;t take.</strong> On Cloud Service, deploy via the pipeline rather
+than expecting a runtime edit to persist.</li>
+<li><strong>Environment-specific values.</strong> Use the Cloud Service mechanisms for
+per-environment config and secrets, not hard-coded values.</li>
+<li><strong>Unsure what&#39;s managed vs yours.</strong> Adobe manages infrastructure and updates; you
+own content, configuration-as-code, and customizations.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>On Cloud Service you get always-current AEM Guides and less ops overhead. Plan your workflows around continuous updates.</p>
+<p>On AEM as a Cloud Service, Adobe runs the infrastructure and ships continuous
+updates, and configuration leans toward config-as-code through pipelines. Your
+authoring skills carry over unchanged; adapt your operations to an evergreen,
+config-as-code model and you gain always-current software with less upgrade risk.</p>
 
       </article>
       <div class="article-foot">

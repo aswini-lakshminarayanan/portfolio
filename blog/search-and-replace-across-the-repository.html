@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Search and replace across the repository | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Find and update content at scale without opening every file." />
+  <meta name="description" content="Find and update content at scale in AEM Guides without opening every file. Repository-wide search, safe bulk replace, scoping, and reviewing changes before you commit." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Search and replace across the repository" />
-  <meta property="og:description" content="Find and update content at scale without opening every file." />
+  <meta property="og:description" content="Find and update content at scale in AEM Guides without opening every file. Repository-wide search, safe bulk replace, scoping, and reviewing changes before you commit." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,91 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Aug 29, 2025 · 1 min read</p>
+      <p class="article-meta">Aug 29, 2025 · 2 min read</p>
       <h1>Search and replace across the repository</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Productivity</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Productivity</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>AEM Guides supports <strong>search and replace</strong> across many topics at once. A lifesaver for renames and corrections.</p>
-<h2>Use it for</h2>
+        <p>When a product is renamed or a recurring error needs fixing, opening hundreds of
+topics by hand is a non-starter. AEM Guides offers <strong>search and replace across the
+repository</strong>, turning hours of manual edits into a single, reviewable operation.
+This guide shows how to use it safely.</p>
+<h2>What it can do</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Search term / pattern] --&gt; B[Scope: folder / selection]
+  B --&gt; C[Review matches]
+  C --&gt; D{Replace?}
+  D --&gt;|Yes| E[Bulk replace]
+  D --&gt;|Selective| F[Replace chosen matches]
+  E --&gt; G[Version each changed topic]
+  F --&gt; G
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Use case</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Product/feature rename</td>
+<td>&quot;Acme Classic&quot; to &quot;Acme Cloud&quot;</td>
+</tr>
+<tr>
+<td>Fix a recurring typo</td>
+<td>&quot;recieve&quot; to &quot;receive&quot;</td>
+</tr>
+<tr>
+<td>Terminology alignment</td>
+<td>&quot;log on&quot; to &quot;sign in&quot;</td>
+</tr>
+<tr>
+<td>Locate before editing</td>
+<td>find every use of a phrase</td>
+</tr>
+</tbody></table>
+<h2>Steps for a safe replace</h2>
+<ol>
+<li><strong>Search first, replace never (yet).</strong> Run the search and review every match.</li>
+<li><strong>Scope it.</strong> Limit to a folder or selection so you don&#39;t touch unrelated
+content.</li>
+<li><strong>Inspect matches</strong> for false positives (a term inside a code sample or a
+different context).</li>
+<li><strong>Replace</strong>, ideally selectively where context varies.</li>
+<li><strong>Review the changes</strong> and the versions created, so you can revert if needed.</li>
+</ol>
+<div class="shot">A repository search results panel with matches listed and a replace field.</div>
+
+<div class="note"><strong>Safety first:</strong> A blind repository-wide replace can corrupt content inside code samples, keys, or attributes. Always review matches, and prefer scoped, selective replacement.</div>
+
+<h2>When to use keys instead</h2>
+<p>If you find yourself repeatedly renaming the same value (a product name, a URL),
+that value should live behind a <strong>key</strong>. Then the next rename is one keydef edit,
+not a repository search. Search and replace is for one-off corrections; keys are
+for values that change.</p>
+<h2>Steps to avoid regret</h2>
+<ol>
+<li><strong>Back yourself with versioning:</strong> every changed topic gets a version, so you
+can revert.</li>
+<li><strong>Do a dry run</strong> on a small scope first.</li>
+<li><strong>Exclude code/verbatim</strong> contexts where a replace would be wrong.</li>
+<li><strong>Communicate</strong> big changes so reviewers expect them.</li>
+</ol>
+<h2>Troubleshooting</h2>
 <ul>
-<li>Product or feature renames.</li>
-<li>Fixing a recurring typo or term.</li>
-<li>Locating every use of a phrase before editing.</li>
+<li><strong>Replaced too much.</strong> Revert the affected topics via version history and redo
+with a tighter scope or selective replacement.</li>
+<li><strong>Missed some matches.</strong> Check case sensitivity and whether the term appears via
+a key (which won&#39;t show as literal text).</li>
+<li><strong>Broke a code sample.</strong> Exclude verbatim/code contexts; fix the affected topic
+and re-run more carefully.</li>
+<li><strong>Same rename keeps recurring.</strong> Move the value behind a key so it&#39;s a single
+future edit.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Repository-wide search and replace turns hours of manual edits into a single, reviewable operation.</p>
+<p>Repository-wide search and replace is a huge time-saver when used carefully: search
+and review first, scope tightly, replace selectively, and rely on versioning as
+your undo. For values that change often, promote them to keys so the next change is
+a one-liner rather than a hunt.</p>
 
       </article>
       <div class="article-foot">

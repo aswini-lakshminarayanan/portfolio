@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bulk and folder-level operations | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Act on many files at once to save hours of clicking." />
+  <meta name="description" content="Act on many files at once in AEM Guides to save hours: bulk metadata, versioning, moving and reorganizing, bulk publishing, and doing it safely at scale." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Bulk and folder-level operations" />
-  <meta property="og:description" content="Act on many files at once to save hours of clicking." />
+  <meta property="og:description" content="Act on many files at once in AEM Guides to save hours: bulk metadata, versioning, moving and reorganizing, bulk publishing, and doing it safely at scale." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,87 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Nov 18, 2025 · 1 min read</p>
+      <p class="article-meta">Nov 18, 2025 · 2 min read</p>
       <h1>Bulk and folder-level operations</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Productivity</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Productivity</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>AEM Guides supports operations across folders and selections. Versioning, metadata edits, and more.</p>
-<h2>Time-savers</h2>
+        <p>In a repository with thousands of topics, per-file clicking doesn&#39;t scale. AEM
+Guides supports <strong>bulk and folder-level operations</strong> so you can apply changes to
+many files at once. This guide covers what you can do in bulk and how to do it
+without causing a mess.</p>
+<h2>What you can do in bulk</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Select folder / many files] --&gt; B[Bulk metadata]
+  A --&gt; C[Bulk versioning / labels]
+  A --&gt; D[Move / reorganize]
+  A --&gt; E[Bulk publish]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Saves you from</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Apply metadata to a folder</td>
+<td>Editing hundreds of files individually</td>
+</tr>
+<tr>
+<td>Version/label many topics</td>
+<td>Labeling a release one file at a time</td>
+</tr>
+<tr>
+<td>Move/reorganize in bulk</td>
+<td>Manual drag-and-drop of many items</td>
+</tr>
+<tr>
+<td>Bulk publish</td>
+<td>Running many jobs by hand</td>
+</tr>
+</tbody></table>
+<h2>Steps for a safe bulk change</h2>
+<ol>
+<li><strong>Scope precisely.</strong> Select the exact folder or set; over-broad selection is the
+main risk.</li>
+<li><strong>Preview the impact.</strong> Know how many items are affected and which.</li>
+<li><strong>Apply</strong> the operation.</li>
+<li><strong>Spot-check</strong> a sample of results.</li>
+<li><strong>Rely on versioning</strong> to revert if something looks wrong.</li>
+</ol>
+<div class="shot">A folder selected in the Repository view with a bulk metadata action dialog open.</div>
+
+<div class="note"><strong>Rule:</strong> When you catch yourself repeating the same action across files, stop and look for the bulk or folder-level equivalent. It's usually there.</div>
+
+<h2>Reorganizing without breaking links</h2>
+<p>Moving files in bulk is powerful but can break <strong>direct references</strong>. Two
+protections:</p>
 <ul>
-<li>Apply metadata to a whole folder.</li>
-<li>Version or label many topics together.</li>
-<li>Move or reorganize in bulk.</li>
+<li>Prefer <strong>keyref</strong> for links so they survive moves.</li>
+<li>Run <strong>link validation</strong> after a big reorganization to catch anything that broke.</li>
+</ul>
+<h2>Bulk operations and governance</h2>
+<ul>
+<li>Apply <strong>consistent metadata</strong> to a whole content area at once.</li>
+<li><strong>Label</strong> an entire deliverable for a release in one action.</li>
+<li>Enforce <strong>folder profiles</strong> so bulk-created content inherits the right defaults.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Applied to more than intended.</strong> Revert affected items via versioning; redo
+with a tighter scope.</li>
+<li><strong>Links broke after a move.</strong> Run link validation; convert direct references to
+keyref where possible.</li>
+<li><strong>Bulk metadata didn&#39;t stick.</strong> Some files may have been locked/checked out;
+retry after they&#39;re available.</li>
+<li><strong>Bulk publish overloaded the system.</strong> Batch large publish runs, or publish from
+baselines during off-peak times.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>When you catch yourself repeating an action, look for the bulk or folder-level equivalent first.</p>
+<p>Bulk and folder-level operations turn repetitive drudgery into single, reviewable
+actions. Scope tightly, preview impact, apply, and spot-check, with versioning as
+your safety net. Combine bulk moves with keyref links and post-move validation, and
+you can reorganize a large repository confidently.</p>
 
       </article>
       <div class="article-foot">

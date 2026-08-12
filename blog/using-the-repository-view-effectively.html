@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Using the Repository view effectively | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Navigate, organize, and act on content from one place." />
+  <meta name="description" content="Navigate, organize, and act on content from one place. Folder taxonomy, filtering and search, context actions, versions and references, and habits that keep it tidy." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Using the Repository view effectively" />
-  <meta property="og:description" content="Navigate, organize, and act on content from one place." />
+  <meta property="og:description" content="Navigate, organize, and act on content from one place. Folder taxonomy, filtering and search, context actions, versions and references, and habits that keep it tidy." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,94 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Aug 20, 2025 · 1 min read</p>
+      <p class="article-meta">Aug 20, 2025 · 2 min read</p>
       <h1>Using the Repository view effectively</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Productivity</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Productivity</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>The <strong>Repository view</strong> is your file system for content. Browse folders, see versions, and run actions.</p>
-<h2>Tips</h2>
+        <p>The <strong>Repository view</strong> is your file system for content in AEM Guides: where you
+browse folders, find topics and maps, see versions, and launch actions. A little
+structure and a few habits here make everything else in the tool faster. This
+guide covers how to use it well.</p>
+<h2>What the Repository view gives you</h2>
+<pre><code class="language-mermaid">flowchart TD
+  R[Repository view] --&gt; B[Browse folders]
+  R --&gt; S[Search &amp; filter]
+  R --&gt; V[Versions &amp; history]
+  R --&gt; A[Context actions]
+  R --&gt; P[Properties &amp; metadata]
+</code></pre>
+<h2>Design a folder taxonomy</h2>
+<p>A predictable structure is the single biggest productivity win:</p>
+<table>
+<thead>
+<tr>
+<th>Folder pattern</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/product-a/topics</code></td>
+<td>Authored topics for Product A</td>
+</tr>
+<tr>
+<td><code>/product-a/maps</code></td>
+<td>Deliverable and submaps</td>
+</tr>
+<tr>
+<td><code>/product-a/media</code></td>
+<td>Images and assets</td>
+</tr>
+<tr>
+<td><code>/shared/library</code></td>
+<td>Reusable topics, warnings, boilerplate</td>
+</tr>
+<tr>
+<td><code>/shared/keydefs</code></td>
+<td>Key-definition maps</td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Convention over chaos:</strong> Agree on folder structure and naming before the repository grows. Retrofitting a taxonomy onto thousands of files is painful.</div>
+
+<h2>Find content fast</h2>
 <ul>
-<li>Use a clear folder taxonomy.</li>
-<li>Filter and search to find content fast.</li>
-<li>Right-click for context actions.</li>
+<li><strong>Search</strong> by title, content, or metadata.</li>
+<li><strong>Filter</strong> by type (topic vs map), status, or tags.</li>
+<li>Save yourself clicks by navigating with search rather than deep folder clicking.</li>
+</ul>
+<div class="shot">The Repository view with a folder tree, a filtered file list, and the properties panel.</div>
+
+<h2>Context actions</h2>
+<p>Right-click (or use the action menu) on a file or folder to:</p>
+<ul>
+<li>Create versions, add labels, view history.</li>
+<li>Move, copy, or delete.</li>
+<li>View references (where it&#39;s used) and properties.</li>
+<li>Start reviews, translation, or publishing.</li>
+</ul>
+<p>Acting from the Repository view keeps you in one place instead of hopping between
+screens.</p>
+<h2>Habits that keep it tidy</h2>
+<ol>
+<li><strong>Name descriptively</strong> and lowercase; avoid spaces.</li>
+<li><strong>Separate reusable content</strong> into a shared library folder.</li>
+<li><strong>Keep media near</strong> the content that uses it, or in a clear assets folder.</li>
+<li><strong>Archive</strong> retired content instead of leaving it to clutter search.</li>
+</ol>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Can&#39;t find a topic.</strong> Use search by metadata or content, not just folder
+browsing; check you have read access.</li>
+<li><strong>Moved a file, links broke.</strong> Prefer keyref; run link validation after moves.</li>
+<li><strong>Repository feels cluttered.</strong> Introduce or enforce a taxonomy; archive retired
+content.</li>
+<li><strong>Duplicate-looking files.</strong> Consolidate into a shared library and reference
+them.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>A tidy repository with a consistent structure makes everything else in AEM Guides easier.</p>
+<p>Treat the Repository view as the control center it is: design a clear folder
+taxonomy, find content by search and filter, act via context menus, and keep it
+tidy with naming and archiving habits. A well-organized repository makes authoring,
+reuse, and publishing dramatically smoother.</p>
 
       </article>
       <div class="article-foot">

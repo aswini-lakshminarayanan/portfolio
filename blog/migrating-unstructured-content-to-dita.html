@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Migrating unstructured content to DITA | Aswini Lakshminarayanan</title>
-  <meta name="description" content="A pragmatic path from Word or HTML into structured topics." />
+  <meta name="description" content="A pragmatic path from Word, HTML, or wikis into structured DITA topics in AEM Guides: topic-based thinking, a phased approach, reuse discovery, and quality gates." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Migrating unstructured content to DITA" />
-  <meta property="og:description" content="A pragmatic path from Word or HTML into structured topics." />
+  <meta property="og:description" content="A pragmatic path from Word, HTML, or wikis into structured DITA topics in AEM Guides: topic-based thinking, a phased approach, reuse discovery, and quality gates." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,86 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jan 21, 2025 · 1 min read</p>
+      <p class="article-meta">Jan 21, 2025 · 2 min read</p>
       <h1>Migrating unstructured content to DITA</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Migration</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Migration</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Moving unstructured content (Word, HTML) into DITA is mostly about <strong>topic-based thinking</strong>.</p>
-<h2>Steps</h2>
+        <p>Most teams adopting AEM Guides arrive carrying unstructured content: Word
+documents, HTML pages, wiki articles. Moving it into DITA is less about tooling and
+more about a shift in thinking, from documents to <strong>topics</strong>. This guide gives a
+pragmatic, phased approach.</p>
+<h2>The core mindset shift</h2>
+<pre><code class="language-mermaid">flowchart LR
+  D[Long documents] --&gt; T[Standalone topics]
+  T --&gt; TY[Typed: concept / task / reference]
+  TY --&gt; RU[Reuse opportunities identified]
+  RU --&gt; V[Valid, publishable DITA]
+</code></pre>
+<p>A 40-page Word document is not one DITA topic; it is many. The migration&#39;s value
+comes from breaking it into small, typed, reusable units.</p>
+<h2>A phased approach</h2>
 <ol>
-<li>Break documents into standalone topics.</li>
-<li>Assign each a topic type.</li>
-<li>Identify reuse opportunities.</li>
-<li>Import and validate.</li>
+<li><strong>Assess.</strong> Inventory sources; decide what to migrate vs retire. Legacy content
+is a chance to prune.</li>
+<li><strong>Model.</strong> Define your target topic types, map structure, and metadata plan.</li>
+<li><strong>Pilot.</strong> Migrate one representative document end to end to shake out the
+process.</li>
+<li><strong>Convert.</strong> Bring content in and split into topics by heading and intent.</li>
+<li><strong>Type.</strong> Classify each topic as concept, task, or reference; restructure to fit.</li>
+<li><strong>Reuse.</strong> Identify repeated content and replace copies with conref/keys.</li>
+<li><strong>Validate.</strong> Ensure DITA validity, fix links, add metadata, test outputs.</li>
 </ol>
+<div class="shot">A long Word document on the left, split into several typed DITA topics on the right.</div>
+
+<h2>Convert-then-refine</h2>
+<p>Automated conversion (Word/HTML to topics) gets you 70% there; the human work is
+the refinement:</p>
+<table>
+<thead>
+<tr>
+<th>Automated</th>
+<th>Human refinement</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Paragraphs, lists, tables</td>
+<td>Correct topic typing</td>
+</tr>
+<tr>
+<td>Basic structure</td>
+<td>Splitting/merging topics</td>
+</tr>
+<tr>
+<td>Images carried over</td>
+<td>Alt text, sensible references</td>
+</tr>
+<tr>
+<td>Raw links</td>
+<td>keyref-based links</td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Quality gate:</strong> A migrated topic isn't "done" when it validates. It's done when it stands alone, is correctly typed, and reuses shared content instead of duplicating it.</div>
+
+<h2>Reuse discovery</h2>
+<p>Migration is the perfect moment to find repetition: the same safety notice, the
+same setup steps, the same product boilerplate. Extract these into a reuse library
+and reference them, so you never migrate the same paragraph twice.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Topics are too big.</strong> You migrated documents as topics; split by heading and
+intent.</li>
+<li><strong>Everything is a generic topic.</strong> Assign real types (concept/task/reference) for
+the structural benefits.</li>
+<li><strong>Duplicate content everywhere.</strong> Run reuse discovery; replace copies with
+conref.</li>
+<li><strong>Links are broken or absolute.</strong> Rebuild as keyref-based internal links and
+proper external links.</li>
+</ul>
 <h2>Takeaway</h2>
-<p>Don&#39;t just lift and shift. Restructure into topics first. That&#39;s where the long-term value is.</p>
+<p>Migrating unstructured content is a restructuring project: assess and prune, model
+your target, pilot, then convert and refine into small, typed, reusable topics.
+Treat conversion as the start, not the finish, and use the migration to build a
+cleaner, reuse-driven content set than you had before.</p>
 
       </article>
       <div class="article-foot">
