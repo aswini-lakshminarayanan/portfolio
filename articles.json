@@ -396,26 +396,28 @@
     "slug": "editing-dita-tables-in-the-web-editor",
     "date": "2025-06-06T00:00:00.000Z",
     "dateLabel": "Jun 6, 2025",
-    "excerpt": "Create and manage structured tables in AEM Guides without touching raw XML.",
+    "excerpt": "Build and manage structured tables in AEM Guides without touching raw XML: CALS vs simpletable, header rows, spanning cells, column widths, and accessibility.",
     "tags": [
       "AEM Guides",
-      "Authoring"
+      "Authoring",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Creating your first DITA topic",
     "slug": "creating-your-first-dita-topic",
     "date": "2025-05-22T00:00:00.000Z",
     "dateLabel": "May 22, 2025",
-    "excerpt": "How to author a clean, valid DITA topic in the AEM Guides Web Editor.",
+    "excerpt": "Author a clean, valid, reusable DITA topic in the AEM Guides Web Editor, from choosing a type to adding structure, metadata, and your first reuse-ready element.",
     "tags": [
       "AEM Guides",
-      "Authoring"
+      "Authoring",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Cross-references and links best practices",
@@ -487,13 +489,14 @@
     "slug": "getting-productive-with-the-web-editor",
     "date": "2025-04-09T00:00:00.000Z",
     "dateLabel": "Apr 9, 2025",
-    "excerpt": "The AEM Guides Web Editor essentials that speed up day-to-day authoring.",
+    "excerpt": "A practical tour of the AEM Guides Web Editor: the views, inserting structure and references, tables, inline validation, autosave and versioning, and shortcuts that add up.",
     "tags": [
       "AEM Guides",
-      "Authoring"
+      "Authoring",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Variables and reusable phrases",
@@ -565,13 +568,14 @@
     "slug": "dita-fundamentals-for-aem-guides-authors",
     "date": "2025-03-05T00:00:00.000Z",
     "dateLabel": "Mar 5, 2025",
-    "excerpt": "The handful of DITA concepts every AEM Guides author needs before they start writing.",
+    "excerpt": "The DITA concepts that actually matter day to day in AEM Guides: topics, maps, topic types, reuse, and conditional content, with real XML and a mental model you can keep.",
     "tags": [
       "AEM Guides",
-      "DITA"
+      "DITA",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Global profiles and shared settings",
@@ -591,13 +595,14 @@
     "slug": "create-your-first-dita-map-in-aem-guides",
     "date": "2025-02-19T00:00:00.000Z",
     "dateLabel": "Feb 19, 2025",
-    "excerpt": "A short walkthrough for assembling your first deliverable using a DITA map.",
+    "excerpt": "A hands-on walkthrough for building your first deliverable in AEM Guides: creating a map, adding topic references and hierarchy, using submaps, and previewing output.",
     "tags": [
       "AEM Guides",
-      "Authoring"
+      "Authoring",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Managing images and media references",
@@ -617,13 +622,14 @@
     "slug": "best-practices-for-dita-map-structure",
     "date": "2025-02-08T00:00:00.000Z",
     "dateLabel": "Feb 8, 2025",
-    "excerpt": "Design maps that stay manageable as your content grows.",
+    "excerpt": "How to design DITA maps that stay manageable at scale: submaps, shallow hierarchy, reusable vs deliverable maps, keys and metadata placement, and naming conventions.",
     "tags": [
       "AEM Guides",
-      "Strategy"
+      "Strategy",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Key references (keyref) explained",
@@ -643,13 +649,14 @@
     "slug": "concept-task-reference-choosing-a-topic-type",
     "date": "2025-01-28T00:00:00.000Z",
     "dateLabel": "Jan 28, 2025",
-    "excerpt": "A quick guide to the three core DITA topic types and when to use each.",
+    "excerpt": "A deep look at DITA's three core topic types, how their structure differs, when to use each, and how to avoid the most common typing mistakes in AEM Guides.",
     "tags": [
       "AEM Guides",
-      "DITA"
+      "DITA",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Migrating unstructured content to DITA",
@@ -669,13 +676,14 @@
     "slug": "what-is-adobe-aem-guides-a-quick-overview",
     "date": "2025-01-14T00:00:00.000Z",
     "dateLabel": "Jan 14, 2025",
-    "excerpt": "A one-minute intro to Adobe's DITA-based component content management system and what it's for.",
+    "excerpt": "A grounded introduction to Adobe's native DITA CCMS: what it is, how the pieces fit together, who it's for, and how a typical content lifecycle flows through it.",
     "tags": [
       "AEM Guides",
-      "Basics"
+      "Basics",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 3
   },
   {
     "title": "Versioning topics and maps",

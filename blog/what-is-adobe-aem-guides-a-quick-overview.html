@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>What is Adobe AEM Guides? A quick overview | Aswini Lakshminarayanan</title>
-  <meta name="description" content="A one-minute intro to Adobe's DITA-based component content management system and what it's for." />
+  <meta name="description" content="A grounded introduction to Adobe's native DITA CCMS: what it is, how the pieces fit together, who it's for, and how a typical content lifecycle flows through it." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="What is Adobe AEM Guides? A quick overview" />
-  <meta property="og:description" content="A one-minute intro to Adobe's DITA-based component content management system and what it's for." />
+  <meta property="og:description" content="A grounded introduction to Adobe's native DITA CCMS: what it is, how the pieces fit together, who it's for, and how a typical content lifecycle flows through it." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,117 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jan 14, 2025 · 1 min read</p>
+      <p class="article-meta">Jan 14, 2025 · 3 min read</p>
       <h1>What is Adobe AEM Guides? A quick overview</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Basics</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Basics</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Adobe Experience Manager Guides (AEM Guides) is a native, DITA-based <strong>Component Content Management System (CCMS)</strong> built into AEM. It lets teams author, manage, and publish structured technical content at scale.</p>
-<h2>Why teams use it</h2>
+        <p>Adobe Experience Manager Guides (AEM Guides) is a native, DITA-based <strong>Component
+Content Management System (CCMS)</strong> built directly on top of Adobe Experience
+Manager. If you produce large volumes of technical content, product
+documentation, knowledge bases, policies, or learning material, it gives you a
+single place to author in structured DITA, manage it with real governance, and
+publish it to many channels from one source.</p>
+<p>This overview gives you the mental model before you touch a single topic.</p>
+<h2>Why structured content, and why a CCMS?</h2>
+<p>Traditional documents (Word, unstructured FrameMaker, wikis) mix content with
+formatting and encourage copy-paste. That works until you have hundreds of pages,
+multiple products, and several languages. Then every change becomes risky and
+slow.</p>
+<p>A CCMS flips the model:</p>
 <ul>
-<li><strong>Structured authoring</strong> with DITA topics and maps.</li>
-<li><strong>Reuse</strong> of content across deliverables, so you write once and publish everywhere.</li>
-<li><strong>Multi-channel publishing</strong> to PDF, responsive HTML5, and more.</li>
-<li><strong>Governance</strong> through versioning, reviews, and translation workflows.</li>
+<li>Content is broken into small, reusable <strong>topics</strong>.</li>
+<li>Formatting is applied at <strong>publish time</strong>, not while writing.</li>
+<li>The same source publishes to <strong>PDF, HTML5, and more</strong>.</li>
+<li>Reuse, versioning, review, and translation are first-class features.</li>
+</ul>
+<h2>How the pieces fit together</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Authors] --&gt; B[Web Editor]
+  B --&gt; C[DITA Topics]
+  B --&gt; D[DITA Maps]
+  C --&gt; E[(AEM Repository)]
+  D --&gt; E
+  E --&gt; F[Review &amp; Version]
+  F --&gt; G[Output Presets]
+  G --&gt; H[PDF]
+  G --&gt; I[Responsive HTML5]
+  G --&gt; J[Other outputs]
+</code></pre>
+<ul>
+<li><strong>DITA topics</strong> are the smallest units of content (a concept, a task, a
+reference).</li>
+<li><strong>DITA maps</strong> assemble topics into a deliverable and define order and hierarchy.</li>
+<li>The <strong>AEM repository</strong> stores everything with versioning and metadata.</li>
+<li><strong>Output presets</strong> turn a map into finished deliverables.</li>
+</ul>
+<div class="shot">The AEM Guides home dashboard, showing the Repository, Editor, and Output options.</div>
+
+<h2>Who uses it, and for what</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>What they do in AEM Guides</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Technical writer / author</td>
+<td>Create and edit topics and maps in the Web Editor</td>
+</tr>
+<tr>
+<td>Information architect</td>
+<td>Design map structure, reuse strategy, and metadata</td>
+</tr>
+<tr>
+<td>Reviewer / SME</td>
+<td>Comment on content in context through the review workflow</td>
+</tr>
+<tr>
+<td>Localization manager</td>
+<td>Run translation projects and manage language copies</td>
+</tr>
+<tr>
+<td>Admin / DevOps</td>
+<td>Configure profiles, output presets, DITA-OT, and permissions</td>
+</tr>
+</tbody></table>
+<h2>A typical content lifecycle</h2>
+<ol>
+<li><strong>Author</strong> topics in the Web Editor and assemble them in a map.</li>
+<li><strong>Reuse</strong> shared content with references instead of copy-paste.</li>
+<li><strong>Review</strong> with SMEs directly in the browser.</li>
+<li><strong>Version and baseline</strong> to lock a release.</li>
+<li><strong>Translate</strong> into target languages (only changed topics re-translate).</li>
+<li><strong>Publish</strong> to PDF, HTML5, and other formats from output presets.</li>
+</ol>
+<h2>A tiny taste of DITA</h2>
+<p>A concept topic is just clean, semantic XML. You rarely hand-write it (the editor
+does), but seeing it demystifies the whole thing:</p>
+<pre><code class="language-xml">&lt;concept id=&quot;what-is-aem-guides&quot;&gt;
+  &lt;title&gt;What is AEM Guides?&lt;/title&gt;
+  &lt;conbody&gt;
+    &lt;p&gt;AEM Guides is a native DITA CCMS built on Adobe Experience Manager.&lt;/p&gt;
+  &lt;/conbody&gt;
+&lt;/concept&gt;
+</code></pre>
+<div class="note"><strong>Tip:</strong> You do not need to be an XML expert to use AEM Guides. The Web Editor keeps the markup valid while you focus on writing.</div>
+
+<h2>Common questions</h2>
+<ul>
+<li><strong>Is it the same as AEM Sites?</strong> No. Sites is for web experiences; Guides is for
+structured technical content. They can work together, but they solve different
+problems.</li>
+<li><strong>Do I have to know DITA first?</strong> A little helps, but you can learn the basics
+(topics, maps, reuse) as you go.</li>
+<li><strong>Cloud or on-premise?</strong> AEM Guides is available on AEM as a Cloud Service and
+on AEM Managed Services / on-prem, with the Cloud Service being Adobe&#39;s forward
+direction.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>If you manage large, frequently updated documentation, AEM Guides brings structure, reuse, and automated publishing into one place.</p>
+<p>AEM Guides brings structured authoring, reuse, governance, translation, and
+multi-channel publishing into one platform built on AEM. Learn three words to
+start (topic, map, reuse) and the rest of the platform will make sense as you
+grow into it.</p>
 
       </article>
       <div class="article-foot">

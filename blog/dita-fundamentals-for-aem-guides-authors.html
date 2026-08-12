@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DITA fundamentals for AEM Guides authors | Aswini Lakshminarayanan</title>
-  <meta name="description" content="The handful of DITA concepts every AEM Guides author needs before they start writing." />
+  <meta name="description" content="The DITA concepts that actually matter day to day in AEM Guides: topics, maps, topic types, reuse, and conditional content, with real XML and a mental model you can keep." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="DITA fundamentals for AEM Guides authors" />
-  <meta property="og:description" content="The handful of DITA concepts every AEM Guides author needs before they start writing." />
+  <meta property="og:description" content="The DITA concepts that actually matter day to day in AEM Guides: topics, maps, topic types, reuse, and conditional content, with real XML and a mental model you can keep." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,101 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Mar 5, 2025 · 1 min read</p>
+      <p class="article-meta">Mar 5, 2025 · 2 min read</p>
       <h1>DITA fundamentals for AEM Guides authors</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">DITA</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">DITA</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>DITA (Darwin Information Typing Architecture) is the XML standard behind AEM Guides. You don&#39;t need to be an XML expert, but a few ideas help.</p>
-<h2>Core concepts</h2>
+        <p>DITA (Darwin Information Typing Architecture) is the XML standard underneath AEM
+Guides. You do not need to become an XML programmer, but understanding a handful
+of ideas will make everything in the tool click. This is the practical
+foundation.</p>
+<h2>The big idea: separate content from format</h2>
+<p>In DITA, you write <strong>meaning</strong>, not appearance. You mark a paragraph as a
+paragraph, a step as a step, a warning as a warning. How it looks (font, spacing,
+page layout) is decided later, at publish time, by templates. That separation is
+what makes one source publish cleanly to PDF, HTML5, and beyond.</p>
+<h2>The building blocks</h2>
+<pre><code class="language-mermaid">flowchart TD
+  M[DITA Map] --&gt; T1[Concept topic]
+  M --&gt; T2[Task topic]
+  M --&gt; T3[Reference topic]
+  T1 --&gt; E1[title + conbody]
+  T2 --&gt; E2[title + taskbody + steps]
+  T3 --&gt; E3[title + refbody + table]
+</code></pre>
+<h3>Topics</h3>
+<p>A <strong>topic</strong> is a small, standalone chunk of content about one subject. Good topics
+answer a single question and can be understood on their own.</p>
+<h3>Maps</h3>
+<p>A <strong>map</strong> is an ordered list of topic references. It is your table of contents and
+your publishing unit. Topics hold content; maps decide sequence and hierarchy.</p>
+<h3>Topic types</h3>
+<p>DITA gives you specialized topic types so structure stays consistent:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Purpose</th>
+<th>Signature element</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Concept</td>
+<td>Explain what/why</td>
+<td><code>&lt;conbody&gt;</code></td>
+</tr>
+<tr>
+<td>Task</td>
+<td>Step-by-step how-to</td>
+<td><code>&lt;taskbody&gt;</code> with <code>&lt;steps&gt;</code></td>
+</tr>
+<tr>
+<td>Reference</td>
+<td>Lookup data</td>
+<td><code>&lt;refbody&gt;</code> with tables</td>
+</tr>
+</tbody></table>
+<h2>Real DITA: a task topic</h2>
+<pre><code class="language-xml">&lt;task id=&quot;restart-service&quot;&gt;
+  &lt;title&gt;Restart the service&lt;/title&gt;
+  &lt;taskbody&gt;
+    &lt;steps&gt;
+      &lt;step&gt;&lt;cmd&gt;Open the admin console.&lt;/cmd&gt;&lt;/step&gt;
+      &lt;step&gt;&lt;cmd&gt;Select the service and click Restart.&lt;/cmd&gt;&lt;/step&gt;
+    &lt;/steps&gt;
+  &lt;/taskbody&gt;
+&lt;/task&gt;
+</code></pre>
+<p>Notice there is no formatting anywhere, only structure. That is the point.</p>
+<h2>Reuse is built in</h2>
+<p>Instead of copy-paste, DITA references content:</p>
 <ul>
-<li><strong>Topics</strong> are small, standalone units of content.</li>
-<li><strong>Maps</strong> assemble topics into a deliverable and define order and hierarchy.</li>
-<li><strong>Topic types</strong> (concept, task, reference) give content predictable structure.</li>
-<li><strong>Reuse</strong> is built in through references, not copy-paste.</li>
+<li><strong>conref</strong> pulls an element from one topic into another.</li>
+<li><strong>keyref</strong> points to a key defined in a map, so the same topic behaves
+differently in different deliverables.</li>
+</ul>
+<p>Change the source once and every reference updates.</p>
+<h2>Conditional content</h2>
+<p>Attributes like <code>audience</code>, <code>product</code>, and <code>platform</code> let you tag content and then
+include or exclude it at publish time:</p>
+<pre><code class="language-xml">&lt;p audience=&quot;admin&quot;&gt;This step requires administrator rights.&lt;/p&gt;
+</code></pre>
+<p>A DITAVAL file decides whether that paragraph appears in a given output.</p>
+<div class="note"><strong>Mindset shift:</strong> Stop thinking in documents and start thinking in small, typed, reusable topics assembled by maps. Everything else in AEM Guides follows from that.</div>
+
+<h2>Troubleshooting the learning curve</h2>
+<ul>
+<li><strong>&quot;My topic won&#39;t validate.&quot;</strong> An element is in the wrong place. The editor&#39;s
+validation tells you where; DITA has strict content models on purpose.</li>
+<li><strong>&quot;Where did my formatting go?&quot;</strong> There isn&#39;t any in the source. Styling comes
+from the output template.</li>
+<li><strong>&quot;Why split into so many topics?&quot;</strong> Small topics reuse and translate far
+better. Aim for one idea per topic.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Think in small, typed, reusable topics. That mindset is what makes DITA. And AEM Guides. Powerful.</p>
+<p>Topics, maps, topic types, references, and conditions are the whole foundation.
+Master those five and you can read, write, and reason about any DITA content in
+AEM Guides.</p>
 
       </article>
       <div class="article-foot">

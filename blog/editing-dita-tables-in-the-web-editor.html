@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Editing DITA tables in the Web Editor | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Create and manage structured tables in AEM Guides without touching raw XML." />
+  <meta name="description" content="Build and manage structured tables in AEM Guides without touching raw XML: CALS vs simpletable, header rows, spanning cells, column widths, and accessibility." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Editing DITA tables in the Web Editor" />
-  <meta property="og:description" content="Create and manage structured tables in AEM Guides without touching raw XML." />
+  <meta property="og:description" content="Build and manage structured tables in AEM Guides without touching raw XML: CALS vs simpletable, header rows, spanning cells, column widths, and accessibility." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,95 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jun 6, 2025 · 1 min read</p>
+      <p class="article-meta">Jun 6, 2025 · 2 min read</p>
       <h1>Editing DITA tables in the Web Editor</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Tables are common in technical content, and the Web Editor makes them approachable.</p>
-<h2>Essentials</h2>
+        <p>Tables are everywhere in technical content, and DITA tables can look intimidating
+in raw XML. The good news: the AEM Guides Web Editor lets you build and edit them
+visually while keeping the markup valid. This guide covers the table types, the
+common operations, and the details that make tables accessible and publish-ready.</p>
+<h2>Two table models in DITA</h2>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Best for</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CALS <code>&lt;table&gt;</code></td>
+<td>Most tables</td>
+<td>Rich control: spans, column widths, header rows</td>
+</tr>
+<tr>
+<td><code>&lt;simpletable&gt;</code></td>
+<td>Simple grids</td>
+<td>Lightweight, fewer options, great for reference data</td>
+</tr>
+</tbody></table>
+<p>Use CALS when you need spanning or precise columns; use simpletable when you just
+need rows and columns of comparable data.</p>
+<h2>What a CALS table looks like</h2>
+<pre><code class="language-xml">&lt;table&gt;
+  &lt;tgroup cols=&quot;2&quot;&gt;
+    &lt;thead&gt;
+      &lt;row&gt;&lt;entry&gt;Setting&lt;/entry&gt;&lt;entry&gt;Description&lt;/entry&gt;&lt;/row&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;row&gt;&lt;entry&gt;Timeout&lt;/entry&gt;&lt;entry&gt;Seconds before the session ends.&lt;/entry&gt;&lt;/row&gt;
+    &lt;/tbody&gt;
+  &lt;/tgroup&gt;
+&lt;/table&gt;
+</code></pre>
+<p>You will rarely type this. The editor generates it as you work.</p>
+<h2>Steps to build a table</h2>
+<ol>
+<li>Place your cursor in a valid spot and choose <strong>Insert Table</strong>.</li>
+<li>Set the initial number of <strong>rows and columns</strong>.</li>
+<li>Mark the top row as a <strong>header</strong> so it repeats and styles correctly.</li>
+<li>Type your content cell by cell (Tab moves across).</li>
+<li>Add or remove rows and columns from the table toolbar as needed.</li>
+<li><strong>Merge cells</strong> to create spanning headers where the data calls for it.</li>
+</ol>
+<div class="shot">The Web Editor table toolbar with options to add rows, columns, and merge cells.</div>
+
+<h2>Column widths and spanning</h2>
+<pre><code class="language-mermaid">flowchart LR
+  A[colspec: define columns] --&gt; B[Set relative widths]
+  B --&gt; C[Header row repeats per page]
+  A --&gt; D[Span cells via namest/nameend]
+</code></pre>
 <ul>
-<li>Insert a table and set the number of rows and columns.</li>
-<li>Mark a <strong>header row</strong> so it repeats and styles correctly.</li>
-<li>Add or remove rows and columns from the toolbar.</li>
-<li>Merge cells for spanning headers where needed.</li>
+<li><strong>Column widths</strong> are controlled by <code>colspec</code> entries (often relative, like
+<code>1*</code> and <code>2*</code>).</li>
+<li><strong>Spanning</strong> uses <code>namest</code>/<code>nameend</code> for columns and <code>morerows</code> for rows. The
+editor&#39;s merge action writes these for you.</li>
+</ul>
+<h2>Accessibility and quality</h2>
+<ul>
+<li>Always mark a <strong>header row</strong> so assistive technology and output styling know it.</li>
+<li>Keep tables for <strong>tabular data</strong>, not layout. Use lists or sections for layout.</li>
+<li>Add a concise <code>&lt;title&gt;</code> to the table when it needs a caption.</li>
+</ul>
+<div class="note"><strong>Tip:</strong> A table used purely to position content will fight you in every output format. If it isn't data, it probably shouldn't be a table.</div>
+
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>&quot;Columns don&#39;t line up in PDF.&quot;</strong> Check your <code>colspec</code> widths; inconsistent or
+missing specs cause uneven columns.</li>
+<li><strong>&quot;The header repeats oddly across pages.&quot;</strong> Confirm the header is in <code>&lt;thead&gt;</code>,
+not the first <code>&lt;tbody&gt;</code> row.</li>
+<li><strong>&quot;Merge won&#39;t apply.&quot;</strong> You can only merge adjacent cells; select a valid
+rectangular range first.</li>
+<li><strong>&quot;Pasted table is a mess.&quot;</strong> Paste from Excel/Word can bring junk. Paste as
+plain text and rebuild, or clean it in Source view.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Build tables visually and let AEM Guides keep the DITA markup valid. No hand-editing required.</p>
+<p>Choose CALS for rich tables and simpletable for simple grids, build them visually,
+always mark a header row, and reserve tables for real data. The editor keeps the
+DITA valid so your tables publish and stay accessible everywhere.</p>
 
       </article>
       <div class="article-foot">

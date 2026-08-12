@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Creating your first DITA topic | Aswini Lakshminarayanan</title>
-  <meta name="description" content="How to author a clean, valid DITA topic in the AEM Guides Web Editor." />
+  <meta name="description" content="Author a clean, valid, reusable DITA topic in the AEM Guides Web Editor, from choosing a type to adding structure, metadata, and your first reuse-ready element." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Creating your first DITA topic" />
-  <meta property="og:description" content="How to author a clean, valid DITA topic in the AEM Guides Web Editor." />
+  <meta property="og:description" content="Author a clean, valid, reusable DITA topic in the AEM Guides Web Editor, from choosing a type to adding structure, metadata, and your first reuse-ready element." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,73 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">May 22, 2025 · 1 min read</p>
+      <p class="article-meta">May 22, 2025 · 2 min read</p>
       <h1>Creating your first DITA topic</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Topics are where your actual content lives. In AEM Guides you create them right in the browser.</p>
+        <p>Topics are where your real content lives. In AEM Guides you create them right in
+the browser, and the Web Editor keeps the underlying DITA valid while you write.
+This guide walks through creating a solid first topic and the habits that make it
+reusable from day one.</p>
+<h2>Before you start: one idea per topic</h2>
+<p>The single most useful rule in structured authoring: a topic should cover <strong>one
+idea</strong> and stand on its own. A reader who lands on it out of context should still
+understand it. That discipline is what makes topics reusable and translatable.</p>
 <h2>Steps</h2>
 <ol>
-<li>Create a new topic and pick a type (concept, task, or reference).</li>
-<li>Give it a clear <strong>title</strong> and short description.</li>
-<li>Write your content in the <strong>Web Editor</strong> using the toolbar for structure.</li>
-<li>Save; the editor keeps the underlying XML valid for you.</li>
+<li><p><strong>Create the topic.</strong> In your folder, choose <em>Create → DITA Topic</em> and select a
+type (concept, task, or reference).</p>
+</li>
+<li><p><strong>Write a precise title.</strong> Titles are navigation and search. &quot;Configure SSO&quot; is
+better than &quot;Configuration&quot;.</p>
+</li>
+<li><p><strong>Add a short description.</strong> The <code>&lt;shortdesc&gt;</code> becomes previews, search
+snippets, and link summaries.</p>
+<pre><code class="language-xml">&lt;concept id=&quot;configure-sso&quot;&gt;
+  &lt;title&gt;Configure single sign-on&lt;/title&gt;
+  &lt;shortdesc&gt;Connect your identity provider so users sign in once.&lt;/shortdesc&gt;
+  &lt;conbody&gt;
+    &lt;p&gt;...&lt;/p&gt;
+  &lt;/conbody&gt;
+&lt;/concept&gt;
+</code></pre>
+</li>
+<li><p><strong>Write the body</strong> using the toolbar to insert paragraphs, lists, notes, and
+tables. Stay in the visual view; switch to XML only when you want to.</p>
+<div class="shot">The Web Editor showing a topic with title, short description, and body content.</div>
+</li>
+<li><p><strong>Save.</strong> A version is recorded, so you can always look back.</p>
+</li>
 </ol>
+<h2>Author for reuse from the start</h2>
+<p>Give reusable elements an <strong>id</strong> so other topics can pull them in later with
+conref:</p>
+<pre><code class="language-xml">&lt;note id=&quot;admin-rights-note&quot;&gt;Administrator rights are required for this step.&lt;/note&gt;
+</code></pre>
+<p>Now any topic can reference <code>admin-rights-note</code> instead of repeating the warning.</p>
+<div class="note"><strong>Habit:</strong> Add ids to elements you suspect you'll reuse (warnings, product names, shared steps). It costs nothing now and saves editing later.</div>
+
+<h2>Add metadata</h2>
+<p>Set audience, product, or status metadata so the topic is filterable and
+governable later. Consistent metadata is what powers search, reports, and
+conditional publishing.</p>
+<h2>Validate as you go</h2>
+<p>The editor validates against the DITA content model. If an element is out of
+place, you&#39;ll see it immediately. This is a feature: it guarantees your content
+publishes and translates cleanly.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>&quot;Invalid element here.&quot;</strong> DITA has strict rules about what goes where. Move the
+element inside a valid parent (for example, a <code>&lt;p&gt;</code> inside <code>&lt;conbody&gt;</code>).</li>
+<li><strong>&quot;My short description isn&#39;t showing in previews.&quot;</strong> Confirm it&#39;s a real
+<code>&lt;shortdesc&gt;</code>, not a first paragraph.</li>
+<li><strong>&quot;The title has odd characters after publish.&quot;</strong> Check for stray formatting
+pasted from Word; paste as plain text.</li>
+</ul>
 <h2>Takeaway</h2>
-<p>Let the editor handle the XML. Focus on writing one clear idea per topic.</p>
+<p>Pick a type, write a precise title and short description, keep to one idea, add
+ids for reuse, and let validation guide you. Do that and your very first topic is
+already clean, reusable, and ready to publish.</p>
 
       </article>
       <div class="article-foot">

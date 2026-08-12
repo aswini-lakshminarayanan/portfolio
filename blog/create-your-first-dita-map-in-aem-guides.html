@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create your first DITA map in AEM Guides | Aswini Lakshminarayanan</title>
-  <meta name="description" content="A short walkthrough for assembling your first deliverable using a DITA map." />
+  <meta name="description" content="A hands-on walkthrough for building your first deliverable in AEM Guides: creating a map, adding topic references and hierarchy, using submaps, and previewing output." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Create your first DITA map in AEM Guides" />
-  <meta property="og:description" content="A short walkthrough for assembling your first deliverable using a DITA map." />
+  <meta property="og:description" content="A hands-on walkthrough for building your first deliverable in AEM Guides: creating a map, adding topic references and hierarchy, using submaps, and previewing output." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,90 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Feb 19, 2025 · 1 min read</p>
+      <p class="article-meta">Feb 19, 2025 · 2 min read</p>
       <h1>Create your first DITA map in AEM Guides</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>A <strong>map</strong> is the backbone of any deliverable in AEM Guides. It lists the topics to include and the order they appear in.</p>
+        <p>The <strong>map</strong> is the backbone of every deliverable in AEM Guides. It lists the
+topics to include, sets their order, and defines the hierarchy that becomes your
+table of contents. This walkthrough takes you from an empty folder to a
+structured, previewable map.</p>
+<h2>What a map actually is</h2>
+<p>A map is a small XML file of <strong>topic references</strong> (topicrefs). It holds no content
+itself; it points to topics and arranges them.</p>
+<pre><code class="language-xml">&lt;map&gt;
+  &lt;title&gt;Administrator Guide&lt;/title&gt;
+  &lt;topicref href=&quot;intro.dita&quot;/&gt;
+  &lt;topicref href=&quot;install.dita&quot;&gt;
+    &lt;topicref href=&quot;prereqs.dita&quot;/&gt;
+    &lt;topicref href=&quot;run-installer.dita&quot;/&gt;
+  &lt;/topicref&gt;
+&lt;/map&gt;
+</code></pre>
+<p>The nesting is your hierarchy: <code>prereqs</code> and <code>run-installer</code> become children of
+<code>install</code>.</p>
+<h2>The end goal</h2>
+<pre><code class="language-mermaid">flowchart TD
+  M[Administrator Guide map] --&gt; A[Introduction]
+  M --&gt; B[Installation]
+  B --&gt; B1[Prerequisites]
+  B --&gt; B2[Run the installer]
+  M --&gt; C[Configuration]
+</code></pre>
 <h2>Steps</h2>
 <ol>
-<li>In the Repository view, choose a folder and create a new <strong>DITA Map</strong>.</li>
-<li>Open it in the <strong>Map Editor</strong>.</li>
-<li>Add topic references (topicrefs) by dragging topics or creating new ones.</li>
-<li>Arrange them to set your table of contents.</li>
+<li><p><strong>Pick a home folder.</strong> In the Repository view, create or open a folder for
+this deliverable.</p>
+</li>
+<li><p><strong>Create the map.</strong> Choose <em>Create → DITA Map</em> and pick a map template. Give it
+a clear title.</p>
+</li>
+<li><p><strong>Open it in the Map Editor.</strong></p>
+<div class="shot">The Map Editor with an empty map open, ready to add topic references.</div>
+</li>
+<li><p><strong>Add topics.</strong> Drag existing topics in, or create new ones inline. Each becomes
+a topicref.</p>
+</li>
+<li><p><strong>Build hierarchy.</strong> Indent topicrefs to nest them. Indentation is your TOC
+structure.</p>
+</li>
+<li><p><strong>Set the title topic</strong> (optional) so the deliverable has a proper front page.</p>
+</li>
+<li><p><strong>Preview.</strong> Use the preview/generate option to see the assembled output.</p>
+</li>
 </ol>
+<h2>Organize with submaps</h2>
+<p>For anything beyond a small guide, split the map into <strong>submaps</strong> and reference
+them from a parent map:</p>
+<pre><code class="language-xml">&lt;map&gt;
+  &lt;title&gt;Product Documentation&lt;/title&gt;
+  &lt;mapref href=&quot;admin-guide.ditamap&quot;/&gt;
+  &lt;mapref href=&quot;user-guide.ditamap&quot;/&gt;
+&lt;/map&gt;
+</code></pre>
+<p>This keeps large projects modular and lets teams own sections independently.</p>
+<div class="note"><strong>Tip:</strong> Name maps by deliverable and submaps by section. A predictable naming scheme pays off as the project grows.</div>
+
+<h2>Metadata and keys in the map</h2>
+<p>Maps are also where you set deliverable-wide things:</p>
+<ul>
+<li><strong>Keys</strong> (keydef) for reusable values and links.</li>
+<li><strong>Metadata</strong> that applies to the whole publication.</li>
+<li><strong>Conditional presets</strong> (DITAVAL) for filtered outputs.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>A topic won&#39;t appear in output.</strong> Check that its topicref is inside the map
+and not accidentally set to <code>toc=&quot;no&quot;</code> or excluded by a condition.</li>
+<li><strong>Wrong order in the TOC.</strong> Order follows the map, top to bottom. Reorder the
+topicrefs.</li>
+<li><strong>Broken reference.</strong> If a topic moved, the href is stale. Prefer keyref for
+links that may move.</li>
+</ul>
 <h2>Takeaway</h2>
-<p>Start every project with a map. It becomes your outline, your TOC, and your publishing unit all at once.</p>
+<p>Start every project with a map. It is your outline, your table of contents, and
+your publishing unit at once. Get the structure right early, lean on submaps for
+scale, and the rest of authoring flows naturally.</p>
 
       </article>
       <div class="article-foot">

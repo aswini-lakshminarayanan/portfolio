@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Getting productive with the Web Editor | Aswini Lakshminarayanan</title>
-  <meta name="description" content="The AEM Guides Web Editor essentials that speed up day-to-day authoring." />
+  <meta name="description" content="A practical tour of the AEM Guides Web Editor: the views, inserting structure and references, tables, inline validation, autosave and versioning, and shortcuts that add up." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Getting productive with the Web Editor" />
-  <meta property="og:description" content="The AEM Guides Web Editor essentials that speed up day-to-day authoring." />
+  <meta property="og:description" content="A practical tour of the AEM Guides Web Editor: the views, inserting structure and references, tables, inline validation, autosave and versioning, and shortcuts that add up." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,20 +30,99 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Apr 9, 2025 · 1 min read</p>
+      <p class="article-meta">Apr 9, 2025 · 2 min read</p>
       <h1>Getting productive with the Web Editor</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>The <strong>Web Editor</strong> is where most authoring happens. No desktop tool required.</p>
-<h2>Handy features</h2>
+        <p>The <strong>Web Editor</strong> is where most authoring happens in AEM Guides, entirely in the
+browser with no desktop tool required. Learning its layout and a few habits turns
+it from unfamiliar to fast. This is the working tour.</p>
+<h2>The views you&#39;ll switch between</h2>
+<pre><code class="language-mermaid">flowchart LR
+  A[Author view&lt;br/&gt;WYSIWYG] &lt;--&gt; B[XML / Source view]
+  A --&gt; C[Preview]
+  B --&gt; C
+</code></pre>
 <ul>
-<li><strong>WYSIWYG and XML views</strong> to switch between writing and markup.</li>
-<li><strong>Inline validation</strong> so you catch structure errors early.</li>
-<li><strong>Quick insert</strong> for elements, tables, and references.</li>
-<li><strong>Autosave and versioning</strong> to protect your work.</li>
+<li><strong>Author view</strong> is a clean, WYSIWYG-style writing surface.</li>
+<li><strong>Source (XML) view</strong> shows the underlying DITA when you want precision.</li>
+<li><strong>Preview</strong> renders the topic closer to output.</li>
+</ul>
+<p>Most of the time you live in Author view and dip into Source only when needed.</p>
+<div class="shot">The Web Editor interface: toolbar, content area, and the element/structure panel.</div>
+
+<h2>Inserting structure</h2>
+<p>Use the toolbar or quick-insert to add elements without memorizing DITA:</p>
+<ul>
+<li>Paragraphs, ordered and unordered lists.</li>
+<li>Notes, warnings, and tips.</li>
+<li>Tables (with header rows and spanning).</li>
+<li>Images and media references.</li>
+<li>Cross-references and reused content.</li>
+</ul>
+<h2>Working with references, not copies</h2>
+<p>Two toolbar actions save you the most time long term:</p>
+<ul>
+<li><strong>Insert content reference (conref)</strong> to pull in a shared element.</li>
+<li><strong>Insert cross-reference / keyref</strong> to link without hard-coding paths.</li>
+</ul>
+<pre><code class="language-xml">&lt;p conref=&quot;warnings.dita#warnings/data-loss&quot;/&gt;
+</code></pre>
+<h2>Inline validation</h2>
+<p>As you edit, the editor checks your content against the DITA model and highlights
+problems in place. Treat these prompts as guardrails: fixing them as you go keeps
+publishing and translation trouble-free.</p>
+<h2>Autosave, versions, and locking</h2>
+<ul>
+<li><strong>Autosave</strong> protects work in progress.</li>
+<li><strong>Versions</strong> are recorded so you can compare and revert.</li>
+<li><strong>Locking / check-out</strong> prevents two authors clobbering each other.</li>
+</ul>
+<div class="note"><strong>Tip:</strong> Save intentionally at meaningful milestones and label important versions. It makes your history navigable, not just a wall of autosaves.</div>
+
+<h2>Shortcuts worth learning</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Why it helps</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Insert element</td>
+<td>Fastest way to add structure</td>
+</tr>
+<tr>
+<td>Bold / italic / inline code</td>
+<td>Common inline formatting</td>
+</tr>
+<tr>
+<td>Insert table</td>
+<td>Skips a lot of clicking</td>
+</tr>
+<tr>
+<td>Toggle source view</td>
+<td>Jump to XML for a quick fix</td>
+</tr>
+<tr>
+<td>Save</td>
+<td>Commit a version deliberately</td>
+</tr>
+</tbody></table>
+<p>Pick three you use hourly and commit them to muscle memory.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>&quot;I can&#39;t type where I want.&quot;</strong> The cursor is outside a valid text location.
+Click inside a paragraph or add one.</li>
+<li><strong>&quot;The toolbar option is greyed out.&quot;</strong> That element isn&#39;t valid at the current
+position; move to a valid parent.</li>
+<li><strong>&quot;My change vanished.&quot;</strong> Check whether you were editing a conref source vs. the
+reference, and confirm you saved.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Learn a few toolbar shortcuts and the Web Editor becomes as fast as any desktop authoring tool.</p>
+<p>Learn the three views, insert structure from the toolbar, prefer references over
+copies, and heed inline validation. A handful of shortcuts later, the Web Editor
+is as quick as any desktop authoring tool, with governance built in.</p>
 
       </article>
       <div class="article-foot">

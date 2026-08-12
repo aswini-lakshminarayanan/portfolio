@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Best practices for DITA map structure | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Design maps that stay manageable as your content grows." />
+  <meta name="description" content="How to design DITA maps that stay manageable at scale: submaps, shallow hierarchy, reusable vs deliverable maps, keys and metadata placement, and naming conventions." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Best practices for DITA map structure" />
-  <meta property="og:description" content="Design maps that stay manageable as your content grows." />
+  <meta property="og:description" content="How to design DITA maps that stay manageable at scale: submaps, shallow hierarchy, reusable vs deliverable maps, keys and metadata placement, and naming conventions." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,98 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Feb 8, 2025 · 1 min read</p>
+      <p class="article-meta">Feb 8, 2025 · 2 min read</p>
       <h1>Best practices for DITA map structure</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Strategy</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Strategy</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>A good map structure keeps large projects navigable and reusable.</p>
-<h2>Guidelines</h2>
+        <p>A good map structure is the difference between a documentation set that scales
+gracefully and one that becomes a tangle nobody wants to touch. Because maps
+define assembly, reuse, keys, and metadata, they deserve deliberate design. Here
+is a pragmatic set of practices.</p>
+<h2>Think in modules, like software</h2>
+<p>Treat maps the way you would treat code: small, composable, and reusable. A large
+publication should be a <strong>parent map</strong> that references <strong>submaps</strong>, each owning a
+coherent section.</p>
+<pre><code class="language-mermaid">flowchart TD
+  P[Product Docs&lt;br/&gt;parent map] --&gt; A[Admin Guide&lt;br/&gt;submap]
+  P --&gt; U[User Guide&lt;br/&gt;submap]
+  P --&gt; R[API Reference&lt;br/&gt;submap]
+  A --&gt; A1[Install topics]
+  A --&gt; A2[Configure topics]
+</code></pre>
+<h2>Separate reusable maps from deliverable maps</h2>
+<p>Keep two kinds of maps distinct:</p>
 <ul>
-<li>Use <strong>submaps</strong> to break big deliverables into parts.</li>
-<li>Keep hierarchy shallow and logical.</li>
-<li>Separate reusable submaps from deliverable-specific ones.</li>
+<li><strong>Deliverable maps</strong> define a specific output (the &quot;Admin Guide PDF&quot;).</li>
+<li><strong>Reusable/library maps</strong> group topics meant to be pulled into many
+deliverables (shared legal, shared setup).</li>
+</ul>
+<p>Referencing a reusable submap into multiple deliverables means one edit updates
+them all.</p>
+<h2>Keep hierarchy shallow</h2>
+<p>Deep nesting (5+ levels) produces confusing tables of contents and brittle
+structure. Aim for <strong>2 to 4 levels</strong>. If you need more, that is usually a sign to
+split into a submap.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>TOC is 6 levels deep</td>
+<td>Break a branch into a submap</td>
+</tr>
+<tr>
+<td>One map has 200+ topicrefs</td>
+<td>Split by section into submaps</td>
+</tr>
+<tr>
+<td>Same topics copied across maps</td>
+<td>Extract a reusable submap</td>
+</tr>
+</tbody></table>
+<h2>Put keys and metadata where they belong</h2>
+<ul>
+<li><p>Define <strong>keys (keydef)</strong> in a high-level map (often a dedicated key-definitions
+map) so values are managed centrally.</p>
+<pre><code class="language-xml">&lt;map&gt;
+  &lt;keydef keys=&quot;product-name&quot;&gt;&lt;topicmeta&gt;&lt;keywords&gt;&lt;keyword&gt;Acme Cloud&lt;/keyword&gt;&lt;/keywords&gt;&lt;/topicmeta&gt;&lt;/keydef&gt;
+  &lt;keydef keys=&quot;support-url&quot; href=&quot;https://support.example.com&quot; scope=&quot;external&quot; format=&quot;html&quot;/&gt;
+&lt;/map&gt;
+</code></pre>
+</li>
+<li><p>Apply <strong>publication-wide metadata</strong> on the parent map; apply section-specific
+metadata on submaps.</p>
+</li>
+</ul>
+<div class="note"><strong>Pattern:</strong> A parent map that references a key-definitions map plus several section submaps is a structure that scales to thousands of topics without pain.</div>
+
+<h2>Naming conventions</h2>
+<p>Consistency here saves hours later:</p>
+<ul>
+<li>Name deliverable maps by output: <code>admin-guide.ditamap</code>.</li>
+<li>Name submaps by section: <code>admin-install.ditamap</code>.</li>
+<li>Name the key map clearly: <code>keydefs.ditamap</code>.</li>
+<li>Keep topic filenames descriptive and lowercase.</li>
+</ul>
+<h2>Troubleshooting structural problems</h2>
+<ul>
+<li><strong>&quot;Reordering is painful.&quot;</strong> Your map is too monolithic. Submaps make sections
+independently reorderable.</li>
+<li><strong>&quot;Keys resolve differently per output.&quot;</strong> That&#39;s intended: define keys per
+deliverable map to vary values. Verify each map&#39;s key definitions.</li>
+<li><strong>&quot;Duplicate content across guides.&quot;</strong> Extract the shared topics into a reusable
+submap and reference it.</li>
+<li><strong>&quot;Broken links after a reorg.&quot;</strong> Prefer keyref over direct href so links
+survive moves.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Design your maps like software modules: small, composable, and reusable across deliverables.</p>
+<p>Design maps like modular software: shallow hierarchy, submaps per section,
+separate reusable libraries, and centralized keys and metadata. Add clear naming
+and your documentation set will scale from one guide to an entire product line
+without a rewrite.</p>
 
       </article>
       <div class="article-foot">

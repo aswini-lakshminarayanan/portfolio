@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Concept, task, reference: choosing a topic type | Aswini Lakshminarayanan</title>
-  <meta name="description" content="A quick guide to the three core DITA topic types and when to use each." />
+  <meta name="description" content="A deep look at DITA's three core topic types, how their structure differs, when to use each, and how to avoid the most common typing mistakes in AEM Guides." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Concept, task, reference: choosing a topic type" />
-  <meta property="og:description" content="A quick guide to the three core DITA topic types and when to use each." />
+  <meta property="og:description" content="A deep look at DITA's three core topic types, how their structure differs, when to use each, and how to avoid the most common typing mistakes in AEM Guides." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,21 +30,120 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jan 28, 2025 · 1 min read</p>
+      <p class="article-meta">Jan 28, 2025 · 2 min read</p>
       <h1>Concept, task, reference: choosing a topic type</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">DITA</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">DITA</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>DITA&#39;s three main topic types keep content consistent and reusable.</p>
-<h2>The three types</h2>
+        <p>DITA&#39;s information typing is one of its quiet superpowers. By writing each piece
+of content as a specific <strong>type</strong>, you get predictable structure, better reuse,
+and cleaner output. AEM Guides supports the three core types plus glossary and
+troubleshooting types. This guide focuses on getting the core three right.</p>
+<h2>The decision in one picture</h2>
+<pre><code class="language-mermaid">flowchart TD
+  Q{What is the reader doing?} --&gt;|Understanding| C[Concept]
+  Q --&gt;|Doing a task| T[Task]
+  Q --&gt;|Looking something up| R[Reference]
+  C --&gt; C1[Background, definitions, why it matters]
+  T --&gt; T1[Ordered steps to a goal]
+  R --&gt; R1[Tables, parameters, specs]
+</code></pre>
+<p>Ask one question: <em>what is the reader trying to do?</em> The answer picks the type.</p>
+<h2>Concept topics</h2>
+<p>Concepts explain <strong>what</strong> something is or <strong>why</strong> it matters. They give
+background and build understanding, but they do not give instructions.</p>
+<pre><code class="language-xml">&lt;concept id=&quot;about-baselines&quot;&gt;
+  &lt;title&gt;About baselines&lt;/title&gt;
+  &lt;conbody&gt;
+    &lt;p&gt;A baseline captures specific versions of every topic in a map...&lt;/p&gt;
+  &lt;/conbody&gt;
+&lt;/concept&gt;
+</code></pre>
+<p>Use when: introducing a feature, explaining an architecture, defining terms.</p>
+<h2>Task topics</h2>
+<p>Tasks are the workhorses of documentation. They give <strong>ordered steps</strong> to reach a
+goal, and they have a strict, helpful structure.</p>
+<pre><code class="language-xml">&lt;task id=&quot;create-baseline&quot;&gt;
+  &lt;title&gt;Create a baseline&lt;/title&gt;
+  &lt;taskbody&gt;
+    &lt;prereq&gt;You have publish permission.&lt;/prereq&gt;
+    &lt;steps&gt;
+      &lt;step&gt;&lt;cmd&gt;Open the map.&lt;/cmd&gt;&lt;/step&gt;
+      &lt;step&gt;&lt;cmd&gt;Choose Create Baseline.&lt;/cmd&gt;
+        &lt;info&gt;Give it a clear, dated name.&lt;/info&gt;
+      &lt;/step&gt;
+    &lt;/steps&gt;
+    &lt;result&gt;The baseline is saved and ready to publish from.&lt;/result&gt;
+  &lt;/taskbody&gt;
+&lt;/task&gt;
+</code></pre>
+<p>Use when: any procedure. If it has steps, it is a task.</p>
+<h2>Reference topics</h2>
+<p>References hold <strong>lookup</strong> information you scan rather than read: parameter
+tables, specifications, API fields, error codes.</p>
+<pre><code class="language-xml">&lt;reference id=&quot;output-formats&quot;&gt;
+  &lt;title&gt;Supported output formats&lt;/title&gt;
+  &lt;refbody&gt;
+    &lt;table&gt;...&lt;/table&gt;
+  &lt;/refbody&gt;
+&lt;/reference&gt;
+</code></pre>
+<p>Use when: the reader needs facts fast, not narrative.</p>
+<h2>Comparison at a glance</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Concept</th>
+<th>Task</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Answers</td>
+<td>What / why</td>
+<td>How</td>
+<td>Which / what value</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>Prose</td>
+<td>Ordered steps</td>
+<td>Tables and lists</td>
+</tr>
+<tr>
+<td>Reader mode</td>
+<td>Learning</td>
+<td>Doing</td>
+<td>Looking up</td>
+</tr>
+<tr>
+<td>Reuse potential</td>
+<td>High</td>
+<td>High</td>
+<td>Very high</td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Best practice:</strong> Keep types pure. If a concept starts sprouting numbered steps, split the steps into a separate task and link them.</div>
+
+<h2>Common mistakes and fixes</h2>
 <ul>
-<li><strong>Concept</strong>. Explains what something is or why it matters.</li>
-<li><strong>Task</strong>. Step-by-step instructions to accomplish a goal.</li>
-<li><strong>Reference</strong>. Lookup information like tables, parameters, or specs.</li>
+<li><strong>Everything is a &quot;topic&quot; (generic).</strong> Generic topics lose the structural
+benefits. Prefer a specific type whenever you can.</li>
+<li><strong>A task with no steps.</strong> If there are no steps, it is probably a concept.</li>
+<li><strong>A concept stuffed with procedures.</strong> Split it; link the concept to the task.</li>
+<li><strong>Reference content written as prose.</strong> Convert to a table so readers can scan.</li>
 </ul>
-<h2>Rule of thumb</h2>
-<p>Ask what the reader is doing: understanding (concept), doing (task), or looking up (reference).</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>&quot;Which type for release notes?&quot;</strong> Usually a concept or a reference (a table of
+changes), not a task.</li>
+<li><strong>&quot;Where do warnings go?&quot;</strong> Inside the relevant step or paragraph, not as their
+own topic type.</li>
+</ul>
 <h2>Takeaway</h2>
-<p>Matching content to the right topic type makes it predictable to write, reuse, and read.</p>
+<p>Match content to the reader&#39;s mode: concept for understanding, task for doing,
+reference for looking up. Consistent typing makes your content easier to write,
+reuse, translate, and read.</p>
 
       </article>
       <div class="article-foot">
