@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chunking topics for reuse and publishing | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Right-size your topics so they reuse and publish cleanly." />
+  <meta name="description" content="Right-size and combine topics with DITA chunking in AEM Guides: the chunk attribute, by-topic vs by-document output, and how chunking affects reuse and HTML pages." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Chunking topics for reuse and publishing" />
-  <meta property="og:description" content="Right-size your topics so they reuse and publish cleanly." />
+  <meta property="og:description" content="Right-size and combine topics with DITA chunking in AEM Guides: the chunk attribute, by-topic vs by-document output, and how chunking affects reuse and HTML pages." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,94 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Oct 22, 2025 · 1 min read</p>
+      <p class="article-meta">Oct 22, 2025 · 2 min read</p>
       <h1>Chunking topics for reuse and publishing</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Strategy</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Strategy</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p><strong>Chunking</strong> controls how topics combine into output pages. Get it right and reuse becomes effortless.</p>
-<h2>Principles</h2>
+        <p>Two questions sit behind clean DITA output: how big should a topic be, and how
+should topics combine into output pages? The answer to the first is a writing
+discipline; the answer to the second is <strong>chunking</strong>. Get both right and your
+content reuses cleanly and publishes to sensible pages.</p>
+<h2>First, right-size your topics</h2>
+<p>The golden rule stays: <strong>one idea per topic</strong>. A topic too large won&#39;t reuse; a
+topic too small can&#39;t stand alone.</p>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely problem</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Topic covers 3 features</td>
+<td>Too large</td>
+<td>Split by feature</td>
+</tr>
+<tr>
+<td>A topic is one sentence</td>
+<td>Too small</td>
+<td>Merge into its parent concept/task</td>
+</tr>
+<tr>
+<td>Can&#39;t reuse a section</td>
+<td>Buried inside a big topic</td>
+<td>Extract it into its own topic</td>
+</tr>
+</tbody></table>
+<h2>Then, control output with chunking</h2>
+<p>The <code>chunk</code> attribute tells the publisher how to combine topics into output
+documents (especially for HTML, where it controls page boundaries).</p>
+<pre><code class="language-xml">&lt;!-- Combine this branch into a single output page --&gt;
+&lt;topicref href=&quot;install.dita&quot; chunk=&quot;to-content&quot;&gt;
+  &lt;topicref href=&quot;prereqs.dita&quot;/&gt;
+  &lt;topicref href=&quot;run-installer.dita&quot;/&gt;
+&lt;/topicref&gt;
+
+&lt;!-- Split each nested topic into its own page --&gt;
+&lt;topicref href=&quot;reference.dita&quot; chunk=&quot;by-topic&quot;&gt;
+  &lt;topicref href=&quot;param-a.dita&quot;/&gt;
+  &lt;topicref href=&quot;param-b.dita&quot;/&gt;
+&lt;/topicref&gt;
+</code></pre>
+<pre><code class="language-mermaid">flowchart TD
+  A[chunk = to-content] --&gt; A1[One combined page]
+  B[chunk = by-topic] --&gt; B1[Page per topic]
+</code></pre>
 <ul>
-<li>One topic = one idea.</li>
-<li>Avoid topics too large to reuse or too small to stand alone.</li>
-<li>Use chunking attributes to control page generation.</li>
+<li><strong>to-content</strong> merges a branch into a single page.</li>
+<li><strong>by-topic</strong> produces a separate page per topic.</li>
+</ul>
+<div class="note"><strong>Why it matters:</strong> Chunking decides how your HTML5 output is paginated and how deep-linking and search behave. It's the bridge between authoring structure and reading experience.</div>
+
+<h2>Chunking and reuse together</h2>
+<p>Small, well-typed topics are the unit of reuse; chunking then assembles them into
+the right output shape. Author for reuse first (many small topics), and use
+chunking to present them as coherent pages, rather than writing giant topics just
+to get one output page.</p>
+<div class="shot">The Map Editor showing a topicref with the chunk attribute set in the properties panel.</div>
+
+<h2>Best practices</h2>
+<ul>
+<li>Author <strong>small and typed</strong>; assemble with chunking.</li>
+<li>Use <strong>to-content</strong> for short, closely related sequences you want on one page.</li>
+<li>Use <strong>by-topic</strong> for reference collections where each item deserves its own URL.</li>
+<li>Be consistent so readers get predictable page sizes.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>HTML pages are too long or too short.</strong> Adjust <code>chunk</code> on the relevant
+topicrefs rather than merging or splitting the source topics.</li>
+<li><strong>Deep links break.</strong> Combining topics with to-content changes anchor/URL
+structure; verify links after changing chunking.</li>
+<li><strong>PDF unaffected by chunking changes.</strong> Chunking mainly influences topic-based
+output like HTML; PDF flows the whole map regardless.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Well-chunked topics are the unit of reuse. Size them for reuse first, output second.</p>
+<p>Size topics for reuse (one idea each), then use the <code>chunk</code> attribute to assemble
+them into the right output pages. Keeping authoring granularity and output
+pagination as separate decisions gives you both maximum reuse and a clean reading
+experience.</p>
 
       </article>
       <div class="article-foot">

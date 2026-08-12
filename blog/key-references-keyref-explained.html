@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Key references (keyref) explained | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Why keyref makes your reuse flexible and context-aware." />
+  <meta name="description" content="Why keyref is the most flexible reuse mechanism in DITA: indirection through keys, per-map redefinition, links and variables, and how it beats hard-coded paths." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Key references (keyref) explained" />
-  <meta property="og:description" content="Why keyref makes your reuse flexible and context-aware." />
+  <meta property="og:description" content="Why keyref is the most flexible reuse mechanism in DITA: indirection through keys, per-map redefinition, links and variables, and how it beats hard-coded paths." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,96 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Feb 3, 2025 · 1 min read</p>
+      <p class="article-meta">Feb 3, 2025 · 2 min read</p>
       <h1>Key references (keyref) explained</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reuse</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reuse</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p><strong>Keyref</strong> points to a <em>key</em> defined in a map instead of a fixed file path. That indirection makes content portable across deliverables.</p>
-<h2>Why it matters</h2>
+        <p>If conref reuses <em>content</em>, <strong>keyref</strong> reuses through <em>indirection</em>. Instead of
+pointing at a fixed file or element, you point at a <strong>key</strong>, and a map decides what
+that key means. That one layer of indirection is what makes DITA content portable
+across products, releases, and outputs.</p>
+<h2>The core idea</h2>
+<pre><code class="language-mermaid">flowchart TD
+  T[&quot;Topic: uses key &#39;product-name&#39;&quot;] --&gt; K{Key lookup}
+  K --&gt;|Map A| V1[&quot;Acme Cloud&quot;]
+  K --&gt;|Map B| V2[&quot;Acme Cloud Pro&quot;]
+</code></pre>
+<p>The topic never changes. The <strong>map</strong> binds the key to a value, so the same topic
+reads &quot;Acme Cloud&quot; in one deliverable and &quot;Acme Cloud Pro&quot; in another.</p>
+<h2>Defining and using a key</h2>
+<p>Define the key in a map with <code>keydef</code>:</p>
+<pre><code class="language-xml">&lt;map&gt;
+  &lt;keydef keys=&quot;product-name&quot;&gt;
+    &lt;topicmeta&gt;&lt;keywords&gt;&lt;keyword&gt;Acme Cloud&lt;/keyword&gt;&lt;/keywords&gt;&lt;/topicmeta&gt;
+  &lt;/keydef&gt;
+  &lt;keydef keys=&quot;support-portal&quot; href=&quot;https://support.example.com&quot;
+          scope=&quot;external&quot; format=&quot;html&quot;/&gt;
+&lt;/map&gt;
+</code></pre>
+<p>Reference it in a topic:</p>
+<pre><code class="language-xml">&lt;p&gt;Welcome to &lt;keyword keyref=&quot;product-name&quot;/&gt;.&lt;/p&gt;
+&lt;p&gt;Visit the &lt;xref keyref=&quot;support-portal&quot;&gt;support portal&lt;/xref&gt;.&lt;/p&gt;
+</code></pre>
+<h2>Why keyref beats hard-coded values and paths</h2>
+<table>
+<thead>
+<tr>
+<th>Problem with direct references</th>
+<th>How keyref solves it</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Product renamed everywhere</td>
+<td>Change one keydef</td>
+</tr>
+<tr>
+<td>Same topic, different product</td>
+<td>Redefine keys per map</td>
+</tr>
+<tr>
+<td>File moved, links broke</td>
+<td>Keys resolve through the map, not paths</td>
+</tr>
+<tr>
+<td>External URL changed</td>
+<td>Update one keydef</td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Rule of thumb:</strong> Any value or link that might change, or that differs across deliverables, belongs behind a key.</div>
+
+<h2>Keys for links, variables, and reused topics</h2>
 <ul>
-<li>Swap a key&#39;s definition per map to reuse the same topic in different contexts.</li>
-<li>Manage product names, URLs, and links centrally.</li>
-<li>Avoid broken links when files move.</li>
+<li><strong>Variables:</strong> product names, version numbers, UI labels.</li>
+<li><strong>Links:</strong> internal cross-references and external URLs.</li>
+<li><strong>Reused topics:</strong> <code>conkeyref</code> combines keyref indirection with conref reuse.</li>
+</ul>
+<h2>A per-deliverable pattern</h2>
+<p>Keep a <strong>key-definitions map</strong> per deliverable and reference it from the
+deliverable map:</p>
+<pre><code class="language-xml">&lt;map&gt;
+  &lt;title&gt;Acme Cloud Pro Guide&lt;/title&gt;
+  &lt;mapref href=&quot;keys-pro.ditamap&quot;/&gt;
+  &lt;mapref href=&quot;shared-content.ditamap&quot;/&gt;
+&lt;/map&gt;
+</code></pre>
+<p>Swap <code>keys-pro.ditamap</code> for <code>keys-standard.ditamap</code> and the same content publishes
+for a different edition.</p>
+<div class="shot">A key-definitions map open in the Map Editor, listing keydefs for product name and URLs.</div>
+
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Key not resolving (shows blank or the key name).</strong> The key isn&#39;t defined in a
+map in scope, or the deliverable map doesn&#39;t reference the key map.</li>
+<li><strong>Wrong value appears.</strong> Two maps define the same key; the effective one wins by
+map precedence. Check which key map is referenced.</li>
+<li><strong>Link goes nowhere.</strong> For external links, confirm <code>scope=&quot;external&quot;</code> and
+<code>format=&quot;html&quot;</code> on the keydef.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Use keyref when the same topic must behave differently across outputs. It&#39;s reuse with flexibility built in.</p>
+<p>keyref adds a single, powerful layer of indirection: topics reference keys, maps
+define them. Put every changeable value and link behind a key, keep per-deliverable
+key maps, and your content becomes reusable across products and releases without a
+single hard-coded path.</p>
 
       </article>
       <div class="article-foot">

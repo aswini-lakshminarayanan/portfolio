@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cross-references and links best practices | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Link the DITA way so nothing breaks when content moves." />
+  <meta name="description" content="Link the DITA way in AEM Guides: xref vs keyref vs reltables, internal vs external links, scope and format attributes, and how to keep links from breaking." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Cross-references and links best practices" />
-  <meta property="og:description" content="Link the DITA way so nothing breaks when content moves." />
+  <meta property="og:description" content="Link the DITA way in AEM Guides: xref vs keyref vs reltables, internal vs external links, scope and format attributes, and how to keep links from breaking." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,95 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">May 19, 2025 · 1 min read</p>
+      <p class="article-meta">May 19, 2025 · 2 min read</p>
       <h1>Cross-references and links best practices</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Authoring</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Prefer structured links. <strong>xref</strong>, <strong>keyref</strong>, and <strong>reltables</strong>. Over raw URLs inside topics.</p>
-<h2>Guidelines</h2>
+        <p>Links are where documentation quietly breaks. A reorganized folder, a renamed
+file, or a reused topic can turn a helpful cross-reference into a dead end. DITA
+gives you several linking mechanisms, and choosing the right one for each job is
+what keeps links durable. This guide lays out the options and the rules.</p>
+<h2>The three ways to link</h2>
+<pre><code class="language-mermaid">flowchart TD
+  Q{What kind of link?} --&gt;|Tightly coupled, same context| X[xref direct]
+  Q --&gt;|Might move / varies by output| K[keyref]
+  Q --&gt;|Related topics, managed centrally| R[reltable]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Best for</th>
+<th>Durability</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>xref</code> (direct href)</td>
+<td>Links inside tightly coupled content</td>
+<td>Breaks if target moves</td>
+</tr>
+<tr>
+<td><code>keyref</code></td>
+<td>Links that may move or vary per deliverable</td>
+<td>Survives moves</td>
+</tr>
+<tr>
+<td>Reltable</td>
+<td>Related-topic links across a deliverable</td>
+<td>Managed centrally</td>
+</tr>
+</tbody></table>
+<h2>Internal links</h2>
+<p>Prefer keyref for internal links so a reorganization doesn&#39;t shatter them:</p>
+<pre><code class="language-xml">&lt;!-- keydef in a map --&gt;
+&lt;keydef keys=&quot;configure-sso&quot; href=&quot;topics/configure-sso.dita&quot;/&gt;
+
+&lt;!-- in a topic --&gt;
+&lt;xref keyref=&quot;configure-sso&quot;&gt;Configure single sign-on&lt;/xref&gt;
+</code></pre>
+<p>Direct xref is fine for a link between two topics that always travel together:</p>
+<pre><code class="language-xml">&lt;xref href=&quot;sso-parameters.dita&quot;&gt;SSO parameters&lt;/xref&gt;
+</code></pre>
+<h2>External links</h2>
+<p>External links need <code>scope</code> and <code>format</code> so the publisher treats them correctly:</p>
+<pre><code class="language-xml">&lt;keydef keys=&quot;support-url&quot; href=&quot;https://support.example.com&quot;
+        scope=&quot;external&quot; format=&quot;html&quot;/&gt;
+
+&lt;xref keyref=&quot;support-url&quot;&gt;support portal&lt;/xref&gt;
+</code></pre>
+<div class="note"><strong>Rule of thumb:</strong> If a link target could ever move, or the same topic ships in multiple products, use keyref. Reserve direct xref for content that is genuinely inseparable.</div>
+
+<h2>Link text and accessibility</h2>
 <ul>
-<li>Use keyref for links that may change or vary by output.</li>
-<li>Use reltables for related-topic links.</li>
-<li>Reserve direct xref for tightly coupled content.</li>
+<li>Use meaningful link text (&quot;Configure SSO&quot;), never &quot;click here&quot;.</li>
+<li>For keyref links, you can let the target&#39;s title supply the text, keeping link
+labels consistent automatically.</li>
+</ul>
+<div class="shot">The Web Editor "Insert Cross-Reference" dialog with the keyref option selected.</div>
+
+<h2>Best practices summary</h2>
+<ul>
+<li>Default to <strong>keyref</strong> for internal and external links.</li>
+<li>Use <strong>reltables</strong> for related-topic sections instead of hand-coding them.</li>
+<li>Keep external URLs in the <strong>key map</strong>, not scattered in topics.</li>
+<li>Run <strong>link validation</strong> before every release.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Broken link after reorg.</strong> A direct href pointed at a moved file. Convert to
+keyref.</li>
+<li><strong>External link renders as plain text.</strong> Missing <code>scope=&quot;external&quot;</code> and
+<code>format=&quot;html&quot;</code> on the keydef.</li>
+<li><strong>Link text is empty.</strong> For keyref, ensure the target has a title or provide
+explicit link text.</li>
+<li><strong>Duplicate related links.</strong> Hard-coded links plus a reltable; remove the
+hard-coded ones.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Structured linking survives reorganization and reuse. Avoid hard-coded paths wherever you can.</p>
+<p>Choose the linking mechanism by durability: keyref for anything that might move,
+reltables for related-topic sets, and direct xref only for inseparable content.
+Centralize external URLs, write meaningful link text, and validate links each
+release. Do that and broken links stop being a recurring chore.</p>
 
       </article>
       <div class="article-foot">

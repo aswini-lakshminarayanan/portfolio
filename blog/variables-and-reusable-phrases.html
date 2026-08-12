@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Variables and reusable phrases | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Handle product names and repeated phrases without copy-paste." />
+  <meta name="description" content="How to manage product names, versions, and repeated phrases in AEM Guides using keys and conref, so a rebrand or version bump is a single, safe edit." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Variables and reusable phrases" />
-  <meta property="og:description" content="Handle product names and repeated phrases without copy-paste." />
+  <meta property="og:description" content="How to manage product names, versions, and repeated phrases in AEM Guides using keys and conref, so a rebrand or version bump is a single, safe edit." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,92 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Apr 2, 2025 · 1 min read</p>
+      <p class="article-meta">Apr 2, 2025 · 2 min read</p>
       <h1>Variables and reusable phrases</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reuse</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reuse</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Reusable phrases (via conref or keyref) let you define text once. Like a product name. And reuse it everywhere.</p>
-<h2>Benefits</h2>
+        <p>Every documentation set has phrases that repeat everywhere: the product name, the
+current version, a company name, a UI label. Hard-coding them means a rebrand or
+version bump turns into a repository-wide find-and-pray. DITA gives you two clean
+ways to handle these &quot;variables&quot; so one edit updates everything.</p>
+<h2>Two techniques, one goal</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Repeated phrase] --&gt; B{Type of value?}
+  B --&gt;|Short word or link| C[&quot;keyref to a keydef&quot;]
+  B --&gt;|Block of content| D[&quot;conref / conkeyref&quot;]
+  C --&gt; E[One edit updates all]
+  D --&gt; E
+</code></pre>
 <ul>
-<li>Rebrand or rename in a single edit.</li>
-<li>Guarantee consistent terminology.</li>
-<li>Reduce review effort.</li>
+<li><strong>keyref</strong> is best for short values: names, versions, labels, URLs.</li>
+<li><strong>conref / conkeyref</strong> is best for larger reused blocks: a standard note, a
+paragraph, a set of steps.</li>
+</ul>
+<h2>Variables with keyref</h2>
+<p>Define once:</p>
+<pre><code class="language-xml">&lt;keydef keys=&quot;product-name&quot;&gt;
+  &lt;topicmeta&gt;&lt;keywords&gt;&lt;keyword&gt;Acme Cloud&lt;/keyword&gt;&lt;/keywords&gt;&lt;/topicmeta&gt;
+&lt;/keydef&gt;
+&lt;keydef keys=&quot;release&quot;&gt;&lt;topicmeta&gt;&lt;keywords&gt;&lt;keyword&gt;2025.3&lt;/keyword&gt;&lt;/keywords&gt;&lt;/topicmeta&gt;&lt;/keydef&gt;
+</code></pre>
+<p>Use anywhere:</p>
+<pre><code class="language-xml">&lt;p&gt;&lt;keyword keyref=&quot;product-name&quot;/&gt; version &lt;keyword keyref=&quot;release&quot;/&gt;
+introduces native PDF publishing.&lt;/p&gt;
+</code></pre>
+<p>Rebrand or bump the version by editing two keydefs.</p>
+<h2>Reusable phrases and blocks with conref</h2>
+<p>For anything longer than a word, reuse the element itself:</p>
+<pre><code class="language-xml">&lt;!-- library/phrases.dita --&gt;
+&lt;p id=&quot;trademark&quot;&gt;Acme and the Acme logo are trademarks of Acme Inc.&lt;/p&gt;
+
+&lt;!-- anywhere --&gt;
+&lt;p conref=&quot;library/phrases.dita#phrases/trademark&quot;/&gt;
+</code></pre>
+<div class="note"><strong>Rule:</strong> Words and links go behind keys; sentences and blocks go behind conref. Both give you a single source of truth.</div>
+
+<h2>Build a variables library</h2>
+<p>Keep a small, well-known set of source files:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Holds</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>keydefs.ditamap</code></td>
+<td>Product name, versions, URLs, UI labels</td>
+</tr>
+<tr>
+<td><code>library/phrases.dita</code></td>
+<td>Trademark, boilerplate, standard notes</td>
+</tr>
+<tr>
+<td><code>library/prereqs.dita</code></td>
+<td>Reusable prerequisite steps</td>
+</tr>
+</tbody></table>
+<p>Everyone references these; nobody retypes them.</p>
+<div class="shot">A variables/keydefs map alongside a phrases library topic in the Repository view.</div>
+
+<h2>Translation bonus</h2>
+<p>Variables shine in localization: a phrase reused via conref or a key is
+<strong>translated once at the source</strong>, not everywhere it appears, which cuts cost and
+guarantees consistency across languages.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Version updated in the keydef but not in output.</strong> Confirm the deliverable map
+references the correct key map and re-generate.</li>
+<li><strong>Phrase reads oddly mid-sentence.</strong> Variables inside sentences can create
+grammar issues across languages; keep variable phrases self-contained where
+possible.</li>
+<li><strong>Two different values for the same concept.</strong> Someone hard-coded it instead of
+using the key. Search and replace, then point it at the key.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Any phrase you repeat is a candidate for reuse. Define it once and let references do the rest.</p>
+<p>Treat product names, versions, and repeated phrases as managed variables: keys for
+short values, conref for blocks. Maintain a small variables library everyone uses,
+and a rebrand or release bump becomes a one-line change instead of a migration.</p>
 
       </article>
       <div class="article-foot">

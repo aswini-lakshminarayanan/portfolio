@@ -83,13 +83,14 @@
     "slug": "relationship-tables-reltables-made-simple",
     "date": "2025-12-02T00:00:00.000Z",
     "dateLabel": "Dec 2, 2025",
-    "excerpt": "Manage related links centrally instead of hand-coding them in topics.",
+    "excerpt": "Manage related links centrally with DITA relationship tables: how reltables work, linking concept-task-reference, keeping topics portable, and common pitfalls.",
     "tags": [
       "AEM Guides",
-      "DITA"
+      "DITA",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Reports and analytics in AEM Guides",
@@ -135,26 +136,28 @@
     "slug": "content-fragments-vs-dita-reuse-which-when",
     "date": "2025-10-28T00:00:00.000Z",
     "dateLabel": "Oct 28, 2025",
-    "excerpt": "A quick decision guide for two different reuse mechanisms in AEM.",
+    "excerpt": "AEM Sites content fragments and AEM Guides DITA reuse both promise reuse, but solve different problems. A clear comparison and a decision guide for when to use each.",
     "tags": [
       "AEM Guides",
-      "Strategy"
+      "Strategy",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Chunking topics for reuse and publishing",
     "slug": "chunking-topics-for-reuse-and-publishing",
     "date": "2025-10-22T00:00:00.000Z",
     "dateLabel": "Oct 22, 2025",
-    "excerpt": "Right-size your topics so they reuse and publish cleanly.",
+    "excerpt": "Right-size and combine topics with DITA chunking in AEM Guides: the chunk attribute, by-topic vs by-document output, and how chunking affects reuse and HTML pages.",
     "tags": [
       "AEM Guides",
-      "Strategy"
+      "Strategy",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Running a review in AEM Guides",
@@ -201,13 +204,14 @@
     "slug": "key-definitions-keydef-in-your-maps",
     "date": "2025-09-23T00:00:00.000Z",
     "dateLabel": "Sep 23, 2025",
-    "excerpt": "Centralize values and links with key definitions.",
+    "excerpt": "Where and how to define keys in AEM Guides: keydef syntax for text, links, and media, key scopes and precedence, a central key map pattern, and governance tips.",
     "tags": [
       "AEM Guides",
-      "Reuse"
+      "Reuse",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "AEM Guides as a Cloud Service: what's different",
@@ -370,13 +374,14 @@
     "slug": "reusing-content-with-content-references-conref",
     "date": "2025-06-17T00:00:00.000Z",
     "dateLabel": "Jun 17, 2025",
-    "excerpt": "Write a paragraph once and pull it into many topics with conref.",
+    "excerpt": "A deep, practical guide to conref in AEM Guides: how it works, conref vs conref push vs conkeyref, valid targets, a worked example, and how to avoid broken references.",
     "tags": [
       "AEM Guides",
-      "Reuse"
+      "Reuse",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Migrating FrameMaker content to AEM Guides",
@@ -424,13 +429,14 @@
     "slug": "cross-references-and-links-best-practices",
     "date": "2025-05-19T00:00:00.000Z",
     "dateLabel": "May 19, 2025",
-    "excerpt": "Link the DITA way so nothing breaks when content moves.",
+    "excerpt": "Link the DITA way in AEM Guides: xref vs keyref vs reltables, internal vs external links, scope and format attributes, and how to keep links from breaking.",
     "tags": [
       "AEM Guides",
-      "Authoring"
+      "Authoring",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Integrating AEM Guides with AEM Sites",
@@ -503,13 +509,14 @@
     "slug": "variables-and-reusable-phrases",
     "date": "2025-04-02T00:00:00.000Z",
     "dateLabel": "Apr 2, 2025",
-    "excerpt": "Handle product names and repeated phrases without copy-paste.",
+    "excerpt": "How to manage product names, versions, and repeated phrases in AEM Guides using keys and conref, so a rebrand or version bump is a single, safe edit.",
     "tags": [
       "AEM Guides",
-      "Reuse"
+      "Reuse",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Managing large documentation projects",
@@ -636,13 +643,14 @@
     "slug": "key-references-keyref-explained",
     "date": "2025-02-03T00:00:00.000Z",
     "dateLabel": "Feb 3, 2025",
-    "excerpt": "Why keyref makes your reuse flexible and context-aware.",
+    "excerpt": "Why keyref is the most flexible reuse mechanism in DITA: indirection through keys, per-map redefinition, links and variables, and how it beats hard-coded paths.",
     "tags": [
       "AEM Guides",
-      "Reuse"
+      "Reuse",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Concept, task, reference: choosing a topic type",

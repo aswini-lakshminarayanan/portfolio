@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content fragments vs DITA reuse: which when? | Aswini Lakshminarayanan</title>
-  <meta name="description" content="A quick decision guide for two different reuse mechanisms in AEM." />
+  <meta name="description" content="AEM Sites content fragments and AEM Guides DITA reuse both promise reuse, but solve different problems. A clear comparison and a decision guide for when to use each." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Content fragments vs DITA reuse: which when?" />
-  <meta property="og:description" content="A quick decision guide for two different reuse mechanisms in AEM." />
+  <meta property="og:description" content="AEM Sites content fragments and AEM Guides DITA reuse both promise reuse, but solve different problems. A clear comparison and a decision guide for when to use each." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,18 +30,101 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Oct 28, 2025 · 1 min read</p>
+      <p class="article-meta">Oct 28, 2025 · 2 min read</p>
       <h1>Content fragments vs DITA reuse: which when?</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Strategy</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Strategy</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>AEM Sites offers <strong>content fragments</strong>; AEM Guides offers <strong>DITA reuse</strong>. They solve different problems.</p>
-<h2>Rough guide</h2>
+        <p>Two teams inside the same AEM ecosystem hear &quot;reuse&quot; and mean very different
+things. <strong>AEM Sites content fragments</strong> and <strong>AEM Guides DITA reuse</strong> are both
+legitimate, powerful, and easy to confuse. This guide draws the line so you pick
+the right tool, or combine them deliberately.</p>
+<h2>What each one is</h2>
 <ul>
-<li><strong>DITA reuse</strong> for structured, versioned technical content and multi-format publishing.</li>
-<li><strong>Content fragments</strong> for channel-agnostic marketing content delivered via APIs.</li>
+<li><strong>Content fragments (AEM Sites)</strong> are channel-agnostic content objects, edited in
+AEM and delivered through APIs (often headless) to websites, apps, and other
+front ends.</li>
+<li><strong>DITA reuse (AEM Guides)</strong> is structured technical content reused through
+conref, keyref, and maps, and published to formats like PDF and HTML5.</li>
+</ul>
+<h2>Side-by-side</h2>
+<table>
+<thead>
+<tr>
+<th>Dimension</th>
+<th>Content fragments</th>
+<th>DITA reuse</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Primary use</td>
+<td>Marketing/experience content, headless delivery</td>
+<td>Technical documentation at scale</td>
+</tr>
+<tr>
+<td>Structure</td>
+<td>Model-based fields</td>
+<td>DITA topics, maps, elements</td>
+</tr>
+<tr>
+<td>Reuse unit</td>
+<td>Fragment / fragment element</td>
+<td>Topic, element (conref), key (keyref)</td>
+</tr>
+<tr>
+<td>Delivery</td>
+<td>APIs / rendered pages</td>
+<td>PDF, HTML5, and more via presets</td>
+</tr>
+<tr>
+<td>Versioning/translation</td>
+<td>AEM features</td>
+<td>Built for modular docs; only changed topics re-translate</td>
+</tr>
+<tr>
+<td>Audience</td>
+<td>Web/app teams</td>
+<td>Documentation teams</td>
+</tr>
+</tbody></table>
+<h2>A decision guide</h2>
+<pre><code class="language-mermaid">flowchart TD
+  Q{What are you producing?} --&gt;|Docs, guides, help| D[DITA reuse in AEM Guides]
+  Q --&gt;|Web/app experience content| F[Content fragments in AEM Sites]
+  D --&gt; D1[conref, keyref, maps, presets]
+  F --&gt; F1[Models, GraphQL/REST delivery]
+  Q --&gt;|Both| B[Use each for its strength]
+</code></pre>
+<div class="note"><strong>Short version:</strong> If the deliverable is documentation published to PDF/HTML5, reach for DITA reuse. If it's structured content served to web/app front ends via API, reach for content fragments.</div>
+
+<h2>When they meet</h2>
+<p>They are not mutually exclusive. Common combinations:</p>
+<ul>
+<li>Publish <strong>DITA output to AEM Sites</strong> so documentation lives inside your web
+experience with shared branding and navigation.</li>
+<li>Surface small, shared snippets as content fragments for marketing while keeping
+the authoritative technical content in DITA.</li>
+</ul>
+<h2>Anti-patterns to avoid</h2>
+<ul>
+<li><strong>Rebuilding a CCMS with content fragments.</strong> Fragments lack DITA&#39;s topic typing,
+conditional publishing, and print-grade output. Don&#39;t force documentation into
+them.</li>
+<li><strong>Using DITA to hand marketing raw web copy.</strong> If the need is headless delivery
+of flexible content, fragments fit better.</li>
+</ul>
+<h2>Troubleshooting the decision</h2>
+<ul>
+<li><strong>&quot;We need print/PDF.&quot;</strong> That&#39;s DITA. Content fragments are not built for
+print-grade output.</li>
+<li><strong>&quot;We need GraphQL delivery to a mobile app.&quot;</strong> That&#39;s content fragments.</li>
+<li><strong>&quot;We need audience/product conditional variants of a manual.&quot;</strong> That&#39;s DITA
+conditional publishing.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Pick DITA reuse for documentation depth; pick content fragments for headless delivery. They can coexist.</p>
+<p>Content fragments and DITA reuse are complementary, not competing. Choose DITA
+reuse for structured documentation and multi-format publishing; choose content
+fragments for headless, experience-driven delivery. When it helps, let DITA output
+flow into Sites so both worlds share one front door.</p>
 
       </article>
       <div class="article-foot">

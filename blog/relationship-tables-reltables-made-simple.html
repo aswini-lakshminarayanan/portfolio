@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Relationship tables (reltables) made simple | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Manage related links centrally instead of hand-coding them in topics." />
+  <meta name="description" content="Manage related links centrally with DITA relationship tables: how reltables work, linking concept-task-reference, keeping topics portable, and common pitfalls." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Relationship tables (reltables) made simple" />
-  <meta property="og:description" content="Manage related links centrally instead of hand-coding them in topics." />
+  <meta property="og:description" content="Manage related links centrally with DITA relationship tables: how reltables work, linking concept-task-reference, keeping topics portable, and common pitfalls." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,91 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Dec 2, 2025 · 1 min read</p>
+      <p class="article-meta">Dec 2, 2025 · 2 min read</p>
       <h1>Relationship tables (reltables) made simple</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">DITA</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">DITA</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>A <strong>relationship table (reltable)</strong> in a map defines links between topics. For example, linking each task to its related concept and reference.</p>
-<h2>Why use one</h2>
+        <p>Hard-coding &quot;related links&quot; into every topic is a maintenance trap: links rot,
+duplicate, and make topics less reusable. DITA&#39;s <strong>relationship table (reltable)</strong>
+lets you define links between topics <strong>in the map</strong>, keeping topics clean and
+links centrally managed. This guide makes the concept concrete.</p>
+<h2>The problem reltables solve</h2>
+<p>A topic that hard-codes links to five related topics is coupled to them. Move or
+reuse it elsewhere and those links may not make sense. A reltable moves that
+knowledge into the map, where it belongs.</p>
+<h2>How a reltable is structured</h2>
+<p>A reltable lives in a map and links topics by role, classically
+concept-to-task-to-reference:</p>
+<pre><code class="language-xml">&lt;reltable&gt;
+  &lt;relheader&gt;
+    &lt;relcolspec type=&quot;concept&quot;/&gt;
+    &lt;relcolspec type=&quot;task&quot;/&gt;
+    &lt;relcolspec type=&quot;reference&quot;/&gt;
+  &lt;/relheader&gt;
+  &lt;relrow&gt;
+    &lt;relcell&gt;&lt;topicref href=&quot;about-sso.dita&quot;/&gt;&lt;/relcell&gt;
+    &lt;relcell&gt;&lt;topicref href=&quot;configure-sso.dita&quot;/&gt;&lt;/relcell&gt;
+    &lt;relcell&gt;&lt;topicref href=&quot;sso-parameters.dita&quot;/&gt;&lt;/relcell&gt;
+  &lt;/relcell&gt;&lt;/relrow&gt;
+&lt;/reltable&gt;
+</code></pre>
+<p>Topics in the same <strong>row</strong> become related; the output engine generates the
+&quot;related links&quot; automatically.</p>
+<pre><code class="language-mermaid">flowchart LR
+  C[Concept: About SSO] --- T[Task: Configure SSO]
+  T --- R[Reference: SSO parameters]
+  C --- R
+</code></pre>
+<h2>Why authors love them</h2>
+<table>
+<thead>
+<tr>
+<th>Without reltables</th>
+<th>With reltables</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Links hard-coded in each topic</td>
+<td>Links defined once in the map</td>
+</tr>
+<tr>
+<td>Topics coupled to specific links</td>
+<td>Topics stay portable</td>
+</tr>
+<tr>
+<td>Inconsistent related-links sections</td>
+<td>Consistent, generated automatically</td>
+</tr>
+<tr>
+<td>Painful to update</td>
+<td>Change the row, done</td>
+</tr>
+</tbody></table>
+<div class="note"><strong>Mental model:</strong> A reltable row says "these topics are related." The publisher turns that into cross-links so you never write related-links sections by hand.</div>
+
+<div class="shot">The Map Editor showing a relationship table with concept, task, and reference columns.</div>
+
+<h2>Best practices</h2>
 <ul>
-<li>Keep topics free of hard-coded related links.</li>
-<li>Manage relationships in one place.</li>
-<li>Generate consistent &quot;related links&quot; sections automatically.</li>
+<li><strong>One row per relationship cluster</strong> (a concept with its task and reference).</li>
+<li>Combine with <strong>keyref</strong> so links survive file moves.</li>
+<li>Keep reltables in the deliverable map (or a dedicated relationships submap) so
+they are easy to find and own.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Related links not appearing.</strong> Confirm your output type generates links from
+reltables and that the topics are actually referenced by the map.</li>
+<li><strong>Links point the wrong way.</strong> Check column roles; linking is driven by the
+row/column structure.</li>
+<li><strong>Duplicate links.</strong> You likely have both hard-coded links in topics and a
+reltable. Remove the hard-coded ones.</li>
+<li><strong>Broken link after a move.</strong> Prefer keyref inside relcells over direct href.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Reltables keep your topics portable and your cross-links consistent across the whole deliverable.</p>
+<p>Reltables move related-link management out of your topics and into the map, keeping
+topics portable and cross-links consistent. Define relationships once per row, lean
+on keyref for durability, and let the publisher generate the links for you.</p>
 
       </article>
       <div class="article-foot">

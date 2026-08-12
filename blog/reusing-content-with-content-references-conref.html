@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reusing content with content references (conref) | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Write a paragraph once and pull it into many topics with conref." />
+  <meta name="description" content="A deep, practical guide to conref in AEM Guides: how it works, conref vs conref push vs conkeyref, valid targets, a worked example, and how to avoid broken references." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Reusing content with content references (conref)" />
-  <meta property="og:description" content="Write a paragraph once and pull it into many topics with conref." />
+  <meta property="og:description" content="A deep, practical guide to conref in AEM Guides: how it works, conref vs conref push vs conkeyref, valid targets, a worked example, and how to avoid broken references." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,21 +30,107 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jun 17, 2025 · 1 min read</p>
+      <p class="article-meta">Jun 17, 2025 · 2 min read</p>
       <h1>Reusing content with content references (conref)</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reuse</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reuse</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>A <strong>content reference (conref)</strong> pulls an element from one topic into another. Update the source, and every place that references it updates too.</p>
-<h2>Good candidates for conref</h2>
+        <p>Copy-paste is the quiet enemy of large documentation sets: the same warning drifts
+into five slightly different versions, and updating them all is a chore nobody
+enjoys. DITA&#39;s <strong>content reference (conref)</strong> solves this by letting you write an
+element once and pull it into as many topics as you like. This guide goes beyond
+the basics into the variants and pitfalls.</p>
+<h2>How conref works</h2>
+<p>You give a source element an <strong>id</strong>, then reference it elsewhere. At publish and
+edit time, the reference resolves to the source content.</p>
+<pre><code class="language-xml">&lt;!-- Source topic: warnings.dita --&gt;
+&lt;note id=&quot;data-loss&quot; type=&quot;warning&quot;&gt;
+  Backing up is irreversible. Verify the target before you continue.
+&lt;/note&gt;
+
+&lt;!-- Reusing topic --&gt;
+&lt;note conref=&quot;warnings.dita#warnings/data-loss&quot;/&gt;
+</code></pre>
+<p>Update the source once and every reference reflects it.</p>
+<pre><code class="language-mermaid">flowchart TD
+  S[&quot;Source element&lt;br/&gt;(id = data-loss)&quot;] --&gt; R1[Topic A]
+  S --&gt; R2[Topic B]
+  S --&gt; R3[Topic C]
+  S -.edit once.-&gt; S
+</code></pre>
+<h2>conref, conref push, and conkeyref</h2>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>Direction</th>
+<th>Use it when</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>conref</code></td>
+<td>Pull source into current topic</td>
+<td>The common case: reuse a shared element</td>
+</tr>
+<tr>
+<td><code>conref push</code></td>
+<td>Push content into a target from elsewhere</td>
+<td>You can&#39;t edit the target but must inject content</td>
+</tr>
+<tr>
+<td><code>conkeyref</code></td>
+<td>Reference by key, not path</td>
+<td>The source location varies per deliverable</td>
+</tr>
+</tbody></table>
+<p><code>conkeyref</code> combines conref&#39;s element reuse with keyref&#39;s indirection, so the same
+reference can resolve to different sources in different maps.</p>
+<h2>What you can conref</h2>
 <ul>
-<li>Warnings and safety notices.</li>
-<li>Product names and boilerplate.</li>
-<li>Shared steps or notes.</li>
+<li>Whole blocks: notes, paragraphs, list items, steps, table rows.</li>
+<li>The rule: the <strong>source element type must match</strong> where you insert it. You can&#39;t
+conref a <code>&lt;step&gt;</code> into a place that expects a <code>&lt;p&gt;</code>.</li>
 </ul>
-<h2>How it works</h2>
-<p>Give the source element an <strong>id</strong>, then reference it from other topics.</p>
+<div class="note"><strong>Good candidates:</strong> safety warnings, product names and boilerplate, shared prerequisites, repeated steps, and standard legal text.</div>
+
+<h2>A worked example: a reusable prerequisite</h2>
+<pre><code class="language-xml">&lt;!-- library/prereqs.dita --&gt;
+&lt;task id=&quot;prereqs&quot;&gt;
+  &lt;taskbody&gt;
+    &lt;steps&gt;
+      &lt;step id=&quot;admin-access&quot;&gt;&lt;cmd&gt;Ensure you have administrator access.&lt;/cmd&gt;&lt;/step&gt;
+    &lt;/steps&gt;
+  &lt;/taskbody&gt;
+&lt;/task&gt;
+
+&lt;!-- any task that needs it --&gt;
+&lt;step conref=&quot;library/prereqs.dita#prereqs/admin-access&quot;/&gt;
+</code></pre>
+<div class="shot">The Web Editor "Insert Content Reference" dialog browsing to a source element.</div>
+
+<h2>Best practices</h2>
+<ul>
+<li><strong>Keep a reuse library.</strong> A dedicated folder of source topics (warnings,
+prereqs, boilerplate) makes reuse discoverable.</li>
+<li><strong>Reference, don&#39;t fork.</strong> If you need a slight variant, consider conditions
+rather than a separate copy.</li>
+<li><strong>Prefer conkeyref for portability</strong> when the same content ships in multiple
+products.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Broken conref after a move.</strong> Direct conref uses a path; moving the source
+breaks it. Use conkeyref, or update references (search and replace helps).</li>
+<li><strong>&quot;Element not allowed here.&quot;</strong> The source type doesn&#39;t match the target
+location. Reuse a matching element type.</li>
+<li><strong>Edited the reference, nothing changed.</strong> You edited the resolved copy, not the
+source. Open and edit the source element.</li>
+<li><strong>Circular reference.</strong> A conref that points back to itself won&#39;t resolve; break
+the loop.</li>
+</ul>
 <h2>Takeaway</h2>
-<p>Conref eliminates copy-paste drift. Maintain one source of truth and reuse it everywhere.</p>
+<p>conref turns repetition into a single source of truth. Learn the three variants
+(conref, conref push, conkeyref), keep a tidy reuse library, and prefer key-based
+references for portability. Your warnings and boilerplate will never drift again.</p>
 
       </article>
       <div class="article-foot">

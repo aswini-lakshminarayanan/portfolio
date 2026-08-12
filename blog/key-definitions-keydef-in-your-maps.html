@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Key definitions (keydef) in your maps | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Centralize values and links with key definitions." />
+  <meta name="description" content="Where and how to define keys in AEM Guides: keydef syntax for text, links, and media, key scopes and precedence, a central key map pattern, and governance tips." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Key definitions (keydef) in your maps" />
-  <meta property="og:description" content="Centralize values and links with key definitions." />
+  <meta property="og:description" content="Where and how to define keys in AEM Guides: keydef syntax for text, links, and media, key scopes and precedence, a central key map pattern, and governance tips." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,83 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Sep 23, 2025 · 1 min read</p>
+      <p class="article-meta">Sep 23, 2025 · 2 min read</p>
       <h1>Key definitions (keydef) in your maps</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reuse</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reuse</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>A <strong>key definition (keydef)</strong> assigns a value to a key in a map. Topics reference the key, and the map controls the value.</p>
-<h2>Common uses</h2>
+        <p>Keys are only as good as the definitions behind them. A <strong>key definition
+(keydef)</strong> binds a key name to a value: a piece of text, a link target, or a
+media file. Getting your keydefs organized is what makes keyref reliable across a
+large documentation set. This guide covers the syntax, scope rules, and a clean
+pattern to manage them.</p>
+<h2>Anatomy of a keydef</h2>
+<pre><code class="language-xml">&lt;!-- Text value --&gt;
+&lt;keydef keys=&quot;product-name&quot;&gt;
+  &lt;topicmeta&gt;&lt;keywords&gt;&lt;keyword&gt;Acme Cloud&lt;/keyword&gt;&lt;/keywords&gt;&lt;/topicmeta&gt;
+&lt;/keydef&gt;
+
+&lt;!-- External link --&gt;
+&lt;keydef keys=&quot;support-url&quot; href=&quot;https://support.example.com&quot;
+        scope=&quot;external&quot; format=&quot;html&quot;/&gt;
+
+&lt;!-- Internal topic target --&gt;
+&lt;keydef keys=&quot;install-topic&quot; href=&quot;topics/install.dita&quot;/&gt;
+
+&lt;!-- Reusable image --&gt;
+&lt;keydef keys=&quot;logo&quot; href=&quot;images/logo.png&quot; format=&quot;png&quot;/&gt;
+</code></pre>
+<p>One keydef, referenced anywhere by <code>keyref</code>, <code>conkeyref</code>, or <code>href=&quot;...keyref&quot;</code>.</p>
+<h2>Where definitions live and how they win</h2>
+<pre><code class="language-mermaid">flowchart TD
+  D[Deliverable map] --&gt; KM[keydefs.ditamap]
+  D --&gt; C[Content submaps]
+  KM --&gt; K1[product-name]
+  KM --&gt; K2[support-url]
+  D -. first definition wins .-&gt; KM
+</code></pre>
 <ul>
-<li>Product names and version numbers.</li>
-<li>External URLs.</li>
-<li>Reusable link targets.</li>
+<li>Keys are resolved within the <strong>root map</strong> being published.</li>
+<li>If the same key is defined more than once, <strong>the first definition encountered
+wins</strong> (map order and key scopes matter).</li>
+<li><strong>Key scopes</strong> let you namespace keys so the same key name can mean different
+things in different branches of a large map.</li>
+</ul>
+<h2>The central key-map pattern</h2>
+<p>Keep keydefs out of content and in a dedicated map:</p>
+<pre><code class="language-xml">&lt;map&gt;
+  &lt;title&gt;Product Guide&lt;/title&gt;
+  &lt;mapref href=&quot;keydefs.ditamap&quot;/&gt;   &lt;!-- all keys here --&gt;
+  &lt;mapref href=&quot;admin.ditamap&quot;/&gt;
+  &lt;mapref href=&quot;user.ditamap&quot;/&gt;
+&lt;/map&gt;
+</code></pre>
+<p>Then maintain edition-specific key maps (<code>keydefs-pro.ditamap</code>,
+<code>keydefs-lite.ditamap</code>) and swap them per deliverable.</p>
+<div class="note"><strong>Governance tip:</strong> One team should own the key map. Uncontrolled keydefs scattered across content maps are the main cause of "why is this key showing the wrong value?"</div>
+
+<div class="shot">The keydefs map in the Map Editor, showing text, link, and media key definitions.</div>
+
+<h2>Naming keys well</h2>
+<ul>
+<li>Use clear, stable names: <code>product-name</code>, <code>support-url</code>, <code>min-version</code>.</li>
+<li>Group by prefix for large sets: <code>ui-</code>, <code>url-</code>, <code>img-</code>.</li>
+<li>Avoid encoding the value in the name (<code>product-name</code>, not <code>acme-cloud</code>), so the
+value can change without renaming the key.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Wrong value resolves.</strong> A duplicate keydef earlier in the map wins. Search for
+the key across your maps and consolidate.</li>
+<li><strong>Key works in one guide, not another.</strong> The second deliverable map doesn&#39;t
+reference the key map, or references a different one.</li>
+<li><strong>Key scope confusion.</strong> If you use <code>keyscope</code>, remember keys are namespaced;
+reference them with the scope prefix where required.</li>
+<li><strong>Media key not rendering.</strong> Check the <code>format</code> attribute matches the file type.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Keydefs put variable content under central control, so one edit updates every topic that uses it.</p>
+<p>Define keys deliberately in a dedicated, owned key map, understand that the first
+definition wins, and use edition-specific key maps to vary a build. Well-managed
+keydefs are the foundation that makes all keyref-based reuse dependable.</p>
 
       </article>
       <div class="article-foot">
