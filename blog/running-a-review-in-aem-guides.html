@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Running a review in AEM Guides | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Send content for review and collect feedback without leaving the platform." />
+  <meta name="description" content="Replace scattered PDF markups with in-context reviews. The AEM Guides review workflow end to end: starting a review, roles, collecting feedback, and closing the loop." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Running a review in AEM Guides" />
-  <meta property="og:description" content="Send content for review and collect feedback without leaving the platform." />
+  <meta property="og:description" content="Replace scattered PDF markups with in-context reviews. The AEM Guides review workflow end to end: starting a review, roles, collecting feedback, and closing the loop." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,85 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Oct 15, 2025 · 1 min read</p>
+      <p class="article-meta">Oct 15, 2025 · 2 min read</p>
       <h1>Running a review in AEM Guides</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reviews</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reviews</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>The built-in <strong>review workflow</strong> lets subject-matter experts comment on content in context.</p>
-<h2>Flow</h2>
+        <p>Reviews are where documentation quality is won or lost, and email-and-PDF markups
+are where it goes to die. AEM Guides has a built-in <strong>review workflow</strong> that lets
+subject-matter experts comment on content in context, in the browser, with
+everything tracked. This guide walks the workflow end to end.</p>
+<h2>The review loop</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Author starts review] --&gt; B[Add reviewers + due date]
+  B --&gt; C[Reviewers comment in context]
+  C --&gt; D[Author addresses feedback]
+  D --&gt; E{More rounds?}
+  E --&gt;|Yes| C
+  E --&gt;|No| F[Close review]
+</code></pre>
+<h2>Roles in a review</h2>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Can do</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Author / initiator</td>
+<td>Start the review, choose content and reviewers, resolve comments</td>
+</tr>
+<tr>
+<td>Reviewer / SME</td>
+<td>Read and comment in context; usually cannot edit content</td>
+</tr>
+<tr>
+<td>Approver (optional)</td>
+<td>Sign off that content is ready</td>
+</tr>
+</tbody></table>
+<p>Separating &quot;comment&quot; from &quot;edit&quot; keeps the source clean: reviewers suggest, the
+author decides.</p>
+<h2>Steps to run one</h2>
 <ol>
-<li>Author starts a review and adds reviewers.</li>
-<li>Reviewers annotate and comment in the browser.</li>
-<li>The author addresses feedback and closes the review.</li>
+<li>Select the <strong>topics or map</strong> to review.</li>
+<li><strong>Start a review</strong>, add reviewers, and set a due date.</li>
+<li>Reviewers open the review and <strong>annotate</strong> specific text with comments.</li>
+<li>The author works through comments, <strong>replying</strong> and making edits.</li>
+<li>Resolve each thread; start another round if needed.</li>
+<li><strong>Close</strong> the review when everything is addressed.</li>
 </ol>
+<div class="shot">A review in progress: highlighted text with a threaded comment from a reviewer.</div>
+
+<div class="note"><strong>Why in-context matters:</strong> Comments attached to the exact text remove ambiguity. No more "page 12, second paragraph, third sentence" in an email.</div>
+
+<h2>Getting quality feedback</h2>
+<ul>
+<li>Give reviewers a clear <strong>scope and deadline</strong>.</li>
+<li>Ask for <strong>specific, actionable</strong> comments, not vague reactions.</li>
+<li>Use <strong>threads</strong> to resolve discussion in place.</li>
+<li>Track <strong>status</strong> so nothing slips through unresolved.</li>
+</ul>
+<h2>Reviews and versioning</h2>
+<p>Closing a review naturally leads into labeling the approved versions and building a
+baseline for the release. The review workflow and version control work hand in
+hand.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Reviewer can&#39;t comment.</strong> Check their permission/role for the review.</li>
+<li><strong>Comments feel lost.</strong> Use the review&#39;s comment list to track open vs resolved
+threads.</li>
+<li><strong>Edits during review confuse reviewers.</strong> Agree on whether the author edits live
+or after each round; be consistent.</li>
+<li><strong>Review scope too big.</strong> Break large maps into smaller review units so feedback
+stays focused.</li>
+</ul>
 <h2>Takeaway</h2>
-<p>In-context reviews replace scattered email and PDF markups with a single, trackable conversation.</p>
+<p>The built-in review workflow turns feedback into a single, trackable, in-context
+conversation. Scope it, invite the right SMEs, collect actionable comments, resolve
+threads, and close the loop, then label and baseline the approved result. It&#39;s how
+quality becomes a process instead of a scramble.</p>
 
       </article>
       <div class="article-foot">

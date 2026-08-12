@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Creating snapshots for a release | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Capture a point-in-time copy of content for a specific release." />
+  <meta name="description" content="A repeatable release process in AEM Guides using labels and baselines: freeze content, publish every output, archive the snapshot, and reproduce it on demand." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Creating snapshots for a release" />
-  <meta property="og:description" content="Capture a point-in-time copy of content for a specific release." />
+  <meta property="og:description" content="A repeatable release process in AEM Guides using labels and baselines: freeze content, publish every output, archive the snapshot, and reproduce it on demand." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,80 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Nov 4, 2025 · 1 min read</p>
+      <p class="article-meta">Nov 4, 2025 · 2 min read</p>
       <h1>Creating snapshots for a release</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Snapshots (via baselines and labels) freeze content so a release stays reproducible.</p>
-<h2>Practical steps</h2>
+        <p>A &quot;snapshot&quot; is the disciplined act of freezing a point-in-time copy of content for
+a specific release, so you can publish it now and reproduce it later. In AEM Guides
+this is built from <strong>labels</strong> and <strong>baselines</strong>. This guide turns those features
+into a repeatable release checklist.</p>
+<h2>The release snapshot flow</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Content approved] --&gt; B[Label approved versions]
+  B --&gt; C[Create baseline from labels]
+  C --&gt; D[Publish all outputs from baseline]
+  D --&gt; E[Archive baseline + outputs]
+  E --&gt; F[Reproduce release on demand]
+</code></pre>
+<h2>Step-by-step</h2>
+<ol>
+<li><strong>Approve</strong> the content (reviews complete, status = approved).</li>
+<li><strong>Label</strong> the approved version of every topic and map in the deliverable, using
+a dated release name.</li>
+<li><strong>Create a baseline</strong> from those labels, so the exact versions are frozen.</li>
+<li><strong>Publish every output</strong> (PDF, HTML5, and any variants) from that baseline.</li>
+<li><strong>Archive</strong> the baseline name and generated outputs in a known location.</li>
+<li><strong>Record</strong> which preset/template versions were used, so the look is
+reproducible too.</li>
+</ol>
+<div class="shot">A baseline named for the release, with its published PDF and HTML5 outputs archived.</div>
+
+<div class="note"><strong>Why archive the template too:</strong> A baseline freezes content versions, not the output template. To reproduce a release pixel-for-pixel, note the template/preset versions alongside the baseline.</div>
+
+<h2>What a good snapshot gives you</h2>
+<table>
+<thead>
+<tr>
+<th>Benefit</th>
+<th>Because</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Reproducibility</td>
+<td>Baseline fixes every topic version</td>
+</tr>
+<tr>
+<td>Auditability</td>
+<td>Labels document what shipped</td>
+</tr>
+<tr>
+<td>Parallel work</td>
+<td>Next version can be authored freely</td>
+</tr>
+<tr>
+<td>Fast hotfixes</td>
+<td>Branch from the snapshot, fix, republish</td>
+</tr>
+</tbody></table>
+<h2>Snapshots and hotfixes</h2>
+<p>When a shipped release needs a correction, start from its baseline, make the
+minimal change, label and baseline again (for example <code>v2.0.1</code>), and republish.
+You fix exactly what shipped without dragging in unrelated in-progress work.</p>
+<h2>Troubleshooting</h2>
 <ul>
-<li>Label the approved versions.</li>
-<li>Create a baseline from those labels.</li>
-<li>Publish outputs from the baseline.</li>
+<li><strong>Snapshot isn&#39;t reproducible.</strong> You changed the template/preset since release;
+version those too and record which were used.</li>
+<li><strong>Baseline includes drafts.</strong> It captured latest instead of labeled versions;
+recreate from labels.</li>
+<li><strong>Can&#39;t find last release&#39;s snapshot.</strong> Adopt a naming and retention convention
+for baselines and archived outputs.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>A disciplined snapshot process means you can always rebuild exactly what you shipped.</p>
+<p>A release snapshot is just labels plus a baseline plus archived outputs, done
+consistently. Approve, label, baseline, publish, archive, and note the template
+versions. That six-step ritual makes every release reproducible, auditable, and
+safe to build on.</p>
 
       </article>
       <div class="article-foot">

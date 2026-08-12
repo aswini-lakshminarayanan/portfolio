@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Collaborative comments and annotations | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Get the most out of review comments for faster sign-off." />
+  <meta name="description" content="Get the most from AEM Guides review comments: threaded annotations, resolving vs rejecting feedback, comment status tracking, and etiquette that speeds sign-off." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Collaborative comments and annotations" />
-  <meta property="og:description" content="Get the most out of review comments for faster sign-off." />
+  <meta property="og:description" content="Get the most from AEM Guides review comments: threaded annotations, resolving vs rejecting feedback, comment status tracking, and etiquette that speeds sign-off." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,85 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jul 11, 2025 · 1 min read</p>
+      <p class="article-meta">Jul 11, 2025 · 2 min read</p>
       <h1>Collaborative comments and annotations</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reviews</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Reviews</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Reviewers can highlight text and leave threaded comments directly on the content.</p>
-<h2>Tips</h2>
+        <p>Once a review is running, the quality of the <strong>comments</strong> determines how fast and
+how well content improves. AEM Guides supports threaded, in-context annotations
+that keep discussion attached to the exact text. This guide is about using them
+effectively, both as a reviewer and as an author.</p>
+<h2>How annotations work</h2>
+<pre><code class="language-mermaid">flowchart LR
+  A[Highlight text] --&gt; B[Add comment]
+  B --&gt; C[Thread: replies]
+  C --&gt; D{Resolve or reject}
+  D --&gt;|Resolve| E[Applied + closed]
+  D --&gt;|Reject| F[Closed with reason]
+</code></pre>
+<p>A reviewer highlights a span of text and attaches a comment. Others reply, forming
+a <strong>thread</strong>, which the author then resolves or rejects with a reason.</p>
+<h2>Comment status keeps things honest</h2>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Open</td>
+<td>Needs a decision</td>
+</tr>
+<tr>
+<td>Resolved</td>
+<td>Addressed and applied</td>
+</tr>
+<tr>
+<td>Rejected</td>
+<td>Considered, not applied (with reason)</td>
+</tr>
+</tbody></table>
+<p>Tracking status means nothing is silently dropped, and everyone can see what&#39;s
+left.</p>
+<div class="shot">A comment thread on a highlighted phrase, with reply and resolve controls.</div>
+
+<h2>Etiquette that speeds sign-off</h2>
+<p>For reviewers:</p>
 <ul>
-<li>Keep comments specific and actionable.</li>
-<li>Use threads to resolve discussion in place.</li>
-<li>Track status so nothing slips through.</li>
+<li>Be <strong>specific and actionable</strong>: &quot;Change &#39;click&#39; to &#39;select&#39; for consistency&quot;
+beats &quot;this reads oddly&quot;.</li>
+<li>Comment on <strong>content</strong>, not style the template controls.</li>
+<li>One issue per comment, so each can be resolved independently.</li>
+</ul>
+<p>For authors:</p>
+<ul>
+<li>Reply to every thread, even a rejection, with a short reason.</li>
+<li>Resolve as you go so the open count trends to zero.</li>
+<li>Batch related edits, then mark the relevant threads resolved.</li>
+</ul>
+<div class="note"><strong>Mindset:</strong> Treat the comment list as a shared to-do list. A review is done when the open count is zero, not when the deadline passes.</div>
+
+<h2>Annotations and the source</h2>
+<p>Reviewers comment; authors edit. Keeping that separation protects the DITA source
+from well-meaning but structurally invalid changes, while still capturing every
+suggestion.</p>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Can&#39;t resolve a comment.</strong> You may lack the author/initiator role; the review
+owner resolves.</li>
+<li><strong>Comments disappeared.</strong> They&#39;re likely filtered to &quot;open&quot;; switch the filter to
+see resolved/rejected.</li>
+<li><strong>Thread went off-topic.</strong> Close it with a summary and open a new, specific
+comment.</li>
+<li><strong>Too many tiny comments.</strong> Ask reviewers to focus on substantive issues; style
+belongs to the template.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Treat review comments as a to-do list. Clear, resolved threads mean faster, cleaner sign-off.</p>
+<p>Threaded, in-context annotations with clear status turn review feedback into a
+transparent, finishable to-do list. Comment specifically, keep author and reviewer
+roles distinct, and drive the open-comment count to zero. That&#39;s how reviews close
+quickly and cleanly.</p>
 
       </article>
       <div class="article-foot">

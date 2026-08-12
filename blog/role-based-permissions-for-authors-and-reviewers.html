@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Role-based permissions for authors and reviewers | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Give people the right access without over-sharing." />
+  <meta name="description" content="Give people the right access without over-sharing. AEM's permission model applied to Guides: typical roles, groups vs users, folder-scoped access, and least-privilege." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Role-based permissions for authors and reviewers" />
-  <meta property="og:description" content="Give people the right access without over-sharing." />
+  <meta property="og:description" content="Give people the right access without over-sharing. AEM's permission model applied to Guides: typical roles, groups vs users, folder-scoped access, and least-privilege." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,87 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Sep 30, 2025 · 1 min read</p>
+      <p class="article-meta">Sep 30, 2025 · 2 min read</p>
       <h1>Role-based permissions for authors and reviewers</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>AEM&#39;s permission model lets you scope who can author, review, publish, or administer.</p>
+        <p>A CCMS holds valuable, sometimes sensitive content, worked on by many people with
+different jobs. <strong>Role-based permissions</strong> ensure each person can do their work and
+nothing they shouldn&#39;t. AEM Guides inherits AEM&#39;s robust permission model. This
+guide maps it to real documentation roles.</p>
 <h2>Typical roles</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Author] --&gt; A1[Create / edit topics &amp; maps]
+  R[Reviewer / SME] --&gt; R1[Comment, not edit]
+  P[Publisher] --&gt; P1[Generate &amp; release output]
+  Ad[Admin] --&gt; Ad1[Profiles, presets, permissions]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Grant</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Author</td>
+<td>Read/write on their content folders</td>
+</tr>
+<tr>
+<td>Reviewer / SME</td>
+<td>Read + comment in reviews</td>
+</tr>
+<tr>
+<td>Publisher</td>
+<td>Run output/publish jobs</td>
+</tr>
+<tr>
+<td>Translator / LTM</td>
+<td>Access to translation projects and language copies</td>
+</tr>
+<tr>
+<td>Admin</td>
+<td>Configure profiles, presets, DITA-OT, permissions</td>
+</tr>
+</tbody></table>
+<h2>Use groups, not individual grants</h2>
+<p>Assign permissions to <strong>groups</strong>, then add people to groups. When someone joins or
+leaves, you change group membership, not dozens of individual ACLs.</p>
+<pre><code class="language-mermaid">flowchart LR
+  U[Users] --&gt; G[Groups: authors, reviewers, admins]
+  G --&gt; ACL[Permissions on folders]
+</code></pre>
+<div class="note"><strong>Best practice:</strong> Model groups on job function and grant them folder-scoped access. Never hand out admin to make a permission problem "go away".</div>
+
+<h2>Scope access to folders</h2>
+<p>Grant access at the <strong>folder</strong> level that matches ownership: Product A&#39;s authors
+get write on Product A&#39;s folders, read elsewhere as appropriate. This keeps teams
+from stepping on each other and limits blast radius.</p>
+<div class="shot">The permissions view showing a group with read/write on one product's content folder.</div>
+
+<h2>Least privilege in practice</h2>
+<ol>
+<li>Start from <strong>no access</strong>, add what each group needs.</li>
+<li>Separate <strong>comment</strong> (reviewers) from <strong>edit</strong> (authors).</li>
+<li>Restrict <strong>publish</strong> to those responsible for releases.</li>
+<li>Keep <strong>admin</strong> small and audited.</li>
+<li>Review group membership periodically.</li>
+</ol>
+<h2>Troubleshooting</h2>
 <ul>
-<li><strong>Authors</strong> create and edit topics.</li>
-<li><strong>Reviewers</strong> comment but don&#39;t edit.</li>
-<li><strong>Admins</strong> manage settings and presets.</li>
+<li><strong>User can&#39;t edit their content.</strong> Their group lacks write on that folder; adjust
+the group ACL, not the user.</li>
+<li><strong>Reviewer accidentally edited content.</strong> They have write where they should only
+comment; tighten the role.</li>
+<li><strong>Too many admins.</strong> Scope down; most tasks need author/publisher, not admin.</li>
+<li><strong>Access inconsistent across products.</strong> Model groups per function and apply the
+same pattern to each product&#39;s folders.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Match permissions to responsibilities. Clear roles keep content safe and workflows clean.</p>
+<p>Map documentation jobs to roles, implement them as groups with folder-scoped
+permissions, and apply least privilege: comment for reviewers, edit for authors,
+publish for release owners, admin for the few. It keeps content safe and workflows
+clean as the team scales.</p>
 
       </article>
       <div class="article-foot">

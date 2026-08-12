@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Versioning topics and maps | Aswini Lakshminarayanan</title>
-  <meta name="description" content="How AEM Guides tracks versions and how to use them." />
+  <meta name="description" content="How AEM Guides tracks versions of topics and maps, major vs minor versions, comparing and reverting, labels, and how versioning underpins baselines and releases." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Versioning topics and maps" />
-  <meta property="og:description" content="How AEM Guides tracks versions and how to use them." />
+  <meta property="og:description" content="How AEM Guides tracks versions of topics and maps, major vs minor versions, comparing and reverting, labels, and how versioning underpins baselines and releases." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,92 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jan 7, 2025 · 1 min read</p>
+      <p class="article-meta">Jan 7, 2025 · 2 min read</p>
       <h1>Versioning topics and maps</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Every save can create a version in AEM Guides, giving you a full history of each topic and map.</p>
-<h2>What you can do</h2>
+        <p>Versioning is your safety net and your audit trail. In AEM Guides every topic and
+map carries a history, so you can see what changed, compare revisions, revert
+mistakes, and pin exact versions for a release. This guide explains how versioning
+works and how to use it well.</p>
+<h2>How versioning works</h2>
+<pre><code class="language-mermaid">flowchart LR
+  A[Edit topic] --&gt; B[Save]
+  B --&gt; C[New version recorded]
+  C --&gt; D[Compare versions]
+  C --&gt; E[Revert if needed]
+  C --&gt; F[Label a milestone]
+</code></pre>
+<p>Each meaningful save creates a version. AEM&#39;s model supports <strong>major and minor</strong>
+versions so you can distinguish routine edits from significant milestones.</p>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Minor version</td>
+<td>Routine incremental save</td>
+</tr>
+<tr>
+<td>Major version</td>
+<td>A significant, milestone revision</td>
+</tr>
+<tr>
+<td>Label</td>
+<td>A human-friendly name on a version</td>
+</tr>
+<tr>
+<td>Revision history</td>
+<td>The full timeline of a topic or map</td>
+</tr>
+</tbody></table>
+<h2>Comparing and reverting</h2>
 <ul>
-<li>Compare versions to see what changed.</li>
-<li>Revert to an earlier version.</li>
-<li>Label versions for milestones.</li>
+<li><strong>Compare</strong> two versions to see exactly what changed (useful for reviews and
+audits).</li>
+<li><strong>Revert</strong> to an earlier version when an edit went wrong. The revert itself is
+recorded, so nothing is lost.</li>
+</ul>
+<div class="shot">The version history panel for a topic, comparing two revisions side by side.</div>
+
+<h2>Labels turn history into milestones</h2>
+<p>A long list of versions is hard to navigate. <strong>Labels</strong> (like &quot;v2.0 approved&quot;) mark
+the versions that matter, and they&#39;re what you build baselines from.</p>
+<div class="note"><strong>Habit:</strong> Save deliberately at milestones and label the important ones. A history full of unlabeled autosaves is hard to use; a few clear labels make it navigable.</div>
+
+<h2>Versioning underpins releases</h2>
+<p>Versioning is the foundation for two release features:</p>
+<ul>
+<li><strong>Baselines</strong> capture specific versions of every topic in a map for reproducible
+publishing.</li>
+<li><strong>Labels</strong> let a baseline select &quot;the approved versions&quot; precisely.</li>
+</ul>
+<h2>Steps for a clean versioning practice</h2>
+<ol>
+<li>Save minor versions freely as you work.</li>
+<li>Promote to a <strong>major version</strong> at meaningful milestones.</li>
+<li><strong>Label</strong> approved or released versions.</li>
+<li>Build a <strong>baseline</strong> from labeled versions for each release.</li>
+<li>Use <strong>compare</strong> during reviews to focus on what actually changed.</li>
+</ol>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Too many meaningless versions.</strong> Encourage deliberate saves and use labels to
+mark the ones that matter.</li>
+<li><strong>Can&#39;t tell what changed.</strong> Use compare; if diffs are huge, topics may be too
+large (favor smaller topics).</li>
+<li><strong>Reverted and lost recent work.</strong> The revert is itself a version; roll forward
+by reverting to the newer version.</li>
+<li><strong>Baseline picked the wrong version.</strong> It selected an unlabeled/latest version;
+label the intended ones first.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Versioning is your safety net. Edit freely, knowing you can always look back or roll back.</p>
+<p>Versioning gives you a complete, revertible history of every topic and map. Save
+deliberately, promote major milestones, and label approved versions. Those labels
+and versions then feed baselines, giving you reproducible, auditable releases.</p>
 
       </article>
       <div class="article-foot">

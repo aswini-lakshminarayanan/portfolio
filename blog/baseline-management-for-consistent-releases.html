@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Baseline management for consistent releases | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Baselines let you publish a fixed snapshot of content, even as authoring continues." />
+  <meta name="description" content="Baselines let you publish an exact, frozen snapshot of content even as authoring continues. How baselines work in AEM Guides, creating them from labels, and republishing old releases." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Baseline management for consistent releases" />
-  <meta property="og:description" content="Baselines let you publish a fixed snapshot of content, even as authoring continues." />
+  <meta property="og:description" content="Baselines let you publish an exact, frozen snapshot of content even as authoring continues. How baselines work in AEM Guides, creating them from labels, and republishing old releases." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,18 +30,85 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jun 30, 2025 · 1 min read</p>
+      <p class="article-meta">Jun 30, 2025 · 2 min read</p>
       <h1>Baseline management for consistent releases</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>A <strong>baseline</strong> captures specific versions of every topic in a map. Publish from the baseline and you get exactly that snapshot. No surprises from in-progress edits.</p>
-<h2>When to use one</h2>
+        <p>&quot;Can you republish exactly what we shipped last quarter?&quot; is a question that
+terrifies teams without version control and is trivial with <strong>baselines</strong>. A
+baseline captures specific versions of every topic in a map, so you can publish a
+frozen snapshot even while the next release is being written. This guide shows how
+to use them.</p>
+<h2>The problem baselines solve</h2>
+<p>Authoring is continuous, but releases are discrete. Without baselines, publishing a
+map always uses the latest versions, so an in-progress edit can leak into a
+&quot;finished&quot; release. A baseline decouples the two.</p>
+<pre><code class="language-mermaid">flowchart TD
+  A[Map with many topics] --&gt; B[Create baseline]
+  B --&gt; C[Freeze each topic at a chosen version]
+  C --&gt; D[Publish from baseline]
+  D --&gt; E[Reproducible output, anytime]
+  A -. authoring continues .-&gt; A
+</code></pre>
+<h2>How a baseline works</h2>
+<p>A baseline is a record of &quot;topic X at version 3, topic Y at version 7, ...&quot; for
+every topic in a map. Publishing from it always produces the same output,
+regardless of later edits.</p>
+<table>
+<thead>
+<tr>
+<th>Without baseline</th>
+<th>With baseline</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Publish uses latest versions</td>
+<td>Publish uses frozen versions</td>
+</tr>
+<tr>
+<td>In-progress edits leak in</td>
+<td>Snapshot stays stable</td>
+</tr>
+<tr>
+<td>Old release hard to reproduce</td>
+<td>Republish exactly, anytime</td>
+</tr>
+</tbody></table>
+<h2>Steps to create and use one</h2>
+<ol>
+<li><strong>Label</strong> the approved versions of your topics (a clean way to select them).</li>
+<li>Open the map and <strong>create a baseline</strong>, choosing latest or labeled versions.</li>
+<li>Give it a clear, dated <strong>name</strong> (&quot;v2.0 GA, 2025-06&quot;).</li>
+<li>Attach the baseline to an <strong>output preset</strong> and publish.</li>
+<li>Keep the baseline; republishing that release later is now one click.</li>
+</ol>
+<div class="shot">The Create Baseline dialog listing topics with the version selected for each.</div>
+
+<div class="note"><strong>Best practice:</strong> Label first, then baseline from labels. It makes the snapshot intentional rather than "whatever was latest at the time."</div>
+
+<h2>When to use baselines</h2>
 <ul>
-<li>Locking a release while work continues on the next version.</li>
-<li>Reproducing an older published output.</li>
+<li><strong>Every formal release</strong>, so it can be reproduced.</li>
+<li><strong>Regulated or audited content</strong>, where &quot;what we published&quot; must be provable.</li>
+<li><strong>Parallel work</strong>, when the next version is being written while the current one
+must stay stable.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Baseline includes an unexpected draft.</strong> It captured &quot;latest&quot; for a topic;
+recreate it from labeled versions.</li>
+<li><strong>A topic is missing from the baseline.</strong> It wasn&#39;t referenced by the map when
+the baseline was created; add it to the map and recreate.</li>
+<li><strong>Republished output differs.</strong> A different preset or template is in play;
+baselines fix content versions, not the template. Pin the template too.</li>
+<li><strong>Can&#39;t find an old release&#39;s baseline.</strong> Establish a naming/retention convention
+so baselines are easy to locate.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Use baselines whenever &quot;what we shipped&quot; must stay stable and reproducible.</p>
+<p>Baselines turn &quot;what did we ship?&quot; from a nightmare into a click. Label approved
+versions, create a clearly named baseline per release, and publish from it. Your
+releases become reproducible and auditable, no matter how much authoring happens
+afterward.</p>
 
       </article>
       <div class="article-foot">

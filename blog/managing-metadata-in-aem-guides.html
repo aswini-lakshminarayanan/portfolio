@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Managing metadata in AEM Guides | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Metadata turns a content repository into something you can search, filter, and govern." />
+  <meta name="description" content="Metadata turns a content repository into something searchable, filterable, and governable. Types of metadata in AEM Guides, where to set it, and how it powers publishing." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Managing metadata in AEM Guides" />
-  <meta property="og:description" content="Metadata turns a content repository into something you can search, filter, and govern." />
+  <meta property="og:description" content="Metadata turns a content repository into something searchable, filterable, and governable. Types of metadata in AEM Guides, where to set it, and how it powers publishing." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,94 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Jul 25, 2025 · 1 min read</p>
+      <p class="article-meta">Jul 25, 2025 · 2 min read</p>
       <h1>Managing metadata in AEM Guides</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Metadata describes your content. Audience, product, status, and more. AEM Guides lets you apply it at the topic and map level.</p>
-<h2>What to capture</h2>
+        <p>Metadata is the quiet infrastructure of a healthy CCMS. It&#39;s what lets you find
+content, filter it, report on it, and publish tailored variants. In AEM Guides,
+metadata lives at several levels, and using it consistently is what separates a
+searchable, governable repository from a folder of files. This guide covers the
+what, where, and why.</p>
+<h2>Kinds of metadata</h2>
+<pre><code class="language-mermaid">flowchart TD
+  A[Metadata in AEM Guides] --&gt; B[DITA metadata&lt;br/&gt;audience, product, status]
+  A --&gt; C[AEM properties&lt;br/&gt;tags, custom fields]
+  A --&gt; D[Map-level metadata&lt;br/&gt;publication-wide]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Examples</th>
+<th>Drives</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Profiling attributes</td>
+<td>audience, product, platform</td>
+<td>Conditional publishing</td>
+</tr>
+<tr>
+<td>Status metadata</td>
+<td>draft, in review, approved</td>
+<td>Workflow and reports</td>
+</tr>
+<tr>
+<td>Descriptive</td>
+<td>keywords, short description</td>
+<td>Search and previews</td>
+</tr>
+<tr>
+<td>Custom properties</td>
+<td>owner, review date, doc ID</td>
+<td>Governance and reporting</td>
+</tr>
+</tbody></table>
+<h2>Where to set metadata</h2>
 <ul>
-<li><strong>Audience</strong> and <strong>product</strong> for filtering.</li>
-<li><strong>Status</strong> (draft, in review, approved).</li>
-<li><strong>Custom properties</strong> for your governance needs.</li>
+<li><strong>Topic level:</strong> status, audience, keywords for that unit.</li>
+<li><strong>Map level:</strong> publication-wide properties (product, edition, release).</li>
+<li><strong>Folder profile:</strong> defaults and allowed values for a content area.</li>
+</ul>
+<div class="shot">The properties panel for a topic showing status, audience, and custom metadata fields.</div>
+
+<h2>Make values controlled, not free-text</h2>
+<p>Free-text metadata drifts (<code>Approved</code>, <code>approved</code>, <code>done</code>). Define controlled
+vocabularies (via taxonomy/tags or a subject scheme) so authors choose from a list.
+Controlled values are what make search and filtering reliable.</p>
+<div class="note"><strong>Principle:</strong> Metadata you can't trust is worse than none. Invest in controlled values early so reports and conditional publishing stay accurate.</div>
+
+<h2>What good metadata unlocks</h2>
+<ol>
+<li><strong>Search and findability</strong>: keywords and descriptions improve results.</li>
+<li><strong>Conditional publishing</strong>: audience/product attributes drive DITAVAL filtering.</li>
+<li><strong>Governance reports</strong>: status and owner fields power readiness dashboards.</li>
+<li><strong>Reuse discovery</strong>: consistent tagging helps authors find reusable topics.</li>
+</ol>
+<h2>Steps to a metadata plan</h2>
+<ol>
+<li>Decide the <strong>few</strong> attributes you truly need (avoid sprawl).</li>
+<li>Define <strong>controlled values</strong> for each.</li>
+<li>Apply them via the <strong>folder profile</strong> so a content area shares one policy.</li>
+<li>Backfill existing content with a bulk metadata operation.</li>
+<li>Add metadata checks to your review/readiness process.</li>
+</ol>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Search misses relevant topics.</strong> Missing keywords/descriptions; backfill them.</li>
+<li><strong>Filtering behaves inconsistently.</strong> Free-text values crept in; migrate to
+controlled values.</li>
+<li><strong>Reports look wrong.</strong> Status metadata isn&#39;t maintained; make it part of the
+review workflow.</li>
+<li><strong>Authors skip metadata.</strong> It&#39;s optional or hidden; surface required fields in
+the profile.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Consistent metadata pays off later: better search, cleaner reports, and reliable conditional publishing.</p>
+<p>Treat metadata as a small, controlled data model applied through folder profiles:
+a few meaningful attributes, controlled values, set consistently. That discipline
+is what powers search, conditional publishing, and governance across the whole
+repository.</p>
 
       </article>
       <div class="article-foot">

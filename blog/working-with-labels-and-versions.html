@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Working with labels and versions | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Labels make important versions easy to find and reuse." />
+  <meta name="description" content="Labels turn a long version history into meaningful milestones in AEM Guides. How labels differ from versions, labeling strategy, and using labels to drive baselines." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Working with labels and versions" />
-  <meta property="og:description" content="Labels make important versions easy to find and reuse." />
+  <meta property="og:description" content="Labels turn a long version history into meaningful milestones in AEM Guides. How labels differ from versions, labeling strategy, and using labels to drive baselines." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,86 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Mar 27, 2025 · 1 min read</p>
+      <p class="article-meta">Mar 27, 2025 · 2 min read</p>
       <h1>Working with labels and versions</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p><strong>Labels</strong> are human-friendly names you attach to specific versions. Like &quot;v2.0 release&quot; or &quot;approved&quot;.</p>
-<h2>Why label</h2>
+        <p>A topic might have dozens of versions, most of them routine saves. <strong>Labels</strong> are
+how you mark the few that matter: &quot;approved&quot;, &quot;v2.0 GA&quot;, &quot;sent for translation&quot;.
+This short guide covers how labels relate to versions and how to use them to make
+releases and baselines effortless.</p>
+<h2>Labels vs versions</h2>
+<pre><code class="language-mermaid">flowchart LR
+  V[Versions: every save] --&gt; L[Labels: named milestones]
+  L --&gt; B[Baselines built from labels]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Version</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Created</td>
+<td>On save</td>
+<td>Manually, on purpose</td>
+</tr>
+<tr>
+<td>Meaning</td>
+<td>A point in history</td>
+<td>A milestone you named</td>
+</tr>
+<tr>
+<td>Use</td>
+<td>Compare, revert</td>
+<td>Select for release/baseline</td>
+</tr>
+</tbody></table>
+<p>Versions accumulate automatically; labels are curated by you.</p>
+<h2>A simple labeling strategy</h2>
 <ul>
-<li>Quickly locate a milestone version.</li>
-<li>Build baselines from labeled content.</li>
-<li>Communicate status across the team.</li>
+<li><strong>Release labels:</strong> <code>v2.0-GA</code>, <code>v2.1-GA</code>.</li>
+<li><strong>Status labels:</strong> <code>approved</code>, <code>sme-reviewed</code>.</li>
+<li><strong>Process labels:</strong> <code>sent-for-translation</code>, <code>legal-cleared</code>.</li>
+</ul>
+<p>Apply labels consistently across the topics in a deliverable so you can select them
+as a set.</p>
+<div class="shot">The version history with a label applied to a specific version of a topic.</div>
+
+<div class="note"><strong>Tip:</strong> Label at the map/release level of thinking, not per random edit. A handful of meaningful labels beats hundreds of noisy ones.</div>
+
+<h2>Labels drive baselines</h2>
+<p>The cleanest way to create a reproducible release is:</p>
+<ol>
+<li><strong>Label</strong> the approved version of every topic in the map.</li>
+<li><strong>Create a baseline</strong> from those labels.</li>
+<li><strong>Publish</strong> from the baseline.</li>
+</ol>
+<p>Now the release is frozen and repeatable, and the labels document exactly what went
+into it.</p>
+<h2>Steps to apply a label</h2>
+<ol>
+<li>Open a topic (or select many for a bulk action).</li>
+<li>In version history, choose <strong>Add Label</strong>.</li>
+<li>Use a <strong>consistent, dated name</strong>.</li>
+<li>Repeat across the deliverable, or apply in bulk where supported.</li>
+</ol>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Baseline grabbed the wrong version.</strong> The intended version wasn&#39;t labeled;
+label it and recreate the baseline.</li>
+<li><strong>Labels are inconsistent across topics.</strong> Agree on a naming convention and
+apply it as a set per release.</li>
+<li><strong>Too many labels to make sense of.</strong> Reserve labels for milestones; use plain
+versions for routine saves.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Labels turn a long version history into a set of meaningful, findable checkpoints.</p>
+<p>Labels convert a noisy version history into a set of meaningful checkpoints. Adopt
+a small, consistent labeling scheme, apply it per release across the deliverable,
+and use those labels to build reproducible baselines. Your release process becomes
+clear, selectable, and auditable.</p>
 
       </article>
       <div class="article-foot">

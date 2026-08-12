@@ -98,13 +98,14 @@
     "slug": "reports-and-analytics-in-aem-guides",
     "date": "2025-11-25T00:00:00.000Z",
     "dateLabel": "Nov 25, 2025",
-    "excerpt": "Use built-in reports to understand and improve your content.",
+    "excerpt": "Use built-in reports to understand and improve your content: reuse, link, and status reports in AEM Guides, what each reveals, and how to turn them into action.",
     "tags": [
       "AEM Guides",
-      "Governance"
+      "Governance",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Bulk and folder-level operations",
@@ -124,13 +125,14 @@
     "slug": "creating-snapshots-for-a-release",
     "date": "2025-11-04T00:00:00.000Z",
     "dateLabel": "Nov 4, 2025",
-    "excerpt": "Capture a point-in-time copy of content for a specific release.",
+    "excerpt": "A repeatable release process in AEM Guides using labels and baselines: freeze content, publish every output, archive the snapshot, and reproduce it on demand.",
     "tags": [
       "AEM Guides",
-      "Governance"
+      "Governance",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Content fragments vs DITA reuse: which when?",
@@ -165,13 +167,14 @@
     "slug": "running-a-review-in-aem-guides",
     "date": "2025-10-15T00:00:00.000Z",
     "dateLabel": "Oct 15, 2025",
-    "excerpt": "Send content for review and collect feedback without leaving the platform.",
+    "excerpt": "Replace scattered PDF markups with in-context reviews. The AEM Guides review workflow end to end: starting a review, roles, collecting feedback, and closing the loop.",
     "tags": [
       "AEM Guides",
-      "Reviews"
+      "Reviews",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Translating DITA content in AEM Guides: a complete guide",
@@ -192,13 +195,14 @@
     "slug": "role-based-permissions-for-authors-and-reviewers",
     "date": "2025-09-30T00:00:00.000Z",
     "dateLabel": "Sep 30, 2025",
-    "excerpt": "Give people the right access without over-sharing.",
+    "excerpt": "Give people the right access without over-sharing. AEM's permission model applied to Guides: typical roles, groups vs users, folder-scoped access, and least-privilege.",
     "tags": [
       "AEM Guides",
-      "Governance"
+      "Governance",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Key definitions (keydef) in your maps",
@@ -300,13 +304,14 @@
     "slug": "managing-metadata-in-aem-guides",
     "date": "2025-07-25T00:00:00.000Z",
     "dateLabel": "Jul 25, 2025",
-    "excerpt": "Metadata turns a content repository into something you can search, filter, and govern.",
+    "excerpt": "Metadata turns a content repository into something searchable, filterable, and governable. Types of metadata in AEM Guides, where to set it, and how it powers publishing.",
     "tags": [
       "AEM Guides",
-      "Governance"
+      "Governance",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Link validation and content quality",
@@ -326,13 +331,14 @@
     "slug": "collaborative-comments-and-annotations",
     "date": "2025-07-11T00:00:00.000Z",
     "dateLabel": "Jul 11, 2025",
-    "excerpt": "Get the most out of review comments for faster sign-off.",
+    "excerpt": "Get the most from AEM Guides review comments: threaded annotations, resolving vs rejecting feedback, comment status tracking, and etiquette that speeds sign-off.",
     "tags": [
       "AEM Guides",
-      "Reviews"
+      "Reviews",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "AEM Guides and the DITA Open Toolkit",
@@ -353,13 +359,14 @@
     "slug": "baseline-management-for-consistent-releases",
     "date": "2025-06-30T00:00:00.000Z",
     "dateLabel": "Jun 30, 2025",
-    "excerpt": "Baselines let you publish a fixed snapshot of content, even as authoring continues.",
+    "excerpt": "Baselines let you publish an exact, frozen snapshot of content even as authoring continues. How baselines work in AEM Guides, creating them from labels, and republishing old releases.",
     "tags": [
       "AEM Guides",
-      "Governance"
+      "Governance",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Sending content for translation",
@@ -543,13 +550,14 @@
     "slug": "working-with-labels-and-versions",
     "date": "2025-03-27T00:00:00.000Z",
     "dateLabel": "Mar 27, 2025",
-    "excerpt": "Labels make important versions easy to find and reuse.",
+    "excerpt": "Labels turn a long version history into meaningful milestones in AEM Guides. How labels differ from versions, labeling strategy, and using labels to drive baselines.",
     "tags": [
       "AEM Guides",
-      "Governance"
+      "Governance",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Conditional content with DITAVAL filtering",
@@ -598,13 +606,14 @@
     "slug": "global-profiles-and-shared-settings",
     "date": "2025-02-25T00:00:00.000Z",
     "dateLabel": "Feb 25, 2025",
-    "excerpt": "Set defaults once so every author works consistently.",
+    "excerpt": "Set defaults once so every author works consistently. Global vs folder profiles in AEM Guides, what they control, precedence, and a pattern for scaling teams.",
     "tags": [
       "AEM Guides",
-      "Governance"
+      "Governance",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   },
   {
     "title": "Create your first DITA map in AEM Guides",
@@ -707,12 +716,13 @@
     "slug": "versioning-topics-and-maps",
     "date": "2025-01-07T00:00:00.000Z",
     "dateLabel": "Jan 7, 2025",
-    "excerpt": "How AEM Guides tracks versions and how to use them.",
+    "excerpt": "How AEM Guides tracks versions of topics and maps, major vs minor versions, comparing and reverting, labels, and how versioning underpins baselines and releases.",
     "tags": [
       "AEM Guides",
-      "Governance"
+      "Governance",
+      "Tutorial"
     ],
     "solution": "AEM Guides",
-    "readingTime": 1
+    "readingTime": 2
   }
 ]

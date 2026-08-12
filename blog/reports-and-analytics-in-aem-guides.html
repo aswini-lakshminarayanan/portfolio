@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reports and analytics in AEM Guides | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Use built-in reports to understand and improve your content." />
+  <meta name="description" content="Use built-in reports to understand and improve your content: reuse, link, and status reports in AEM Guides, what each reveals, and how to turn them into action." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Reports and analytics in AEM Guides" />
-  <meta property="og:description" content="Use built-in reports to understand and improve your content." />
+  <meta property="og:description" content="Use built-in reports to understand and improve your content: reuse, link, and status reports in AEM Guides, what each reveals, and how to turn them into action." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,81 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Nov 25, 2025 · 1 min read</p>
+      <p class="article-meta">Nov 25, 2025 · 2 min read</p>
       <h1>Reports and analytics in AEM Guides</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>AEM Guides offers reports on content status, reuse, links, and more.</p>
-<h2>Useful reports</h2>
+        <p>A large repository is only manageable if you can measure it. AEM Guides provides
+reports that reveal how content is reused, whether links are healthy, and where each
+piece stands in its lifecycle. This guide covers the key reports and, more
+importantly, how to act on them.</p>
+<h2>The reports that matter</h2>
+<pre><code class="language-mermaid">flowchart TD
+  R[AEM Guides reports] --&gt; A[Reuse report]
+  R --&gt; B[Link / reference report]
+  R --&gt; C[Status report]
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Report</th>
+<th>Answers</th>
+<th>Action it drives</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Reuse</td>
+<td>Where is this topic/element used?</td>
+<td>Safe editing, impact analysis</td>
+</tr>
+<tr>
+<td>Link / reference</td>
+<td>Are references valid?</td>
+<td>Fix broken links before release</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>What&#39;s draft vs approved?</td>
+<td>Release readiness</td>
+</tr>
+</tbody></table>
+<h2>Reuse reports: edit with confidence</h2>
+<p>Before changing a widely reused topic, a <strong>reuse report</strong> shows every place it
+appears. That impact analysis prevents &quot;I fixed one topic and broke five
+deliverables&quot; surprises.</p>
+<div class="shot">A reuse report listing all topics and maps that reference a shared warning.</div>
+
+<h2>Link reports: catch breakage early</h2>
+<p>A <strong>link/reference report</strong> surfaces broken xrefs, unresolved keys, and missing
+media across the repository. Running it before a release is one of the cheapest
+quality wins available.</p>
+<div class="note"><strong>Habit:</strong> Run link validation and a status check as a standard pre-release gate. Most publishing failures are a broken reference you could have caught here.</div>
+
+<h2>Status reports: know if you&#39;re ready</h2>
+<p>A <strong>status report</strong> aggregates the lifecycle state (draft, in review, approved) of
+every topic in a deliverable, turning &quot;are we ready to ship?&quot; from a guess into a
+number.</p>
+<h2>Turning reports into a rhythm</h2>
+<ol>
+<li><strong>Weekly:</strong> status report to track progress toward a release.</li>
+<li><strong>Before every release:</strong> link report to catch breakage; reuse report before
+editing shared content.</li>
+<li><strong>Quarterly:</strong> reuse analysis to find consolidation opportunities.</li>
+</ol>
+<h2>Troubleshooting</h2>
 <ul>
-<li><strong>Reuse reports</strong> to see where topics are used.</li>
-<li><strong>Link reports</strong> to find broken references.</li>
-<li><strong>Status reports</strong> for release readiness.</li>
+<li><strong>Status looks wrong.</strong> Status metadata isn&#39;t maintained; make updating it part
+of the review workflow.</li>
+<li><strong>Link report is noisy.</strong> Some &quot;broken&quot; links are external and simply
+unreachable at scan time; separate internal from external issues.</li>
+<li><strong>Reuse report seems incomplete.</strong> It reflects references the system can resolve;
+broken/typo&#39;d references won&#39;t show as reuse, they&#39;ll show in the link report.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Reports turn a large repository into something you can actually measure and manage.</p>
+<p>Reports turn a big repository into something you can actually manage. Use reuse
+reports for safe editing, link reports to catch breakage before release, and status
+reports for readiness. Build them into a weekly and pre-release rhythm, and quality
+becomes measurable instead of hopeful.</p>
 
       </article>
       <div class="article-foot">

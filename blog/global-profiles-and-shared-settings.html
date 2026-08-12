@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Global profiles and shared settings | Aswini Lakshminarayanan</title>
-  <meta name="description" content="Set defaults once so every author works consistently." />
+  <meta name="description" content="Set defaults once so every author works consistently. Global vs folder profiles in AEM Guides, what they control, precedence, and a pattern for scaling teams." />
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Global profiles and shared settings" />
-  <meta property="og:description" content="Set defaults once so every author works consistently." />
+  <meta property="og:description" content="Set defaults once so every author works consistently. Global vs folder profiles in AEM Guides, what they control, precedence, and a pattern for scaling teams." />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,19 +30,91 @@
   <main class="article container">
     <div class="article-wrap">
       <a class="back-link" href="index.html">← All articles</a>
-      <p class="article-meta">Feb 25, 2025 · 1 min read</p>
+      <p class="article-meta">Feb 25, 2025 · 2 min read</p>
       <h1>Global profiles and shared settings</h1>
-      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span></div>
+      <div class="article-tags"><span class="chip">AEM Guides</span><span class="chip">Governance</span><span class="chip">Tutorial</span></div>
       <article class="prose">
-        <p>Global profiles and settings centralize choices like profiling values, metadata schemas, and editor behavior.</p>
-<h2>Benefits</h2>
+        <p>Consistency at scale doesn&#39;t come from asking authors to remember rules; it comes
+from <strong>profiles</strong> that encode those rules once. AEM Guides uses global and folder
+profiles to define editor behavior, metadata, conditions, and more. This guide
+explains the model and how to use it as your team grows.</p>
+<h2>Global vs folder profiles</h2>
+<pre><code class="language-mermaid">flowchart TD
+  G[Global profile&lt;br/&gt;instance defaults] --&gt; F1[Folder profile: Product A]
+  G --&gt; F2[Folder profile: Product B]
+  F1 --&gt; O1[Overrides for A]
+  F2 --&gt; O2[Overrides for B]
+</code></pre>
 <ul>
-<li>Consistent options for all authors.</li>
-<li>Fewer configuration mistakes.</li>
-<li>Easier onboarding.</li>
+<li><strong>Global profile</strong> sets defaults for the whole instance.</li>
+<li><strong>Folder profiles</strong> override those defaults for a specific content area, so
+different products or teams can differ where they need to.</li>
+</ul>
+<p>Folder settings take precedence over global for that area, giving you shared
+defaults with local flexibility.</p>
+<h2>What profiles control</h2>
+<table>
+<thead>
+<tr>
+<th>Setting group</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Editor</td>
+<td>Which elements/templates authors see, editor behavior</td>
+</tr>
+<tr>
+<td>Metadata</td>
+<td>Available fields and controlled values</td>
+</tr>
+<tr>
+<td>Conditions</td>
+<td>Allowed profiling attributes and values</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>Default presets and templates for the area</td>
+</tr>
+<tr>
+<td>Language</td>
+<td>Source and target languages for translation</td>
+</tr>
+</tbody></table>
+<div class="shot">A folder profile configuration screen showing editor, metadata, and output defaults.</div>
+
+<h2>A scaling pattern</h2>
+<ol>
+<li>Set sensible <strong>global defaults</strong> every author should get.</li>
+<li>Create a <strong>folder profile per product or major area</strong>.</li>
+<li>Override in the folder profile <strong>only</strong> what genuinely differs.</li>
+<li>Onboard new areas by cloning a known-good folder profile.</li>
+</ol>
+<div class="note"><strong>Principle:</strong> Global for what everyone shares, folder for what a team needs differently. Resist per-file configuration; it's where consistency goes to die.</div>
+
+<h2>Why this matters</h2>
+<ul>
+<li><strong>Consistency:</strong> every author in an area gets the same elements, metadata, and
+conditions.</li>
+<li><strong>Fewer mistakes:</strong> controlled options prevent invalid or off-standard choices.</li>
+<li><strong>Faster onboarding:</strong> new authors inherit correct settings automatically.</li>
+<li><strong>Easier changes:</strong> update a profile once, and the whole area follows.</li>
+</ul>
+<h2>Troubleshooting</h2>
+<ul>
+<li><strong>Authors see different options.</strong> They&#39;re under different folder profiles; align
+the profiles or move content.</li>
+<li><strong>A setting won&#39;t take effect.</strong> A folder profile overrides your global change
+for that area; update the folder profile.</li>
+<li><strong>New content lacks the right defaults.</strong> It&#39;s outside any tuned folder profile;
+place it under one or extend coverage.</li>
+<li><strong>Too many near-identical profiles.</strong> Consolidate; keep overrides minimal.</li>
 </ul>
 <h2>Takeaway</h2>
-<p>Configure shared settings early. Consistency at the platform level prevents chaos at the content level.</p>
+<p>Profiles encode your standards so authors don&#39;t have to. Set shared defaults
+globally, override per folder only where needed, and onboard by cloning good
+profiles. That structure keeps a growing team and content set consistent without
+constant policing.</p>
 
       </article>
       <div class="article-foot">
